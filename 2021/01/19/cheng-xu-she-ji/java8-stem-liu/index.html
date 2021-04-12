@@ -1,0 +1,2176 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="程序设计/Java8_Stem流, LQH">
+    <meta name="description" content="茕茕白兔，东走西顾。衣不如新，人不如故">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>程序设计/Java8_Stem流 | LQH</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="LQH" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LQH</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LQH</div>
+        <div class="logo-desc">
+            
+            茕茕白兔，东走西顾。衣不如新，人不如故
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/RosePuff" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/RosePuff" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">程序设计/Java8_Stem流</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+        <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        2021-01-19
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                        2021-01-20
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        29.8k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        111 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="实战攻略：Java8-Stream"><a href="#实战攻略：Java8-Stream" class="headerlink" title="实战攻略：Java8-Stream"></a>实战攻略：Java8-Stream</h1><h1 id="1-函数式的思考"><a href="#1-函数式的思考" class="headerlink" title="1.函数式的思考"></a>1.函数式的思考</h1><h2 id="1-1声明式编程"><a href="#1-1声明式编程" class="headerlink" title="1.1声明式编程"></a>1.1声明式编程</h2><p>一般通过编程实现一个系统有两种思考方式。</p>
+<p>一种专注于如何实现，比如：“先做这个，紧接着做这个，然后…”。这种“如何做”风格的编程非常适合经典的面向对象，有时候也称之为<strong>命令式编程</strong></p>
+<p>另一种更关注要做什么。这种“要做什么”风格的编程通常被称之为<strong>声明式编程</strong>。你制定规则，给出希望实现的目标，让系统来决定如何实现这个目标。好处也十分明显，因为更接近问题陈述</p>
+<h2 id="1-2-为什么要采用函数式编程"><a href="#1-2-为什么要采用函数式编程" class="headerlink" title="1.2 为什么要采用函数式编程"></a>1.2 为什么要采用函数式编程</h2><ol>
+<li>lambda表达式</li>
+</ol>
+<p>可以把lambda表达式理解为一种简洁的可传递匿名函数：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。</p>
+<ul>
+<li>匿名–它不像普通的方法那样有一个名确的名称</li>
+<li>函数–因为lambda函数不像方法那样属于某个特定的类</li>
+</ul>
+<h1 id="2-引入流"><a href="#2-引入流" class="headerlink" title="2 引入流"></a>2 引入流</h1><h2 id="2-1-流是什么？"><a href="#2-1-流是什么？" class="headerlink" title="2.1 流是什么？"></a>2.1 流是什么？</h2><p>流是Java 8 API的新成员，它允许你以声明性方式处理数据集合（通过查询语句来表达，而不是临时编写一个实现）。就现在来说，你可以把它们看成遍历数据集的高级迭代器。此外，流还可以透明地并行处理，你无须写任何多线程代码了。</p>
+<p>从软件工程的角度看，新的方法有几个显而易见的好处：</p>
+<ul>
+<li>代码是以声明性方式写的：说明想要完成什么而不是说明如何实现一个操作（利用循环和if条件等控制流语句）。这种方法加上行为参数化让你可以轻松应对变化的需求：你很容易再创建一个代码版本，利用Lambda表达式来筛选而用不着去复制粘贴代码。这种方式的另一个好处是，线程模型与查询操作实现了解耦。具体的执行既可以串行，也可以并行。</li>
+<li>你可以把几个基础操作链接起来，来表达复杂的数据处理流水线（在filter后面接上sorted、map和collect操作，如图所示），同时保持代码清晰可读。filter的结果被传给了sorted方法，再传给map方法，最后传给collect方法。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/163287/1610374238186-df3e3a70-088c-4541-b114-3606e31dd62e.jpeg?x-oss-process=image%2Fresize%2Cw_1500" alt="D4F772C9-F449-4EC7-9910-831BFC43DA5D.jpeg"></p>
+<p>因为filter、sorted、map和collect等操作是与具体线程模型无关的高层次构件，所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构！在实践中，这意味着你用不着为了让某些数据处理任务并行而去操心线程和锁，Stream API都替你做好了！</p>
+<p>总结一下，Java 8中的Stream API可以让你写出这样的代码：</p>
+<ul>
+<li><ul>
+<li>声明性——更简洁，更易读；</li>
+<li>可复合——更灵活；</li>
+<li>可并行——性能更好。</li>
+</ul>
+</li>
+</ul>
+<p>以下内容中使用的例子：一个menu，它只是一张菜肴列表</p>
+<pre><code>List&lt;Dish&gt; menu = Arrays.asList(
+    new Dish(&quot;pork&quot;, false, 800, Dish.Type.MEAT),
+    new Dish(&quot;beef&quot;, false, 700, Dish.Type.MEAT),
+    new Dish(&quot;chicken&quot;, false, 400, Dish.Type.MEAT),
+    new Dish(&quot;french fries&quot;, true, 530, Dish.Type.OTHER),
+    new Dish(&quot;rice&quot;, true, 350, Dish.Type.OTHER),
+    new Dish(&quot;season fruit&quot;, true, 120, Dish.Type.OTHER),
+    new Dish(&quot;pizza&quot;, true, 550, Dish.Type.OTHER),
+    new Dish(&quot;prawns&quot;, false, 300, Dish.Type.FISH),
+    new Dish(&quot;salmon&quot;, false, 450, Dish.Type.FISH) );</code></pre><p>Dish 类定义：</p>
+<pre><code>public class Dish {
+    private final String name;
+    private final boolean vegetarian;
+    private final int calories;
+    private final Type type;
+    public Dish(String name, boolean vegetarian, int calories, Type type) {
+        this.name = name;
+        this.vegetarian = vegetarian;
+        this.calories = calories;
+        this.type = type;
+    }
+    public String getName() {
+        return name;
+    }
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+    public int getCalories() {
+        return calories;
+    }
+    public Type getType() {
+        return type;
+    }
+    @Override
+    public String toString() {
+        return name;
+    }
+    public enum Type { MEAT, FISH, OTHER }
+}</code></pre><h2 id="2-2-流简介"><a href="#2-2-流简介" class="headerlink" title="2.2 流简介"></a>2.2 流简介</h2><p>简短的定义就是“从支持数据处理操作的源生成的元素序列”。</p>
+<ul>
+<li><ul>
+<li><strong>元素序列</strong>——就像集合一样，流也提供了一个接口，可以访问特定元素类型的一组有序值。因为集合是数据结构，所以它的主要目的是以特定的时间/空间复杂度存储和访问元素（如ArrayList 与LinkedList）。但流的目的在于表达计算，比如你前面见到的filter、sorted和map。集合讲的是数据，流讲的是计算。后面几节会详细解释这个思想。</li>
+<li><strong>源</strong>——流会使用一个提供数据的源，比如集合、数组或I/O资源。请注意，从有序集合生成流时会保留原有的顺序。由列表生成的流，其元素顺序与列表一致。</li>
+<li><strong>数据处理操作</strong>——流的数据处理功能支持类似于数据库的操作，以及函数式编程语言中的常用操作，比如filter、map、reduce、find、match、sort等。流操作可以顺序执行，也可以并行执行。</li>
+</ul>
+</li>
+</ul>
+<p>此外，流操作有两个重要的特点：</p>
+<ul>
+<li><ul>
+<li><strong>流水线</strong>——很多流操作本身会返回一个流，这样多个操作就可以链接起来，构成一个更大的流水线。这使得一些优化成为可能，比如处理延迟和短路。流水线的操作可以看作类似对数据源进行数据库查询。</li>
+<li><strong>内部迭代</strong>——与集合使用迭代器进行显式迭代不同，流的迭代操作是在后台进行的。</li>
+</ul>
+</li>
+</ul>
+<pre><code>import static java.util.stream.Collectors.toList;
+
+List&lt;String&gt; threeHighCaloricDishNames =
+  menu.stream()       // 从menu（菜肴列表）获得流
+      .filter(dish -&gt; dish.getCalories() &gt; 300)      // 建立操作流水线：首先选出高热量的菜肴
+      .map(Dish::getName)       // 获取菜名
+      .limit(3)       // 只选择头三个
+      .collect(toList());      // 将结果保存在另一个List中
+System.out.println(threeHighCaloricDishNames);       // 结果是[pork, beef, chicken]</code></pre><p>本例先是对menu调用stream方法，由菜单得到一个流。数据<strong>源</strong>是菜肴列表（菜单），它给流提供一个<strong>元素序列</strong>。接下来，对流应用一系列<strong>数据处理操作</strong>：filter、map、limit和collect。除了collect之外，所有这些操作都会返回另一个流，这样它们就可以接成一条<strong>流水线</strong>，于是就可以看作对源的一个查询。最后，collect操作开始处理流水线，并返回结果（它和别的操作不一样，因为它返回的不是流，在这里是一个List）。在调用collect之前，没有任何结果产生，实际上根本就没有从menu里选择元素。你可以这么理解：链中的方法调用都在排队等待，直到调用collect。图4-2显示了流操作的顺序：filter、map、limit、collect，每个操作简介如下。</p>
+<ul>
+<li>filter——接受一个Lambda，从流中排除某些元素。在本例中，通过传递Lambda d -&gt; d.getCalories() &gt; 300，选择出热量超过300卡路里的菜肴。</li>
+<li>map——接受一个Lambda，将元素转换成其他形式或提取信息。在本例中，通过传递方法引用Dish::getName，相当于Lambda d -&gt; d.getName()，提取了每道菜的菜名。</li>
+<li>limit——截断流，使其元素不超过给定数量。</li>
+<li>collect——将流转换为其他形式。在本例中，流被转换为一个列表。它看起来有点儿像变魔术，稍后会详细解释collect的工作原理。现在，你可以把collect看作能够接受各种方案作为参数，并将流中的元素累积成为一个汇总结果的操作。这里的toList()就是将流转换为列表的方案。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610454893944-c559f99d-6dba-41b3-90de-40fa6ae5b49e.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<h2 id="2-3-流与集合"><a href="#2-3-流与集合" class="headerlink" title="2.3 流与集合"></a>2.3 流与集合</h2><p>先来打个直观的比方吧。比如说存在DVD里的电影，这就是一个集合（也许是字节，也许是帧，这个无所谓），因为它包含了整个数据结构。现在再来想想在互联网上通过视频流看同样的电影。现在这是一个流（字节流或帧流）。流媒体视频播放器只要提前下载用户观看位置的那几帧就可以了，这样不用等到流中大部分值计算出来，你就可以显示流的开始部分了（想想观看直播足球赛）。特别要注意，视频播放器可能没有将整个流作为集合，保存所需要的内存缓冲区——而且要是非得等到最后一帧出现才能开始看，那等待的时间就太长了。出于实现的考虑，你也可以让视频播放器把流的一部分缓存在集合里，但和概念上的差异不是一回事。</p>
+<p>粗略地说，集合与流之间的差异就在于什么时候进行计算。集合是一个内存中的数据结构，它包含数据结构中目前所有的值——集合中的每个元素都得先算出来才能添加到集合中（你可以往集合里加东西或者删东西，但是不管什么时候，集合中的每个元素都是放在内存里的，元素都得先算出来才能成为集合的一部分）。</p>
+<p>相比之下，流则是在概念上固定的数据结构（你不能添加或删除元素），其元素是按需计算的。这对编程有很大的好处。这个理念就是用户仅仅从流中提取需要的值，而这些值——在用户看不见的地方——只会按需生成。这是一种生产者–消费者的关系。从另一个角度来说，流就像是一个延迟创建的集合：只有在消费者要求的时候才会计算值（用管理学的话说这就是需求驱动，甚至是实时制造)。</p>
+<p>与此相反，集合则是急切创建的（供应商驱动：先把仓库装满，再开始卖，就像那些昙花一现的圣诞新玩意儿一样）。以质数为例，要是想创建一个包含所有质数的集合，那这个程序算起来就没完没了了，因为总有新的质数要算，然后把它加到集合里面。当然这个集合是永远也创建不完的，消费者这辈子都见不着了。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610455320439-5740a162-ec25-4e2b-9473-34580d111d0d.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<h3 id="2-3-1-只能遍历一次"><a href="#2-3-1-只能遍历一次" class="headerlink" title="2.3.1 只能遍历一次"></a>2.3.1 只能遍历一次</h3><p>请注意，和迭代器类似，流只能遍历一次。遍历完之后，我们就说这个流已经被消费掉了。你可以从原始数据源那里再获得一个新的流来重新遍历一遍，就像迭代器一样（这里假设它是集合之类的可重复的源，如果是I/O通道就“没戏”了）。例如，以下代码会抛出一个异常，说流已被消费掉了：</p>
+<pre><code>List&lt;String&gt; title = Arrays.asList(&quot;Modern&quot;, &quot;Java&quot;, &quot;In&quot;, &quot;Action&quot;);
+Stream&lt;String&gt; s = title.stream();
+s.forEach(System.out::println);       // 打印标题中的每个单词
+s.forEach(System.out::println);      // java.lang.IllegalStateException:流已被操作或关闭</code></pre><p>所以要记得，流只能消费一次！</p>
+<h3 id="2-3-2-外部迭代与内部迭代"><a href="#2-3-2-外部迭代与内部迭代" class="headerlink" title="2.3.2 外部迭代与内部迭代"></a>2.3.2 外部迭代与内部迭代</h3><p>使用Collection接口需要用户去做迭代（比如用for-each），这称为外部迭代。相反，Stream库使用内部迭代——它帮你把迭代做了，还把得到的流值存在了某个地方，你只要给出一个函数说要干什么就可以了。下面的代码列表说明了这种区别。</p>
+<p>代码清单 1　集合：用for-each循环外部迭代</p>
+<pre><code>List&lt;String&gt; names = new ArrayList&lt;&gt;();
+for(Dish dish: menu){       # 显式顺序迭代菜单列表
+    names.add(dish.getName());       # 提取名称并将其添加到累加器
+}</code></pre><p>请注意，for-each还隐藏了迭代中的一些复杂性。for-each结构是一个语法糖，它背后的东西用Iterator对象表达出来会更丑陋。</p>
+<p>代码清单 2　集合：用背后的迭代器做外部迭代</p>
+<pre><code>List&lt;String&gt; names = new ArrayList&lt;&gt;();
+Iterator&lt;String&gt; iterator = menu.iterator();
+while(iterator.hasNext()) {       # 显式迭代
+    Dish dish = iterator.next();
+    names.add(dish.getName());
+}</code></pre><p>代码清单 3　流：内部迭代</p>
+<pre><code>List&lt;String&gt; names = menu.stream()
+                         .map(Dish::getName)       # 用getName方法参数化map，提取菜名
+                         .collect(toList());       # 开始执行操作流水线；没有迭代！</code></pre><p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610455746256-ae179d44-f1b7-453b-8f1d-176f9bdb8e63.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>测验：请用一种流操作重构以下代码</p>
+<pre><code>List&lt;String&gt; highCaloricDishes = new ArrayList&lt;&gt;();
+Iterator&lt;String&gt; iterator = menu.iterator();
+while(iterator.hasNext()) {
+    Dish dish = iterator.next();
+    if(dish.getCalories() &gt; 300) {
+        highCaloricDishes.add(d.getName());
+    }
+}</code></pre><p>答案：密码-&gt;6666</p>
+<pre class=" language-java"><code class="language-java">流水线中最后一个操作count返回一个<span class="token keyword">long</span>，这是一个非Stream的值。因此它是一个终端操作。所有前面的操作，filter、distinct、limit，都是连接起来的，并返回一个Stream，因此它们是中间操作。</code></pre>
+<h2 id="2-4-流操作"><a href="#2-4-流操作" class="headerlink" title="2.4 流操作"></a>2.4 流操作</h2><p>java.util.stream.Stream中的Stream接口定义了许多操作。它们可以分为两大类。再来看一下前面的例子：</p>
+<pre><code>List&lt;String&gt; names = menu.stream()       // 从菜单获得流
+                         .filter(dish -&gt; dish.getCalories() &gt; 300)       // 中间操作
+                         .map(Dish::getName)       // 中间操作
+                         .limit(3)       // 中间操作
+                         .collect(toList());       // 将Stream转换为List</code></pre><p>你可以看到两类操作：</p>
+<ul>
+<li>filter、map和limit可以连成一条流水线；</li>
+<li>collect触发流水线执行并关闭它。</li>
+</ul>
+<p>可以连接起来的流操作称为中间操作，关闭流的操作称为终端操作。图4-5中展示了这两类操作。这种区分有什么意义呢？</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610456020514-a9cbad5e-aaac-4bb9-bd31-e59f65b124e5.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<h3 id="2-4-1-中间操作"><a href="#2-4-1-中间操作" class="headerlink" title="2.4.1 中间操作"></a>2.4.1 中间操作</h3><p>诸如filter或sorted等中间操作会返回另一个流。这让多个操作可以连接起来形成一个查询。重要的是，除非流水线上触发一个终端操作，否则中间操作不会执行任何处理——它们很懒。这是因为中间操作一般都可以合并起来，在终端操作时一次性全部处理。</p>
+<p>为了搞清楚流水线中到底发生了什么，我们把代码改一改，让每个Lambda都打印出当前处理的菜肴（就像很多演示和调试技巧一样，这种编程风格要是搁在生产代码里那就吓死人了，但是学习的时候可以直接看清楚求值的顺序）：</p>
+<pre><code>List&lt;String&gt; names =
+    menu.stream()
+        .filter(dish -&gt; {
+                          System.out.println(&quot;filtering:&quot; + dish.getName());
+                          return dish.getCalories() &gt; 300;
+                     })   // 打印当前筛选的菜肴
+        .map(dish -&gt; {
+                       System.out.println(&quot;mapping:&quot; + dish.getName());
+                       return dish.getName();
+                  })  // 提取菜名时打印出来
+        .limit(3)
+        .collect(toList());
+System.out.println(names);</code></pre><p>此代码执行时将打印：</p>
+<pre><code>filtering:pork
+mapping:pork
+filtering:beef
+mapping:beef
+filtering:chicken
+mapping:chicken
+[pork, beef, chicken]</code></pre><p>你会发现，有好几种优化利用了流的延迟性质。第一，尽管很多菜的热量都高于300卡路里，但只选出了前三个！这是因为limit操作和一种称为<strong>短路</strong>的技巧。第二，尽管filter和map是两个独立的操作，但它们合并到同一次遍历中了（我们把这种技术叫作<strong>循环合并</strong>）。</p>
+<h3 id="2-4-2-终端操作"><a href="#2-4-2-终端操作" class="headerlink" title="2.4.2 终端操作"></a>2.4.2 终端操作</h3><p>终端操作会从流的流水线生成结果，其结果是任何不是流的值，比如List、Integer，甚至void。例如，在下面的流水线中，forEach是一个返回void的终端操作，它会对源中的每道菜应用一个Lambda。把System.out.println传递给forEach，并要求它打印出由menu生成的流中的每一个Dish：</p>
+<pre><code>menu.stream().forEach(System.out::println);</code></pre><p>为了检验你对中间操作和终端操作的理解程度，试试以下测验吧。</p>
+<p>测验4.2：中间操作与终端操作</p>
+<p>在下列流水线中，你能找出中间操作和终端操作吗？</p>
+<pre><code>long count = menu.stream()
+                 .filter(dish -&gt; dish.getCalories() &gt; 300)
+                 .distinct()
+                 .limit(3)
+                 .count();</code></pre><p>答案：密码-&gt;6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#9uRQx" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#9uRQx</a></p>
+<h3 id="2-4-3-使用流"><a href="#2-4-3-使用流" class="headerlink" title="2.4.3 使用流"></a>2.4.3 使用流</h3><p>总而言之，流的使用一般包括三件事：</p>
+<ul>
+<li>一个<strong>数据源</strong>（如集合）来执行一个查询；</li>
+<li>一个<strong>中间操作</strong>链，形成一条流的流水线；</li>
+<li>一个<strong>终端操作</strong>，执行流水线，并能生成结果。</li>
+</ul>
+<p>流的流水线背后的理念类似于构建器模式。在构建器模式中有一个调用链用来设置一套配置（对流来说这就是一个中间操作链），接着是调用build方法（对流来说就是终端操作）。</p>
+<h1 id="3-使用流"><a href="#3-使用流" class="headerlink" title="3. 使用流"></a>3. 使用流</h1><p>内容总览：</p>
+<ul>
+<li>筛选、切片和映射</li>
+<li>查找、匹配和归约</li>
+<li>使用数值范围等数值流</li>
+<li>从多个源创建流</li>
+<li>无限流</li>
+</ul>
+<h2 id="3-1-筛选"><a href="#3-1-筛选" class="headerlink" title="3.1 筛选"></a>3.1 筛选</h2><h3 id="3-1-1-用谓词筛选"><a href="#3-1-1-用谓词筛选" class="headerlink" title="3.1.1　用谓词筛选"></a>3.1.1　用谓词筛选</h3><p>Stream接口支持filter方法（你现在应该很熟悉了）。该操作会接受一个谓词（一个返回boolean的函数）作为参数，并返回一个包括所有符合谓词的元素的流。例如，你可以像图5-1所示的这样，筛选出所有素菜，创建一张素食菜单。</p>
+<pre><code>List&lt;Dish&gt; vegetarianMenu = menu.stream()
+                                .filter(Dish::isVegetarian)   // 方法引用检查菜肴是否适合素食者
+                                .collect(toList());</code></pre><p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610459969628-36ed50d2-3c7c-48fa-8dcc-bfe04e0f09a9.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<h3 id="3-1-2-筛选各异的元素"><a href="#3-1-2-筛选各异的元素" class="headerlink" title="3.1.2　筛选各异的元素"></a>3.1.2　筛选各异的元素</h3><p>流还支持一个叫作distinct的方法，它会返回一个元素各异（根据流所生成元素的hashCode和equals方法实现）的流。例如，以下代码会筛选出列表中所有的偶数，并确保没有重复（使用equals方法进行比较 ）。图5-2直观地显示了这个过程。</p>
+<pre><code>List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
+numbers.stream()
+       .filter(i -&gt; i % 2 == 0)
+       .distinct()
+       .forEach(System.out::println);</code></pre><p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610460031643-3df215bd-30b9-4d2f-975a-c81f8d1a1fe0.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>在测验试试学过的内容：筛选</p>
+<p>你将如何利用流来筛选前两个荤菜呢？</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 可以把filter和limit组合在一起来解决这个问题，并用collect(toList())将流转换成一个列表。</span>
+List<span class="token operator">&lt;</span>Dish<span class="token operator">></span> dishes <span class="token operator">=</span> 
+    menu<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>dish <span class="token operator">-</span><span class="token operator">></span> dish<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> Dish<span class="token punctuation">.</span>Type<span class="token punctuation">.</span>MEAT<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="3-2-流的切片"><a href="#3-2-流的切片" class="headerlink" title="3.2　流的切片"></a>3.2　流的切片</h2><p>本节会讨论如何通过其他方式选择或跳过流中的某些元素。使用Stream的一些操作结合谓词，你可以高效地选择或者丢弃流中的元素，譬如忽略流的前几个元素，或者按照设定的大小对流实施截短操作。</p>
+<h3 id="3-2-1-使用谓词对流进行切片-（题外，Java9引入）"><a href="#3-2-1-使用谓词对流进行切片-（题外，Java9引入）" class="headerlink" title="3.2.1　使用谓词对流进行切片 （题外，Java9引入）"></a>3.2.1　使用谓词对流进行切片 （题外，Java9引入）</h3><p>Java 9引入了两个新方法，可以高效地选择流中的元素，这两个方法分别是：takeWhile和dropWhile。</p>
+<h4 id="3-2-1-1-使用takeWhile"><a href="#3-2-1-1-使用takeWhile" class="headerlink" title="3.2.1.1 使用takeWhile"></a>3.2.1.1 使用takeWhile</h4><p>假设你需要处理下面这个菜单列表：</p>
+<pre><code>List&lt;Dish&gt; specialMenu = Arrays.asList(
+    new Dish(&quot;seasonal fruit&quot;, true, 120, Dish.Type.OTHER),
+    new Dish(&quot;prawns&quot;, false, 300, Dish.Type.FISH),
+    new Dish(&quot;rice&quot;, true, 350, Dish.Type.OTHER),
+    new Dish(&quot;chicken&quot;, false, 400, Dish.Type.MEAT),
+    new Dish(&quot;french fries&quot;, true, 530, Dish.Type.OTHER));</code></pre><p>怎样才能从这些菜单中选出热量少于320卡路里的那些菜肴呢？你本能地想起了前面学习过的filter操作，它可以执行下面的动作：</p>
+<pre><code>List&lt;Dish&gt; filteredMenu
+    = specialMenu.stream()
+                 .filter(dish -&gt; dish.getCalories() &lt; 320)
+                 .collect(toList());       //由季节性的水果、虾构成的列表</code></pre><p>然而，采用这种方式，初始列表中的元素已经按照热量进行了排序操作！这里采用filter的缺点是，你需要遍历整个流中的数据，对其中的每一个元素执行谓词操作。而你本可以在发现第一个热量大于（或者等于）320卡路里的菜肴时就停止处理的。如果你要处理的列表规模不大，这不算什么大问题，但是，如果你要处理的是一个由海量元素构成的流，采用恰当的方式所带来的性能提升还是很可观的。然而，怎样才能达到期望的效果呢？takeWhile操作就是为此而生的！它可以帮助你利用谓词对流进行分片（即便你要处理的流是无限流也毫无困难）。更妙的是，它会在遭遇第一个不符合要求的元素时停止处理。下面这段代码演示了如何使用takeWhile：</p>
+<pre><code>List&lt;Dish&gt; slicedMenu1
+    = specialMenu.stream()
+                 .takeWhile(dish -&gt; dish.getCalories() &lt; 320)
+                 .collect(toList());       // 由季节性的水果、虾构成的列表</code></pre><h4 id="3-2-1-2-使用dropWhile"><a href="#3-2-1-2-使用dropWhile" class="headerlink" title="3.2.1.2 使用dropWhile"></a>3.2.1.2 使用dropWhile</h4><p>如果你想要的是其他的元素，又该怎么办呢？譬如，你想要找出那些热量大于320卡路里的元素。你可以借助dropWhile操作达到这一目标：</p>
+<pre><code>List&lt;Dish&gt; slicedMenu2
+    = specialMenu.stream()
+                 .dropWhile(dish -&gt; dish.getCalories() &lt; 320)
+                 .collect(toList());      // 由米饭、鸡肉以及炸薯条构成的列表</code></pre><p>dropWhile操作是对takeWhile操作的补充。它会从头开始，丢弃所有谓词结果为false的元素。一旦遭遇谓词计算的结果为true，它就停止处理，并返回所有剩余的元素，即便要处理的对象是一个由无限数量元素构成的流，它也能工作得很好。</p>
+<h3 id="3-2-2-截短流"><a href="#3-2-2-截短流" class="headerlink" title="3.2.2　截短流"></a>3.2.2　截短流</h3><p>流支持limit(n)方法，该方法会返回另一个不超过给定长度的流。所需的长度作为参数传递给limit。如果流是有序的，则最多会返回前n个元素。比如，你可以建立一个List，选出热量超过300卡路里的头三道菜：</p>
+<pre><code>List&lt;Dish&gt; dishes = specialMenu
+                        .stream()
+                        .filter(dish -&gt; dish.getCalories() &gt; 300)
+                        .limit(3)
+                        .collect(toList());       // 列出米饭、鸡肉、炸薯条</code></pre><p>下图展示了filter和limit的组合。你可以看到，该方法只选出了符合谓词的头三个元素，然后就返回了结果</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610768275763-b6ca487e-c776-40c8-914e-8734b026bd2f.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>请注意，limit也可以用在无序流上，比如源是一个Set。这种情况下，limit的结果不会以任何顺序排列。</p>
+<h3 id="3-2-3-跳过元素"><a href="#3-2-3-跳过元素" class="headerlink" title="3.2.3　跳过元素"></a>3.2.3　跳过元素</h3><p>流还支持skip(n)方法，返回一个扔掉了前n个元素的流。如果流中元素不足n个，则返回一个空流。请注意，limit(n)和skip(n)是互补的！例如，下面的代码将跳过热量超过300卡路里的头两道菜，并返回剩下的。图5-4展示了这个查询。</p>
+<pre><code>List&lt;Dish&gt; dishes = menu.stream()
+                        .filter(d -&gt; d.getCalories() &gt; 300)
+                        .skip(2)
+                        .collect(toList());</code></pre><p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610768442463-17716607-83dd-4eb5-955e-8db6fd50e87a.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<h2 id="3-3-映射"><a href="#3-3-映射" class="headerlink" title="3.3　映射"></a>3.3　映射</h2><p>一个非常常见的数据处理套路就是从某些对象中选择信息。比如在SQL里，你可以从表中选择一列。Stream API也通过map和flatMap方法提供了类似的工具。</p>
+<h3 id="3-3-1-对流中每一个元素应用函数"><a href="#3-3-1-对流中每一个元素应用函数" class="headerlink" title="3.3.1　对流中每一个元素应用函数"></a>3.3.1　对流中每一个元素应用函数</h3><p>流支持map方法，它会接受一个函数作为参数。这个函数会被应用到每个元素上，并将其映射成一个新的元素（使用映射一词，是因为它和转换类似，但其中的细微差别在于它是“创建一个新版本”而不是去“修改”）。例如，下面的代码把方法引用Dish::getName传给了map方法，来提取流中菜肴的名称：</p>
+<pre><code>List&lt;String&gt; dishNames = menu.stream()
+                             .map(Dish::getName)
+                             .collect(toList());</code></pre><p>因为getName方法返回一个String，所以map方法输出的流的类型就是Stream <String>。</p>
+<p>让我们看一个稍微不同的例子，来巩固一下对map的理解。给定一个单词列表，你想要返回另一个列表，显示每个单词中有几个字母。怎么做呢？你需要对列表中的每个元素应用一个函数。这听起来正好该用map方法去做！应用的函数应该接受一个单词，并返回其长度。你可以像下面这样，给map传递一个方法引用String::length来解决这个问题：</p>
+<pre><code>List&lt;String&gt; words = Arrays.asList(&quot;Modern&quot;, &quot;Java&quot;, &quot;In&quot;, &quot;Action&quot;);
+List&lt;Integer&gt; wordLengths = words.stream()
+                                 .map(String::length)
+                                 .collect(toList());</code></pre><p>现在回到提取菜名的例子。如果你要找出每道菜的名称有多长，该怎么做？可以像下面这样，再链接上一个map：</p>
+<pre><code>List&lt;Integer&gt; dishNameLengths = menu.stream()
+                                    .map(Dish::getName)
+                                    .map(String::length)
+                                    .collect(toList());</code></pre><h3 id="3-3-2-流的扁平化"><a href="#3-3-2-流的扁平化" class="headerlink" title="3.3.2　流的扁平化"></a>3.3.2　流的扁平化</h3><p>你已经看到如何使用map方法返回列表中每个单词的长度了。让我们拓展一下：对于一张单词表，如何返回一张列表，列出里面各不相同的字符呢？例如，给定单词列表[“Hello”,”World”]，你想要返回列表[“H”,”e”,”l”, “o”,”W”,”r”,”d”]。</p>
+<p>你可能会认为这很容易，你可以把每个单词映射成一张字符表，然后调用distinct来过滤重复的字符。第一个版本可能是这样的：</p>
+<p>words.stream()</p>
+<p>   .map(word -&gt; word.split(“”))</p>
+<p>   .distinct()</p>
+<p>   .collect(toList());</p>
+<p>这个方法的问题在于，传递给map方法的Lambda为每个单词返回了一个String[]（String列表）。因此，map返回的流实际上是Stream&lt;String[]&gt;类型的。你真正想要的是用Stream<String>来表示一个字符流。下图说明了这个问题。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610768706452-369ce12b-d5af-46e2-9f1d-aaff4256f5b6.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p><strong>使用flatMap</strong></p>
+<p>你可以像下面这样使用flatMap来解决这个问题：</p>
+<pre><code>List&lt;String&gt; uniqueCharacters =
+  words.stream()
+       .map(word -&gt; word.split(&quot;&quot;))       // 将每个单词转换为由其字母构成的数组
+       .flatMap(Arrays::stream)       // 将各个生成流扁平化为单个流
+       .distinct()
+       .collect(toList());</code></pre><p>使用flatMap方法的效果是，各个数组并不是分别映射成一个流，而是映射成流的内容。所有使用flatMap(Arrays::stream)时生成的单个流都被合并起来，即扁平化为一个流。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610769055278-6b12138c-e387-4a2c-a3f2-115f51118f68.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>一言以蔽之，flatMap方法让你把一个流中的每个值都换成另一个流，然后把所有的流连接起来成为一个流。</p>
+<p>后续会讨论更高级的Java 8模式，比如使用新的Optional类进行null检查时会再来看看flatMap。</p>
+<p>为巩固你对于map和flatMap的理解，试试测验吧。</p>
+<h3 id="3-3-3测验"><a href="#3-3-3测验" class="headerlink" title="3.3.3测验"></a>3.3.3测验</h3><p>(1) 给定一个数字列表，如何返回一个由每个数的平方构成的列表呢？例如，给定[1, 2, 3, 4, 5]，应该返回[1, 4, 9, 16, 25]。</p>
+<p>答案： 6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#iPCy9" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#iPCy9</a></p>
+<p>(2) 给定两个数字列表，如何返回所有的数对呢？例如，给定列表[1, 2, 3]和列表[3, 4]，应该返回[(1, 3), (1, 4), (2, 3), (2, 4), (3, 3), (3, 4)]。为简单起见，你可以用有两个元素的数组来代表数对。</p>
+<p>答案：6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#3wC4g" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#3wC4g</a></p>
+<p>(3) 如何扩展前一个例子，只返回总和能被3整除的数对呢？</p>
+<p>答案：6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#241bu" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#241bu</a></p>
+<h2 id="3-4-查找与匹配"><a href="#3-4-查找与匹配" class="headerlink" title="3.4 查找与匹配"></a>3.4 查找与匹配</h2><p>另一个常见的数据处理套路是看看数据集中的某些元素是否匹配一个给定的属性。Stream API通过allMatch、anyMatch、noneMatch、findFirst和findAny方法提供了这样的工具。</p>
+<h3 id="3-4-1-检查谓词是否至少匹配一个元素"><a href="#3-4-1-检查谓词是否至少匹配一个元素" class="headerlink" title="3.4.1　检查谓词是否至少匹配一个元素"></a>3.4.1　检查谓词是否至少匹配一个元素</h3><p>anyMatch方法可以回答“流中是否有一个元素能匹配给定的谓词”。比如，你可以用它来看看菜单里面是否有素食可选择：</p>
+<pre><code>if(menu.stream().anyMatch(Dish::isVegetarian)){
+    System.out.println(&quot;The menu is (somewhat) vegetarian friendly!!&quot;);
+}</code></pre><p>anyMatch方法返回一个boolean，因此是一个终端操作。</p>
+<h3 id="3-4-2-检查谓词是否匹配所有元素"><a href="#3-4-2-检查谓词是否匹配所有元素" class="headerlink" title="3.4.2　检查谓词是否匹配所有元素"></a>3.4.2　检查谓词是否匹配所有元素</h3><ul>
+<li>allMatch方法的工作原理和anyMatch类似，但它会看看流中的元素是否都能匹配给定的谓词。比如，你可以用它来看看菜品是否有利健康（即所有菜的热量都低于1000卡路里）：</li>
+</ul>
+<pre><code>boolean isHealthy = menu.stream()
+                        .allMatch(dish -&gt; dish.getCalories() &lt; 1000);</code></pre><ul>
+<li><strong>noneMatch</strong></li>
+</ul>
+<p>和allMatch相对的是noneMatch。它可以确保流中没有任何元素与给定的谓词匹配。比如，你可以用noneMatch重写前面的例子：</p>
+<pre><code>boolean isHealthy = menu.stream()
+                        .noneMatch(dish -&gt; dish.getCalories() &gt;= 1000);</code></pre><p>anyMatch、allMatch和noneMatch这三个操作都用到了所谓的短路，这就是大家熟悉的Java中&amp;&amp;和||运算符短路在流中的版本。</p>
+<ul>
+<li><strong>短路求值</strong></li>
+</ul>
+<p>有些操作不需要处理整个流就能得到结果。例如，假设你需要对一个用and连起来的大布尔表达式求值。不管表达式有多长，你只需找到一个表达式为false，就可以推断整个表达式将返回false，所以用不着计算整个表达式。这就是短路。</p>
+<p>对于流而言，某些操作（例如allMatch、anyMatch、noneMatch、findFirst和findAny）不用处理整个流就能得到结果。只要找到一个元素，就可以有结果了。同样，limit也是一个短路操作：它只需要创建一个给定大小的流，而用不着处理流中所有的元素。在碰到无限大小的流的时候，这种操作就有用了：它们可以把无限流变成有限流。</p>
+<h3 id="3-4-3-查找元素"><a href="#3-4-3-查找元素" class="headerlink" title="3.4.3　查找元素"></a>3.4.3　查找元素</h3><p>findAny方法将返回当前流中的任意元素。它可以与其他流操作结合使用。比如，你可能想找到一道素食菜肴。可以结合使用filter和findAny方法来实现这个查询：</p>
+<pre><code>Optional&lt;Dish&gt; dish =
+    menu.stream()
+        .filter(Dish::isVegetarian)
+        .findAny();</code></pre><p>流水线将在后台进行优化使其只需走一遍，并在利用短路找到结果时立即结束。</p>
+<h3 id="3-4-4-查找第一个元素"><a href="#3-4-4-查找第一个元素" class="headerlink" title="3.4.4　查找第一个元素"></a>3.4.4　查找第一个元素</h3><p>有些流由一个出现顺序（encounter order）来指定流中项目出现的逻辑顺序（比如由List或排序好的数据列生成的流）。对于这种流，你可能想要找到第一个元素。为此有一个findFirst方法，它的工作方式类似于findAny。例如，给定一个数字列表，下面的代码能找出第一个平方能被3整除的数：</p>
+<pre><code>List&lt;Integer&gt; someNumbers = Arrays.asList(1, 2, 3, 4, 5);
+Optional&lt;Integer&gt; firstSquareDivisibleByThree =
+    someNumbers.stream()
+               .map(n -&gt; n * n)
+               .filter(n -&gt; n % 3 == 0)
+               .findFirst(); // 9</code></pre><p>何时使用findFirst和findAny</p>
+<p>你可能会想，为什么会同时有findFirst和findAny呢？答案是并行。找到第一个元素在并行上限制更多。如果你不关心返回的元素是哪个，请使用findAny，因为它在使用并行流时限制较少。</p>
+<h2 id="3-5-归约"><a href="#3-5-归约" class="headerlink" title="3.5　归约"></a>3.5　归约</h2><p>到目前为止，你见到过的终端操作都是返回一个boolean（allMatch之类的）、void（forEach）或Optional对象（findAny等）。你也见过了使用collect来将流中的所有元素组合成一个List。</p>
+<p>在本节中，你将看到如何把一个流中的元素组合起来，使用reduce操作来表达更复杂的查询，比如“计算菜单中的总卡路里”或“菜单中卡路里最高的菜是哪一个”。此类查询需要将流中所有元素反复结合起来，得到一个值，比如一个Integer。这样的查询可以被归类为归约操作（将流归约成一个值）。用函数式编程语言的术语来说，这称为折叠（fold），因为你可以将这个操作看成把一张长长的纸（你的流）反复折叠成一个小方块，而这就是折叠操作的结果。</p>
+<h3 id="3-5-1-元素求和"><a href="#3-5-1-元素求和" class="headerlink" title="3.5.1　元素求和"></a>3.5.1　元素求和</h3><p>在研究如何使用reduce方法之前，先来看看如何使用for-each循环来对数字列表中的元素求和：</p>
+<pre><code>int sum = 0;
+for (int x : numbers) {
+    sum += x;
+}</code></pre><p>numbers中的每个元素都用加法运算符反复迭代来得到结果。通过反复使用加法，你把一个数字列表归约成了一个数字。这段代码中有两个参数：</p>
+<p>总和变量的初始值，在这里是0；</p>
+<p>将列表中所有元素结合在一起的操作，在这里是+。</p>
+<p>要是还能把所有的数字相乘，而不必去复制粘贴这段代码，岂不是很好？这正是reduce操作的用武之地，它对这种重复应用的模式做了抽象。你可以像下面这样对流中所有的元素求和：</p>
+<pre><code>int sum = numbers.stream().reduce(0, (a, b) -&gt; a + b);</code></pre><p>reduce接受两个参数：</p>
+<ul>
+<li>一个初始值，这里是0；</li>
+<li>一个BinaryOperator<T>来将两个元素结合起来产生一个新值，这里用的是lambda (a, b) -&gt; a + b。</li>
+</ul>
+<p>你也很容易把所有的元素相乘，只需将另一个Lambda (a, b) -&gt; a * b传递给reduce操作就可以了：</p>
+<pre><code>int product = numbers.stream().reduce(1, (a, b) -&gt; a * b);</code></pre><p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610774542022-6854479e-c169-4aa9-beb9-d16a8bd2d74c.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>上图展示了reduce操作是如何作用于一个流的：Lambda反复结合每个元素，直到包含整数4、5、3、9的流被归约成一个值。</p>
+<p>解析: reduce操作是如何对一个数字流求和的。0作为Lambda的第一个参数（a），从流中获得4作为第二个参数（b）。0 + 4得到4，它成了新的累积值。然后再用累积值和流中下一个元素5调用Lambda，产生新的累积值9。接下来，再用累积值和下一个元素3调用Lambda，得到12。最后，用12和流中最后一个元素9调用Lambda，得到最终结果21。</p>
+<p>你可以使用方法引用让这段代码更简洁。在Java 8中，Integer类现在有了一个静态的sum方法来对两个数求和，这恰好是我们想要的，用不着反复用Lambda写同一段代码了：</p>
+<pre><code>int sum = numbers.stream().reduce(0, Integer::sum);</code></pre><p>无初始值</p>
+<p>reduce还有一个重载的变体，它不接受初始值，但是会返回一个Optional对象：</p>
+<pre><code>Optional&lt;Integer&gt; sum = numbers.stream().reduce((a, b) -&gt; (a + b));</code></pre><p>为什么它返回一个Optional<Integer>呢？考虑流中没有任何元素的情况。reduce操作无法返回其和，因为它没有初始值。这就是为什么结果被包裹在一个Optional对象里，以表明和可能不存在。</p>
+<h3 id="3-5-2-最大值和最小值"><a href="#3-5-2-最大值和最小值" class="headerlink" title="3.5.2　最大值和最小值"></a>3.5.2　最大值和最小值</h3><p>让我们来看看如何利用刚刚学到的reduce来计算流中最大或最小的元素。正如你在前面看到的，reduce接受两个参数：</p>
+<ul>
+<li>一个初始值；</li>
+<li>一个Lambda来把两个流元素结合起来并产生一个新值。</li>
+</ul>
+<p>Lambda是一步步用加法运算符应用到流中每个元素上的，因此你需要一个给定两个元素能够返回最大值的Lambda。reduce操作会考虑新值和流中下一个元素，并产生一个新的最大值，直到整个流消耗完！你可以像下面这样使用reduce来计算流中的最大值，如图所示:</p>
+<pre><code>Optional&lt;Integer&gt; max = numbers.stream().reduce(Integer::max);</code></pre><p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610775229374-616aeee7-f895-40c5-bc9d-47c54b9d423b.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png">￼</p>
+<p>要计算最小值，你需要把Integer.min传给reduce来替换Integer.max：</p>
+<pre><code>Optional&lt;Integer&gt; min = numbers.stream().reduce(Integer::min);</code></pre><p>你当然也可以写成Lambda (x, y) -&gt; x &lt; y ? x : y而不是Integer::min，不过后者比较易读。</p>
+<p>为了检验你对于reduce操作的理解程度，试试测验吧！</p>
+<p><strong><em>怎样用map和reduce方法数一数流中有多少个菜呢？\</em></strong></p>
+<p>答案：6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#Q3LLd" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#Q3LLd</a></p>
+<h3 id="3-5-3-归约方法的优势与并行化"><a href="#3-5-3-归约方法的优势与并行化" class="headerlink" title="3.5.3 归约方法的优势与并行化"></a><strong>3.5.3 归约方法的优势与并行化</strong></h3><p>相比于前面写的逐步迭代求和，使用reduce的好处在于，这里的迭代被内部迭代抽象掉了，这让内部实现得以选择并行执行reduce操作。而迭代式求和例子要更新共享变量sum，这不是那么容易<strong>并行化</strong>的。如果你加入了同步，很可能会发现线程竞争抵消了并行本应带来的性能提升！这种计算的并行化需要另一种办法：将输入分块，分块求和，最后再合并起来。但这样的话代码看起来就完全不一样了。但现在重要的是要认识到，可变的累加器模式对于并行化来说是死路一条。你需要一种新的模式，这正是reduce所提供的。使用流来对所有的元素并行求和时，你的代码几乎不用修改：stream()换成了parallelStream()。</p>
+<pre><code>int sum = numbers.parallelStream().reduce(0, Integer::sum);</code></pre><p>但要并行执行这段代码也要付出一定代价，我们稍后会向你解释：传递给reduce的Lambda不能更改状态（如实例变量），而且操作必须满足结合律才可以按任意顺序执行。</p>
+<h3 id="3-5-4-流操作：无状态和有状态"><a href="#3-5-4-流操作：无状态和有状态" class="headerlink" title="3.5.4 流操作：无状态和有状态"></a><strong>3.5.4 流操作：无状态和有状态</strong></h3><p>你已经看到了很多的流操作。乍一看流操作简直是灵丹妙药，而且只要在从集合生成流的时候把Stream换成parallelStream就可以实现并行。</p>
+<p>当然，对于许多应用来说确实是这样，就像前面的那些例子。你可以把一张菜单变成流，用filter选出某一类的菜肴，然后对得到的流做map来对卡路里求和，最后reduce得到菜单的总热量。这个流计算甚至可以并行进行。但这些操作的特性并不相同。它们需要操作的内部状态还是有些问题的。</p>
+<p>诸如map或filter等操作会从输入流中获取每一个元素，并在输出流中得到0或1个结果。这些操作一般都是无状态的：它们没有内部状态（假设用户提供的Lambda或方法引用没有内部可变状态）。</p>
+<p>但诸如reduce、sum、max等操作需要内部状态来累积结果。在上面的情况下，内部状态很小。在我们的例子里就是一个int或double。不管流中有多少元素要处理，内部状态都是有界的。</p>
+<p>相反，诸如sort或distinct等操作一开始都与filter和map差不多——都是接受一个流，再生成一个流（中间操作），但有一个关键的区别。从流中排序和删除重复项时都需要知道先前的历史。例如，排序要求所有元素都放入缓冲区后才能给输出流加入一个项目，这一操作的存储要求是无界的。要是流比较大或是无限的，就可能会有问题（把质数流倒序会做什么呢？它应当返回最大的质数，但数学告诉我们它不存在）。我们把这些操作叫作有状态操作。</p>
+<p>你现在已经看到了很多流操作，可以用来表达复杂的数据处理查询。下表总结了迄今讲过的操作。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610775899087-b8a86934-c9af-464b-8e6c-e669abe6c429.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<h3 id="3-6-实践"><a href="#3-6-实践" class="headerlink" title="3.6 实践"></a>3.6 实践</h3><p>在本节中，你会将迄今学到的关于流的知识付诸实践。我们来看一个不同的领域：执行交易的交易员。你的经理让你为八个查询找到答案。你能做到吗？先尝试一下作为练习。</p>
+<p>(1) 找出2011年发生的所有交易，并按交易额排序（从低到高）。</p>
+<p>(2) 交易员都在哪些不同的城市工作过？</p>
+<p>(3) 查找所有来自于剑桥的交易员，并按姓名排序。</p>
+<p>(4) 返回所有交易员的姓名字符串，按字母顺序排序。</p>
+<p>(5) 有没有交易员是在米兰工作的？</p>
+<p>(6) 打印生活在剑桥的交易员的所有交易额。</p>
+<p>(7) 所有交易中，最高的交易额是多少？</p>
+<p>(8) 找到交易额最小的交易。</p>
+<h3 id="3-6-1-领域：交易员和交易"><a href="#3-6-1-领域：交易员和交易" class="headerlink" title="3.6.1　领域：交易员和交易"></a>3.6.1　领域：交易员和交易</h3><p>以下是你要处理的领域，一个Traders和Transactions的列表：</p>
+<pre><code>Trader raoul = new Trader(&quot;Raoul&quot;, &quot;Cambridge&quot;);
+Trader mario = new Trader(&quot;Mario&quot;,&quot;Milan&quot;);
+Trader alan = new Trader(&quot;Alan&quot;,&quot;Cambridge&quot;);
+Trader brian = new Trader(&quot;Brian&quot;,&quot;Cambridge&quot;);
+List&lt;Transaction&gt; transactions = Arrays.asList(
+    new Transaction(brian, 2011, 300),
+    new Transaction(raoul, 2012, 1000),
+    new Transaction(raoul, 2011, 400),
+    new Transaction(mario, 2012, 710),
+    new Transaction(mario, 2012, 700),
+    new Transaction(alan, 2012, 950)
+);</code></pre><p>Trader和Transaction类的定义如下：</p>
+<pre><code>public class Trader{
+    private final String name;
+    private final String city;
+    public Trader(String n, String c){
+        this.name = n;
+        this.city = c;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public String getCity(){
+        return this.city;
+    }
+    public String toString(){
+        return &quot;Trader:&quot;+this.name + &quot; in &quot; + this.city;
+    }
+}
+public class Transaction{
+    private final Trader trader;
+    private final int year;
+    private final int value;
+    public Transaction(Trader trader, int year, int value){
+        this.trader = trader;
+        this.year = year;
+        this.value = value;
+    }
+    public Trader getTrader(){
+        return this.trader;
+    }
+    public int getYear(){
+        return this.year;
+    }
+    public int getValue(){
+        return this.value;
+    }
+    public String toString(){
+        return &quot;{&quot; + this.trader + &quot;, &quot; +
+               &quot;year: &quot;+this.year+&quot;, &quot; +
+               &quot;value:&quot; + this.value +&quot;}&quot;;
+    }
+}</code></pre><h3 id="3-6-2-解答"><a href="#3-6-2-解答" class="headerlink" title="3.6.2　解答"></a>3.6.2　解答</h3><p>解答在下面的代码清单中。你可以看看你对迄今所学知识的理解程度如何。</p>
+<p>代码清单 1　找出2011年发生的所有交易，并按交易额排序（从低到高）</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#oXNNW" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#oXNNW</a></p>
+<p>代码清单 2　交易员都在哪些不同的城市工作过</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#kczNj" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#kczNj</a></p>
+<p>代码清单 3　查找所有来自于剑桥的交易员，并按姓名排序</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#jxuT1" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#jxuT1</a></p>
+<p>代码清单 4　返回所有交易员的姓名字符串，按字母顺序排序</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#9UzST" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#9UzST</a></p>
+<p>代码清单 5　有没有交易员是在米兰工作的</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#TYiF7" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#TYiF7</a></p>
+<p>代码清单 6　打印生活在剑桥的交易员的所有交易额</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#T3hwJ" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#T3hwJ</a></p>
+<p>代码清单 7　所有交易中，最高的交易额是多少</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#1o3CU" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#1o3CU</a></p>
+<p>代码清单 8　找到交易额最小的交易</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#hLaCi" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#hLaCi</a></p>
+<h2 id="3-7-数值流"><a href="#3-7-数值流" class="headerlink" title="3.7　数值流"></a>3.7　数值流</h2><p>我们在前面看到了可以使用reduce方法计算流中元素的总和。例如，你可以像下面这样计算菜单的热量：</p>
+<pre><code>int calories = menu.stream()
+                   .map(Dish::getCalories)
+                   .reduce(0, Integer::sum);</code></pre><p>这段代码的问题是，它有一个暗含的装箱成本。每个Integer都必须拆箱成一个原始类型，再进行求和。要是可以直接像下面这样调用sum方法，岂不是更好？</p>
+<pre><code>int calories = menu.stream()
+                   .map(Dish::getCalories)
+                   .sum();</code></pre><p>但这是不可能的。问题在于map方法会生成一个Stream<T>。虽然流中的元素是Integer类型，但Stream接口没有定义sum方法。为什么没有呢？比方说，你只有一个像menu那样的Stream<Dish>，把各种菜加起来是没有任何意义的。但不要担心，Stream API还提供了原始类型流特化，专门支持处理数值流的方法。</p>
+<h3 id="3-7-1-原始类型流特化"><a href="#3-7-1-原始类型流特化" class="headerlink" title="3.7.1　原始类型流特化"></a>3.7.1　原始类型流特化</h3><p>Java 8引入了三个原始类型特化流接口来解决这个问题：<strong>IntStream</strong>、<strong>DoubleStream</strong>和<strong>LongStream</strong>，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。每个接口都带来了进行常用数值归约的新方法，比如对数值流求和的sum，找到最大元素的max。此外还有在必要时再把它们转换回对象流的方法。要记住的是，这些特化的原因并不在于流的复杂性，而是装箱造成的复杂性——即类似int和Integer之间的效率差异。</p>
+<ul>
+<li>映射到数值流</li>
+</ul>
+<p>将流转换为特化版本的常用方法是mapToInt、mapToDouble和mapToLong。这些方法和前面说的map方法的工作方式一样，只是它们返回的是一个特化流，而不是Stream<T>。例如，你可以像下面这样用mapToInt对menu中的卡路里求和：</p>
+<pre><code>int calories = menu.stream()       // 返回一个Stream&lt;Dish&gt;
+                   .mapToInt(Dish::getCalories)       // 返回一个IntStream
+                   .sum();</code></pre><p>这里，mapToInt会从每道菜中提取热量（用一个Integer表示），并返回一个IntStream（而不是Stream<Integer>）。然后你就可以调用IntStream接口中定义的sum方法，对卡路里求和了！请注意，如果流是空的，sum则默认返回0。IntStream还支持其他的方便方法，如max、min、average等。</p>
+<ul>
+<li><strong>转换回对象流</strong></li>
+</ul>
+<p>同样，一旦有了数值流，你可能会想把它转换回非特化流。例如，IntStream上的操作只能产生原始整数：IntStream的map操作接受的Lambda必须接受int并返回int（一个IntUnaryOperator）。但是你可能想要生成另一类值，比如Dish。为此，你需要访问Stream接口中定义的那些更广义的操作。要把原始流转换成一般流（每个int都会装箱成一个Integer），可以使用boxed方法，如下所示：</p>
+<pre><code>IntStream intStream = menu.stream().mapToInt(Dish::getCalories);       // 将Stream转换为数值流
+Stream&lt;Integer&gt; stream = intStream.boxed();       // 将数值流转换为Stream</code></pre><p>你在下一节中会看到，在需要将数值范围装箱成为一般流时，boxed尤其有用。</p>
+<ul>
+<li><strong>默认值OptionalInt</strong></li>
+</ul>
+<p>求和的那个例子很容易，因为它有一个默认值：0。但是，如果你要计算IntStream中的最大元素，就得换个法子了，因为0是错误的结果。如何区分没有元素的流和最大值真的是0的流呢？前面我们介绍了Optional类，这是一个可以表示值存在或不存在的容器。Optional可以用Integer、String等参考类型来参数化。对于三种原始流特化，也分别有一个Optional原始类型特化版本：OptionalInt、OptionalDouble和OptionalLong。</p>
+<p>例如，要找到IntStream中的最大元素，可以调用max方法，它会返回一个OptionalInt：</p>
+<pre><code>OptionalInt maxCalories = menu.stream()
+                              .mapToInt(Dish::getCalories)
+                              .max();
+int max = maxCalories.orElse(1);      // 如果没有最大值的话，显式提供一个默认最大值</code></pre><h3 id="3-7-2-数值范围"><a href="#3-7-2-数值范围" class="headerlink" title="3.7.2　数值范围"></a>3.7.2　数值范围</h3><p>和数字打交道时，有一个常用的东西就是数值范围。比如，假设你想要生成1和100之间的所有数字。Java 8引入了两个可以用于IntStream和LongStream的静态方法，帮助生成这种范围：range和rangeClosed。这两个方法都是第一个参数接受起始值，第二个参数接受结束值。但range是不包含结束值的，rangeClosed则包含结束值。来看一个例子：</p>
+<pre><code>IntStream evenNumbers = IntStream.rangeClosed(1, 100)       // 表示范围[1, 100]
+                                     .filter(n -&gt; n % 2 == 0);       // 一个从1到100的偶数流
+    System.out.println(evenNumbers.count());       // 从1到100有50个偶数</code></pre><p>这里用了rangeClosed方法来生成1到100之间的所有数字。它会产生一个流，然后你可以链接filter方法，只选出偶数。到目前为止还没有进行任何计算。最后，你对生成的流调用count。因为count是一个终端操作，所以它会处理流，并返回结果50，这正是1到100（包括两端）中所有偶数的个数。请注意，比较一下，如果改用IntStream.range(1, 100)，则结果将会是49个偶数，因为range是不包含结束值的。</p>
+<h2 id="3-8-构建流"><a href="#3-8-构建流" class="headerlink" title="3.8　构建流"></a>3.8　构建流</h2><p>希望到现在，我们已经让你相信，流对于表达数据处理查询是非常强大而有用的。到目前为止，你已经能够使用stream方法从集合生成流了。此外，我们还介绍了如何根据数值范围创建数值流。但创建流的方法还有许多！本节将介绍如何从值序列、数组、文件来创建流，甚至由生成函数来创建无限流！</p>
+<p>5.8.1　由值创建流</p>
+<p>你可以使用静态方法Stream.of，通过显式值创建一个流。它可以接受任意数量的参数。例如，以下代码直接使用Stream.of创建了一个字符串流。然后，你可以将字符串转换为大写，再一个个打印出来：</p>
+<pre><code>Stream&lt;String&gt; stream = Stream.of(&quot;Modern &quot;, &quot;Java &quot;, &quot;In &quot;, &quot;Action&quot;);
+stream.map(String::toUpperCase).forEach(System.out::println);</code></pre><p>你可以使用empty得到一个空流，如下所示：</p>
+<pre><code>Stream&lt;String&gt; emptyStream = Stream.empty();</code></pre><h3 id="3-8-2-由可空对象创建流"><a href="#3-8-2-由可空对象创建流" class="headerlink" title="3.8.2　由可空对象创建流"></a>3.8.2　由可空对象创建流</h3><p>Java 9提供了一个新方法可以由一个可空对象创建流。使用流的过程中，你可能也碰到过这种情况，即你处理的对象有可能为空，而你又需要把它们转换成流（或者由null构成的空的流）进行处理。譬如，如果对象不存在指定键对应的属性，方法System.getProperty就会返回一个null。为了使用流处理它，你需要显式地检查对象值是否为空，如下所示：</p>
+<pre><code>String homeValue = System.getProperty(&quot;home&quot;);
+Stream&lt;String&gt; homeValueStream
+    = homeValue == null ? Stream.empty() : Stream.of(value);
+// 借助于Stream.ofNullable，这段代码可以改写得更加简洁：
+Stream&lt;String&gt; homeValueStream
+    = Stream.ofNullable(System.getProperty(&quot;home&quot;));
+//这种模式搭配flatMap处理由可空对象构成的流时尤其方便：
+Stream&lt;String&gt; values =
+    Stream.of(&quot;config&quot;, &quot;home&quot;, &quot;user&quot;)
+          .flatMap(key -&gt; Stream.ofNullable(System.getProperty(key)));</code></pre><h3 id="3-8-3-由数组创建流"><a href="#3-8-3-由数组创建流" class="headerlink" title="3.8.3　由数组创建流"></a>3.8.3　由数组创建流</h3><p>你可以使用静态方法Arrays.stream从数组创建一个流。它接受一个数组作为参数。例如，你可以将一个原始类型int的数组转换成一个IntStream，然后对IntStream求和以生成int，如下所示：</p>
+<pre><code>int[] numbers = {2, 3, 5, 7, 11, 13};
+int sum = Arrays.stream(numbers).sum();       //总和是41</code></pre><h3 id="3-8-4-由文件生成流"><a href="#3-8-4-由文件生成流" class="headerlink" title="3.8.4　由文件生成流"></a>3.8.4　由文件生成流</h3><p>Java中用于处理文件等I/O操作的NIO API（非阻塞 I/O）已更新，以便利用Stream API。java.nio.file.Files中的很多静态方法都会返回一个流。例如，一个很有用的方法是Files.lines，它会返回一个由指定文件中的各行构成的字符串流。使用你迄今所学的内容，你可以用这个方法看看一个文件中有多少各不相同的词：</p>
+<pre><code>long uniqueWords = 0;
+try(Stream&lt;String&gt; lines =
+          Files.lines(Paths.get(&quot;data.txt&quot;), Charset.defaultCharset())){       // 流会自动关闭，因此不需要执行额外的try-finally操作
+uniqueWords = lines.flatMap(line -&gt; Arrays.stream(line.split(&quot; &quot;)))      // 生成单词流
+                   .distinct()       // 删除重复项
+                   .count();       // 数一数有多少不重复的单词
+}
+catch(IOException e){       // 如果打开文件时出现异常则加以处理
+}</code></pre><p>你可以使用Files.lines得到一个流，其中的每个元素都是给定文件中的一行。因为流的源头是一个I/O资源，所以这个调用环绕在一个try/catch块中。事实上，调用Files.lines会打开一个I/O资源，这些I/O资源使用完毕后必须被关闭，否则会发生资源泄漏。在过去，你需要显式地声明一个finally块来完成这些回收工作。Stream接口通过实现AutoCloseable接口，很方便地替大家解决了这一问题。这意味着资源的管理都由try代码块全权负责了。一旦你接收到line构成的流，就可以调用line的split方法，将行拆分成单词。请特别留意，flatMap是如何生成一个扁平单词流的，而不是生成多个流，每一行一个单词流。最后，我们通过串接distinct和count方法，统计了流中有多少不重复的单词。</p>
+<h3 id="3-8-5-由函数生成流：创建无限流"><a href="#3-8-5-由函数生成流：创建无限流" class="headerlink" title="3.8.5　由函数生成流：创建无限流"></a>3.8.5　由函数生成流：创建无限流</h3><p>Stream API提供了两个静态方法来从函数生成流：Stream.iterate和Stream.generate。这两个操作可以创建所谓的无限流：不像从固定集合创建的流那样有固定大小的流。由iterate和generate产生的流会用给定的函数按需创建值，因此可以无穷无尽地计算下去！一般来说，应该使用limit(n)来对这种流加以限制，以避免打印无穷多个值。</p>
+<p>迭代</p>
+<p>我们先来看一个iterate的简单例子，然后再解释：</p>
+<pre><code>Stream.iterate(0, n -&gt; n + 2)
+      .limit(10)
+      .forEach(System.out::println);</code></pre><p>iterate方法接受一个初始值（在这里是0），还有一个依次应用在每个产生的新值上的Lambda（UnaryOperator<t>类型）。这里，使用Lambda n -&gt; n + 2，返回的是前一个元素加上2。因此，iterate方法生成了一个所有正偶数的流：流的第一个元素是初始值0。然后加上2来生成新的值2，再加上2来得到新的值4，以此类推。这种iterate操作基本上是顺序的，因为结果取决于前一次应用。请注意，此操作将生成一个无限流——这个流没有结尾，因为值是按需计算的，可以永远计算下去。我们说这个流是无界的。正如前面所讨论的，这是流和集合之间的一个关键区别。我们使用limit方法来显式限制流的大小。这里只选择了前10个偶数。然后可以调用forEach终端操作来消费流，并分别打印每个元素。</p>
+<p>一般来说，在需要依次生成一系列值的时候应该使用iterate。</p>
+<p>测验5.4：斐波那契元组序列</p>
+<p>斐波那契数列是著名的经典编程练习。下面这个数列就是斐波那契数列的一部分：0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55…数列中开始的两个数字是0和1，后续的每个数字都是前两个数字之和。</p>
+<p>斐波那契元组序列与此类似，是数列中数字和其后续数字组成的元组构成的序列：(0, 1), (1, 1), (1, 2), (2, 3), (3, 5), (5, 8), (8, 13), (13, 21) …</p>
+<p>你的任务是用iterate方法生成斐波那契元组序列中的前20个元素。</p>
+<p>让我们帮你入手吧。第一个问题是，iterate方法要接受一个UnaryOperator<t>作为参数，而你需要一个像(0,1)这样的元组流。你还是可以（这次又是比较草率地）使用一个数组的两个元素来代表元组。例如，new int[]{0,1}就代表了斐波那契序列(0, 1)中的第一个元素。这就是iterate方法的初始值：</p>
+<pre><code>Stream.iterate(new int[]{0, 1}, ???)
+      .limit(20)
+      .forEach(t -&gt; System.out.println(&quot;(&quot; + t[0] + &quot;,&quot; + t[1] +&quot;)&quot;));</code></pre><p>在这个测验中，你需要搞清楚???代表的代码是什么。请记住，iterate会按顺序应用给定的Lambda。</p>
+<p>答案：6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#qAZCo" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#qAZCo</a></p>
+<h2 id="3-9-小结"><a href="#3-9-小结" class="headerlink" title="3.9 小结"></a>3.9 小结</h2><p>Stream API可以表达复杂的数据处理查询。常用的流操作总结在上述3.5.4表中。</p>
+<ul>
+<li>你可以使用filter、distinct、takeWhile (Java 9)、dropWhile (Java 9)、skip和limit对流做筛选和切片。</li>
+<li>如果你明确地知道数据源是排序的，那么用takeWhile和dropWhile方法通常比filter高效得多。</li>
+<li>你可以使用map和flatMap提取或转换流中的元素。</li>
+<li>你可以使用findFirst和findAny方法查找流中的元素。你可以用allMatch、noneMatch和anyMatch方法让流匹配给定的谓词。</li>
+<li>这些方法都利用了短路：找到结果就立即停止计算；没有必要处理整个流。</li>
+<li>你可以利用reduce方法将流中所有的元素迭代合并成一个结果，例如求和或查找最大元素。</li>
+<li>filter和map等操作是无状态的，它们并不存储任何状态。reduce等操作要存储状态才能计算出一个值。sorted和distinct等操作也要存储状态，因为它们需要把流中的所有元素缓存起来才能返回一个新的流。这种操作称为有状态操作。</li>
+<li>流有三种基本的原始类型特化：IntStream、DoubleStream和LongStream。它们的操作也有相应的特化。</li>
+<li>流不仅可以从集合创建，也可从值、数组、文件以及iterate与generate等特定方法创建。</li>
+<li>无限流所包含的元素数量是无限的（想象一下所有可能的字符串构成的流）。这种情况是有可能的，因为流中的元素大多数都是即时产生的。使用limit方法，你可以由一个无限流创建一个有限流。</li>
+</ul>
+<h1 id="4-用流收集数据"><a href="#4-用流收集数据" class="headerlink" title="4 用流收集数据"></a>4 用流收集数据</h1><p>本节内容</p>
+<ul>
+<li>用Collectors类创建和使用收集器</li>
+<li>将数据流归约为一个值</li>
+<li>汇总：归约的特殊情况</li>
+<li>数据分组和分区</li>
+<li>开发你的自定义收集器</li>
+</ul>
+<p>我们在前一节中学到，流可以用类似于数据库的操作帮助你处理集合。你可以把Java 8的流看作花哨又懒惰的数据集迭代器。它们支持两种类型的操作：中间操作（如filter或map）和终端操作（如count、findFirst、forEach和reduce）。中间操作可以链接起来，将一个流转换为另一个流。这些操作不会消耗流，其目的是建立一个流水线。与此相反，终端操作会消耗流，以产生一个最终结果，例如返回流中的最大元素。它们通常可以通过优化流水线来缩短计算时间。</p>
+<p>让我们来使用3.6.1 的模型来演示一些常见的例子：</p>
+<ul>
+<li>对一个交易列表按货币分组，获得该货币的所有交易额总和（返回一个Map&lt;Currency, Integer&gt;）。</li>
+<li>将交易列表分成两组：贵的和不贵的（返回一个Map&lt;Boolean, List<Transaction>&gt;）。</li>
+<li>创建多级分组，比如按城市对交易分组，然后进一步按照贵或不贵分组（返回一个Map&lt;String, Map&lt;Boolean, List<Transaction>&gt;&gt;）。</li>
+</ul>
+<p>指令式风格对交易按照货币分组，我们得到了如下方式：</p>
+<pre><code>Map&lt;Currency, List&lt;Transaction&gt;&gt; transactionsByCurrencies =
+                                                  new HashMap&lt;&gt;();      // 建立累积交易分组的Map
+for (Transaction transaction : transactions) {       // 迭代Transaction的List
+    Currency currency = transaction.getCurrency();       // 提取Transaction的货币
+    List&lt;Transaction&gt; transactionsForCurrency =
+                                    transactionsByCurrencies.get(currency);
+    if (transactionsForCurrency == null) {       // 如果分组Map中没有这种货币的条目，就创建一个
+        transactionsForCurrency = new ArrayList&lt;&gt;();
+        transactionsByCurrencies
+                            .put(currency, transactionsForCurrency);
+    }
+    transactionsForCurrency.add(transaction);       // 将当前遍历的Transaction加入同一货币的Transaction的List
+}</code></pre><p>Stream中collect方法的一个更通用的Collector参数，就可以用一句话实现完全相同的结果：</p>
+<pre><code>Map&lt;Currency, List&lt;Transaction&gt;&gt; transactionsByCurrencies =
+        transactions.stream().collect(groupingBy(Transaction::getCurrency));</code></pre><p>这一比差得还真多，对吧？</p>
+<h2 id="4-1-收集器"><a href="#4-1-收集器" class="headerlink" title="4.1　收集器"></a>4.1　收集器</h2><h3 id="4-1-1-收集器用作高级归约"><a href="#4-1-1-收集器用作高级归约" class="headerlink" title="4.1.1　收集器用作高级归约"></a>4.1.1　收集器用作高级归约</h3><p>收集器非常有用，因为用它可以简洁而灵活地定义collect用来生成结果集合的标准。更具体地说，对流调用collect方法将对流中的元素触发一个归约操作（由Collector来参数化）。图6-1所示的归约操作所做的工作和代码清单6-1中的指令式代码一样。它遍历流中的每个元素，并让Collector进行处理。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610783571703-1fe6ece9-e436-4622-b91b-44abf9bb6748.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>一般来说，Collector会对元素应用一个转换函数（很多时候是不体现任何效果的恒等转换，例如toList），并将结果累积在一个数据结构中，从而产生这一过程的最终输出。例如，在前面所示的交易分组的例子中，转换函数提取了每笔交易的货币，随后使用货币作为键，将交易本身累积在生成的Map中。</p>
+<p>如货币的例子中所示，Collector接口中方法的实现决定了如何对流执行归约操作。但Collectors实用类提供了很多静态工厂方法，可以方便地创建常见收集器的实例，只要拿来用就可以了。最直接和最常用的收集器是toList静态方法，它会把流中所有的元素收集到一个List中：</p>
+<pre><code>List&lt;Transaction&gt; transactions =
+    transactionStream.collect(Collectors.toList());</code></pre><h3 id="4-1-2-预定义收集器"><a href="#4-1-2-预定义收集器" class="headerlink" title="4.1.2　预定义收集器"></a>4.1.2　预定义收集器</h3><p>剩下的部分主要探讨预定义收集器的功能，也就是那些可以从Collectors类提供的工厂方法（例如groupingBy）创建的收集器。它们主要提供了三大功能：</p>
+<ul>
+<li>将流元素归约和汇总为一个值；</li>
+<li>元素分组；</li>
+<li>元素分区。</li>
+</ul>
+<p>先来看看可以进行归约和汇总的收集器。它们在很多场合下都很方便，比如前面例子中提到的求一系列交易的总交易额。</p>
+<p>然后你将看到如何对流中的元素进行分组，同时把前一个例子推广到多层次分组，或把不同的收集器结合起来，对每个子组进行进一步归约操作。我们还将谈到分组的特殊情况——分区，即使用谓词（返回一个布尔值的单参数函数）作为分组函数。</p>
+<h2 id="4-2-归约和汇总"><a href="#4-2-归约和汇总" class="headerlink" title="4.2　归约和汇总"></a>4.2　归约和汇总</h2><h3 id="4-2-1-查找流中的最大值和最小值"><a href="#4-2-1-查找流中的最大值和最小值" class="headerlink" title="4.2.1　查找流中的最大值和最小值"></a>4.2.1　查找流中的最大值和最小值</h3><p>假设你想要找出菜单中热量最高的菜。你可以使用两个收集器，Collectors.maxBy和Collectors.minBy，来计算流中的最大值或最小值。这两个收集器接受一个Comparator参数来比较流中的元素。你可以创建一个Comparator来根据所含热量对菜肴进行比较，并把它传递给Collectors.maxBy：</p>
+<pre><code>Comparator&lt;Dish&gt; dishCaloriesComparator =
+    Comparator.comparingInt(Dish::getCalories);
+Optional&lt;Dish&gt; mostCalorieDish =
+    menu.stream()
+        .collect(maxBy(dishCaloriesComparator));</code></pre><p>你可能在想Optional<Dish>是怎么回事。要回答这个问题，需要问“要是menu为空怎么办”。那就没有要返回的菜肴了！Java 8引入了Optional，它是一个容器，可以包含值也可以不包含值。这里它完美地代表了可能也可能不返回菜肴的情况。另一个常见的返回单个值的归约操作是对流中对象的一个数值字段求和。或者你可能想要求平均数。这种操作被称为汇总操作。让我们来看看如何使用收集器表达汇总操作。</p>
+<h3 id="4-2-2-汇总"><a href="#4-2-2-汇总" class="headerlink" title="4.2.2　汇总"></a>4.2.2　汇总</h3><p>Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt。它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作。举个例子来说，你可以这样求出菜单列表的总热量：</p>
+<pre><code>int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));</code></pre><p>这里的收集过程如图所示。在遍历流时，会把每一道菜都映射为其热量，然后把这个数字累加到一个累加器（这里的初始值0）。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610785062777-153519fd-ed93-4dcb-b1c5-2414bf7a3bc0.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p><code>Collectors.summingLong</code>和<code>Collectors.summingDouble</code>方法的作用完全一样，可以用于求和字段为long或double的情况。</p>
+<p>但汇总不仅仅是求和；还有<code>Collectors.averagingInt</code>，连同对应的<code>averagingLong</code>和<code>averagingDouble</code>可以计算数值的平均数：</p>
+<pre><code>double avgCalories =
+    menu.stream().collect(averagingInt(Dish::getCalories));</code></pre><p>到目前为止，你已经看到了如何使用收集器来给流中的元素计数，找到这些元素数值属性的最大值和最小值，以及计算其总和和平均值。不过很多时候，你可能想要得到两个或更多这样的结果，而且你希望只需一次操作就可以完成。在这种情况下，你可以使用summarizingInt工厂方法返回的收集器。例如，通过一次summarizing操作你就可以数出菜单中元素的个数，并得到菜肴热量总和、平均值、最大值和最小值：</p>
+<pre><code>IntSummaryStatistics menuStatistics =
+        menu.stream().collect(summarizingInt(Dish::getCalories));</code></pre><p>这个收集器会把所有这些信息收集到一个叫作IntSummaryStatistics的类里，它提供了方便的取值（getter）方法来访问结果。打印menuStatisticobject会得到以下输出：</p>
+<pre><code>IntSummaryStatistics{count=9, sum=4300, min=120,
+                     average=477.777778, max=800}</code></pre><p>同样，相应的summarizingLong和summarizingDouble工厂方法有相关的LongSummary Statistics和DoubleSummaryStatistics类型，适用于收集的属性是原始类型long或double的情况</p>
+<h3 id="4-2-3-连接字符串"><a href="#4-2-3-连接字符串" class="headerlink" title="4.2.3　连接字符串"></a>4.2.3　连接字符串</h3><p>joining工厂方法返回的收集器会把对流中每一个对象应用toString方法得到的所有字符串连接成一个字符串。这意味着你把菜单中所有菜肴的名称连接起来，如下所示：</p>
+<pre><code>String shortMenu = menu.stream().map(Dish::getName).collect(joining());</code></pre><p>请注意，joining在内部使用了StringBuilder来把生成的字符串逐个追加起来。此外还要注意，如果Dish类有一个toString方法来返回菜肴的名称，那你无需用提取每一道菜名称的函数来对原流做映射就能够得到相同的结果：</p>
+<pre><code>String shortMenu = menu.stream().collect(joining());</code></pre><p>二者均可产生以下字符串：</p>
+<p>porkbeefchickenfrench friesriceseason fruitpizzaprawnssalmon</p>
+<p>但该字符串的可读性并不好。幸好，joining工厂方法有一个重载版本可以接受元素之间的分界符，这样你就可以得到一个逗号分隔的菜肴名称列表：</p>
+<pre><code>String shortMenu = menu.stream().map(Dish::getName).collect(joining(&quot;, &quot;));</code></pre><p>正如预期的那样，它会生成：</p>
+<p>pork, beef, chicken, french fries, rice, season fruit, pizza, prawns, salmon</p>
+<p>到目前为止，我们已经探讨了各种将流归约到一个值的收集器。</p>
+<h3 id="4-2-4-广义的归约汇总"><a href="#4-2-4-广义的归约汇总" class="headerlink" title="4.2.4　广义的归约汇总"></a>4.2.4　广义的归约汇总</h3><p><strong>事实上，我们已经讨论的所有收集器，都是一个可以用reducing工厂方法定义的归约过程的特殊情况而已。</strong>Collectors.reducing工厂方法是所有这些特殊情况的一般化。可以说，先前讨论的案例仅仅是为了方便程序员而已。（但是，请记得方便程序员和可读性是头等大事！）例如，可以用reducing方法创建的收集器来计算你菜单的总热量，如下所示：</p>
+<pre><code>int totalCalories = menu.stream().collect(reducing(
+                                   0, Dish::getCalories, (i, j) -&gt; i + j));</code></pre><p>它需要三个参数。</p>
+<ul>
+<li>第一个参数是归约操作的起始值，也是流中没有元素时的返回值，所以很显然对于数值和而言0是一个合适的值。</li>
+<li>第二个参数就是你在4.2.2节中使用的函数，将菜肴转换成一个表示其所含热量的int。</li>
+<li>第三个参数是一个BinaryOperator，将两个项目累积成一个同类型的值。这里它就是对两个int求和。</li>
+</ul>
+<p>同样，你可以使用下面这样单参数形式的reducing来找到热量最高的菜，如下所示：</p>
+<pre><code>Optional&lt;Dish&gt; mostCalorieDish =
+    menu.stream().collect(reducing(
+        (d1, d2) -&gt; d1.getCalories() &gt; d2.getCalories() ? d1 : d2));</code></pre><p>你可以把单参数reducing工厂方法创建的收集器看作三参数方法的特殊情况，它把流中的第一个项目作为起点，把恒等函数（即一个函数仅仅是返回其输入参数）作为一个转换函数。这也意味着，要是把单参数reducing收集器传递给空流的collect方法，收集器就没有起点；正如2.2.1节中所解释的，它将因此而返回一个Optional<Dish>对象。</p>
+<h4 id="4-2-4-1-收集与归约"><a href="#4-2-4-1-收集与归约" class="headerlink" title="4.2.4.1 收集与归约"></a>4.2.4.1 收集与归约</h4><p>你可能想知道，Stream接口的collect和reduce方法有何不同，因为两种方法通常会获得相同的结果。例如，你可以像下面这样使用reduce方法来实现toList Collector所做的工作：</p>
+<pre><code>Stream&lt;Integer&gt; stream = Arrays.asList(1, 2, 3, 4, 5, 6).stream();
+List&lt;Integer&gt; numbers = stream.reduce(
+                               new ArrayList&lt;Integer&gt;(),
+                               (List&lt;Integer&gt; l, Integer e) -&gt; {
+                                         l.add(e);
+                                         return l; },
+                               (List&lt;Integer&gt; l1, List&lt;Integer&gt; l2) -&gt; {
+                                         l1.addAll(l2);
+                                         return l1; });</code></pre><p>这个解决方案有两个问题：<strong>一个语义问题和一个实际问题</strong>。语义问题在于，reduce方法旨在把两个值结合起来生成一个新值，它是一个不可变的归约。与此相反，collect方法的设计就是要改变容器，从而累积要输出的结果。这意味着，上面的代码片段是在滥用reduce方法，因为它在原地改变了作为累加器的List。你在下一节中会更详细地看到，以错误的语义使用reduce方法还会造成一个实际问题：这个归约过程不能并行工作，因为由多个线程并发修改同一个数据结构可能会破坏List本身。在这种情况下，如果你想要线程安全，就需要每次分配一个新的List，而对象分配又会影响性能。这就是collect方法特别适合表达可变容器上的归约的原因，更关键的是它适合并行操作。</p>
+<h4 id="4-2-4-2-收集框架的灵活性：以不同的方法执行同样的操作"><a href="#4-2-4-2-收集框架的灵活性：以不同的方法执行同样的操作" class="headerlink" title="4.2.4.2 收集框架的灵活性：以不同的方法执行同样的操作"></a>4.2.4.2 收集框架的灵活性：以不同的方法执行同样的操作</h4><p>你还可以进一步简化前面使用reducing收集器的求和例子——引用Integer类的sum方法，而不用去写一个表达同一操作的Lambda表达式。这会得到以下程序：</p>
+<pre><code>int totalCalories = menu.stream().collect(reducing(0,       // 初始值
+                              Dish::getCalories,       // 转换函数
+                              Integer::sum));       // 累积函数</code></pre><p>从逻辑上说，归约操作的工作原理如图所示：利用累积函数，把一个初始化为起始值的累加器，和把转换函数应用到流中每个元素上得到的结果不断迭代合并起来。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610786937388-5e84c1b9-0475-4c55-b590-76f3554e454d.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>图 -计算菜单总热量的归约过程</p>
+<p>现实中，4.2节开始时提到的counting收集器也是类似地利用三参数reducing工厂方法实现的。它把流中的每个元素都转换成一个值为1的Long型对象，然后再把它们相加：</p>
+<pre><code>public static &lt;T&gt; Collector&lt;T, ?, Long&gt; counting() {
+    return reducing(0L, e -&gt; 1L, Long::sum);
+}</code></pre><h4 id="4-2-4-3-使用泛型-通配符"><a href="#4-2-4-3-使用泛型-通配符" class="headerlink" title="4.2.4.3 使用泛型?通配符"></a>4.2.4.3 使用泛型?通配符</h4><p>在刚刚提到的代码片段中，你可能已经注意到了?通配符，它用作counting工厂方法返回的收集器签名中的第二个泛型类型。对这种记法你应该已经很熟悉了，特别是如果你经常使用Java的集合框架的话。在这里，它仅仅意味着收集器的累加器类型未知，换句话说，累加器本身可以是任何类型。我们在这里原封不动地写出了Collectors类中原始定义的方法签名，但在本节其余部分将避免使用任何通配符表示法，以使讨论尽可能简单。</p>
+<p>我们在前面可能已经注意到，还有另一种方法不使用收集器也能执行相同操作——将菜肴流映射为每一道菜的热量，然后用前一个版本中使用的方法引用来归约得到的流：</p>
+<pre><code>int totalCalories =
+    menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();</code></pre><p>请注意，就像流的任何单参数reduce操作一样，<strong>reduce(Integer::sum)返回的不是int而是Optional<Integer></strong>，以便在空流的情况下安全地执行归约操作。然后你只需用Optional对象中的get方法来提取里面的值就行了。请注意，在这种情况下使用get方法是安全的，只是因为你已经确定菜肴流不为空。一般来说，使用Optional允许提供默认值的方法，如orElse或orElseGet来解开Optional中包含的值更为安全。最后，更简洁的方法是把流映射到一个IntStream，然后调用sum方法，你也可以得到相同的结果：</p>
+<pre><code>int totalCalories = menu.stream().mapToInt(Dish::getCalories).sum();</code></pre><h4 id="4-2-4-4-根据情况选择最佳解决方案"><a href="#4-2-4-4-根据情况选择最佳解决方案" class="headerlink" title="4.2.4.4 根据情况选择最佳解决方案"></a>4.2.4.4 根据情况选择最佳解决方案</h4><p>这再次说明了，函数式编程（特别是Java 8的Collections框架中加入的基于函数式风格原理设计的新API）通常提供了多种方法来执行同一个操作。这个例子还说明，收集器在某种程度上比Stream接口上直接提供的方法用起来更复杂，但好处在于它们能提供更高水平的抽象和概括，也更容易重用和自定义。</p>
+<p>我们的建议是，尽可能为手头的问题探索不同的解决方案，但在通用的方案里面，始终选择最专门化的一个。无论是从可读性还是性能上看，这一般都是最好的决定。例如，要计算菜单的总热量，我们更倾向于最后一个解决方案（使用IntStream），因为它最简明，也很可能最易读。同时，它也是性能最好的一个，因为IntStream可以让我们避免自动拆箱操作，也就是从Integer到int的隐式转换，它在这里毫无用处。</p>
+<p>让我试下小测验，检验学习效果如何？</p>
+<p>测验：用reducing连接字符串</p>
+<p>以下哪一种reducing收集器的用法能够合法地替代joining收集器（如4.2.3节用法）？</p>
+<p>String shortMenu = menu.stream().map(Dish::getName).collect(joining());</p>
+<p>(1)</p>
+<pre><code>String shortMenu = menu.stream().map(Dish::getName)
+        .collect(reducing((s1, s2) -&gt; s1 + s2)).get();</code></pre><p>(2)</p>
+<pre><code>String shortMenu = menu.stream()
+        .collect(reducing((d1, d2) -&gt; d1.getName() + d2.getName())).get();</code></pre><p>(3)</p>
+<pre><code>String shortMenu = menu.stream()
+        .collect(reducing(&quot;&quot;, Dish::getName, (s1, s2) -&gt; s1 + s2));</code></pre><p>答案：6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#KAv7v" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#KAv7v</a></p>
+<h2 id="4-3-分组"><a href="#4-3-分组" class="headerlink" title="4.3 分组"></a>4.3 分组</h2><p>一个常见的数据库操作是根据一个或多个属性对集合中的项目进行分组。就像前面讲到按货币对交易进行分组的例子一样，如果用指令式风格来实现的话，这个操作可能会很麻烦、啰唆而且容易出错。但是，如果用Java 8所推崇的函数式风格来重写的话，就很容易转化为一个非常容易看懂的语句。来看看这个功能的第二个例子：假设你要把菜单中的菜按照类型进行分类，将有肉的放一组，有鱼的放一组，其他的都放另一组。用Collectors.groupingBy工厂方法返回的收集器就可以轻松地完成这项任务，如下所示：</p>
+<pre><code>Map&lt;Dish.Type, List&lt;Dish&gt;&gt; dishesByType =
+                      menu.stream().collect(groupingBy(Dish::getType));</code></pre><p>其结果是下面的Map：</p>
+<p>{FISH=[prawns, salmon], OTHER=[french fries, rice, season fruit, pizza], MEAT=[pork, beef, chicken]}</p>
+<p>这里，你给groupingBy方法传递了一个Function（以方法引用的形式），它提取了流中每一道Dish的Dish.Type。我们把这个Function叫作分类函数，因为它用来把流中的元素分成不同的组。如图所示，分组操作的结果是一个Map，把分组函数返回的值作为映射的键，把流中所有具有这个分类值的项目的列表作为对应的映射值。在菜单分类的例子中，键就是菜的类型，值就是包含所有对应类型的菜肴的列表。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610788386175-3c6ebb37-c8a5-4daa-b704-9bec0a0246b6.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>图 在分组过程中对流中的项目进行分类</p>
+<p>但是，分类函数不一定像方法引用那样可用，因为你想用以分类的条件可能比简单的属性访问器要复杂。例如，你可能想把热量不到400卡路里的菜划为“低热量”（diet），把热量在400到700卡路里之间的菜划为“普通”（normal），而把高于700卡路里的菜划为“高热量”（fat）。由于Dish类的作者没有把这个操作写成一个方法，因此无法使用方法引用，但你可以把这个逻辑写成Lambda表达式：</p>
+<pre><code>public enum CaloricLevel { DIET, NORMAL, FAT }
+Map&lt;CaloricLevel, List&lt;Dish&gt;&gt; dishesByCaloricLevel = menu.stream().collect(
+        groupingBy(dish -&gt; {
+                if (dish.getCalories() &lt;= 400) return CaloricLevel.DIET;
+                else if (dish.getCalories() &lt;= 700) return CaloricLevel.NORMAL;
+                else return CaloricLevel.FAT;
+        } ));</code></pre><p>现在，你已经知道如何同时按照菜肴的类型和热量对菜单中的菜肴进行分组。然而，如果你还需要对最初分组的结果做进一步操作——这也是很典型的应用场景，又该如何做呢？接下来的一节会介绍如何解决这个问题。</p>
+<h3 id="4-3-1-操作分组的元素"><a href="#4-3-1-操作分组的元素" class="headerlink" title="4.3.1　操作分组的元素"></a>4.3.1　操作分组的元素</h3><p>执行完分组操作后，你往往还需要对每个分组中的元素执行操作。举个例子，假设你希望只按照菜肴的热量进行过滤操作，譬如找出那些热量大于500卡路里的菜肴。你可能会说，这种情况只要在分组之前执行过滤谓词就好了，如下所示：</p>
+<pre><code>Map&lt;Dish.Type, List&lt;Dish&gt;&gt; caloricDishesByType =
+                    menu.stream().filter(dish -&gt; dish.getCalories() &gt; 500)
+                                 .collect(groupingBy(Dish::getType));</code></pre><p>这种解决方案可以工作，不过它也伴随着相关的缺陷。如果你试着用它处理我们的菜单，得到的结果是下面这种Map：</p>
+<p>{OTHER=[french fries, pizza], MEAT=[pork, beef]}</p>
+<p>发现问题了么？由于没有任何一道类型是FISH的菜符合我们的过滤谓词，这个键在结果映射中完全消失了。为了解决这个问题，Collectors类重载了工厂方法groupingBy，除了常见的分类函数，它的第二变量也接受一个Collector类型的参数。通过这种方式，我们把过滤谓词挪到了第二个Collector中，如下所示：</p>
+<pre><code>Map&lt;Dish.Type, List&lt;Dish&gt;&gt; caloricDishesByType =
+        menu.stream()
+            .collect(groupingBy(Dish::getType,
+                     filtering(dish -&gt; dish.getCalories() &gt; 500, toList())));</code></pre><p>filtering方法也是Collectors类的一个静态工厂方法，它接受一个谓词对每一个分组中的元素执行过滤操作，你还可以更进一步地使用Collector对过滤的元素继续进行分组。通过这种方式，结果映射中依旧保存了FISH类型的条目，即便它映射的是一个空的列表：</p>
+<p>{OTHER=[french fries, pizza], MEAT=[pork, beef], FISH=[]}</p>
+<p>操作分组元素的另一种常见做法是使用一个映射函数对它们进行转换，这种方式也很有效。为了达成这个目标，Collectors类通过mapping方法提供了另一个Collector函数，它接受一个映射函数和另一个Collector函数作为参数。作为参数的Collector会收集对每个元素执行该映射函数的运行结果。这与你之前看到的过滤收集器很相似。使用新的方法，你可以将每道菜肴的分类添加到它们各自的菜名中，如下所示：</p>
+<pre><code>Map&lt;Dish.Type, List&lt;String&gt;&gt; dishNamesByType =
+        menu.stream()
+            .collect(groupingBy(Dish::getType,
+                     mapping(Dish::getName, toList())));</code></pre><p>注意，这个例子中，结果映射的每个分组是一个由字符串构成的列表，而不是前面示例中的Dish类型。你还可以使用第三个Collector搭配groupingBy，再进行一次flatMap转换，这样得到的就不是一个普通的映射了。为了演示这种机制是如何工作的，假设我们有一个映射，它为每道菜肴关联了一个标签列表，如下所示：</p>
+<pre><code>Map&lt;String, List&lt;String&gt;&gt; dishTags = new HashMap&lt;&gt;();
+dishTags.put(&quot;pork&quot;, asList(&quot;greasy&quot;, &quot;salty&quot;));
+dishTags.put(&quot;beef&quot;, asList(&quot;salty&quot;, &quot;roasted&quot;));
+dishTags.put(&quot;chicken&quot;, asList(&quot;fried&quot;, &quot;crisp&quot;));
+dishTags.put(&quot;french fries&quot;, asList(&quot;greasy&quot;, &quot;fried&quot;));
+dishTags.put(&quot;rice&quot;, asList(&quot;light&quot;, &quot;natural&quot;));
+dishTags.put(&quot;season fruit&quot;, asList(&quot;fresh&quot;, &quot;natural&quot;));
+dishTags.put(&quot;pizza&quot;, asList(&quot;tasty&quot;, &quot;salty&quot;));
+dishTags.put(&quot;prawns&quot;, asList(&quot;tasty&quot;, &quot;roasted&quot;));
+dishTags.put(&quot;salmon&quot;, asList(&quot;delicious&quot;, &quot;fresh&quot;));</code></pre><p>如果你需要提取出每组菜肴对应的标签，使用flatMapping Collector可以轻松实现：</p>
+<pre><code>Map&lt;Dish.Type, Set&lt;String&gt;&gt; dishNamesByType =
+    menu.stream()
+        .collect(groupingBy(Dish::getType,
+                 flatMapping(dish -&gt; dishTags.get( dish.getName() ).stream(),
+                             toSet())));</code></pre><p>我们会为每道菜肴获取一个标签列表。这与在上一章碰到的情况很像，需要执行一个flatMap操作，将两层的结果列表归并为一层。此外，也请注意，这一次我们会将每一组flatMapping操作的结果保存到一个Set中，而不是之前的List中，这么做是为了避免同一类型的多道菜由于关联了同样的标签而导致标签重复出现在结果集中。这一操作的结果映射如下所示：</p>
+<p>{MEAT=[salty, greasy, roasted, fried, crisp], FISH=[roasted, tasty, fresh, delicious], OTHER=[salty, greasy, natural, light, tasty, fresh, fried]}</p>
+<p>截至目前，我们对菜单中的菜肴分组时使用的都是单一标准，譬如，按类型分，或者按热量分。然而，有些时候你可能希望同时使用多个标准进行分类，这种情况又该如何处理呢？分组操作的强大之处就在于它能高效地组合。来看看它是如何做到的这一点的。</p>
+<h3 id="4-3-2-多级分组"><a href="#4-3-2-多级分组" class="headerlink" title="4.3.2　多级分组"></a>4.3.2　多级分组</h3><p>要实现多级分组，可以使用一个由双参数版本的Collectors.groupingBy工厂方法创建的收集器，它除了普通的分类函数之外，还可以接受collector类型的第二个参数。那么要进行二级分组的话，可以把一个内层groupingBy传递给外层groupingBy，并定义一个为流中项目分类的二级标准，如代码清单6-2所示。</p>
+<p>代码清单 4-2　多级分组</p>
+<pre><code>Map&lt;Dish.Type, Map&lt;CaloricLevel, List&lt;Dish&gt;&gt;&gt; dishesByTypeCaloricLevel = menu.stream().collect(
+      groupingBy(Dish::getType,       // 一级分类函数
+          groupingBy(dish -&gt; {       // 二级分类函数
+                  if (dish.getCalories() &lt;= 400) return CaloricLevel.DIET;
+                  else if (dish.getCalories() &lt;= 700) return CaloricLevel.NORMAL;
+                  else return CaloricLevel.FAT;
+          } )
+      )
+);</code></pre><p>这个二级分组的结果就是像下面这样的两级Map：</p>
+<p>{MEAT={DIET=[chicken], NORMAL=[beef], FAT=[pork]},</p>
+<p> FISH={DIET=[prawns], NORMAL=[salmon]},</p>
+<p> OTHER={DIET=[rice, seasonal fruit], NORMAL=[french fries, pizza]}}</p>
+<p>这里的外层Map的键就是第一级分类函数生成的值：“fish, meat, other”，而这个Map的值又是一个Map，键是二级分类函数生成的值：“normal, diet, fat”。最后，第二级Map的值是流中元素构成的List，是分别应用第一级和第二级分类函数所得到的对应第一级和第二级键的值：“salmon，pizza…” 这种多级分组操作可以扩展至任意层级，￼级分组就会得到一个代表￼级树形结构的￼级Map。</p>
+<p>图4-5显示了为什么结构相当于￼维表格，并强调了分组操作的分类目的。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610792142552-a817190b-4777-458a-a755-04c928948a3c.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>图 4-5　￼层嵌套映射和￼维分类表之间的等价关系</p>
+<p>一般来说，把groupingBy看作“桶”比较容易明白。第一个groupingBy给每个键建立了一个桶。然后再用下游的收集器去收集每个桶中的元素，以此得到￼级分组。</p>
+<h3 id="4-3-3-按子组收集数据"><a href="#4-3-3-按子组收集数据" class="headerlink" title="4.3.3　按子组收集数据"></a>4.3.3　按子组收集数据</h3><p>在上一节中，我们看到可以把第二个groupingBy收集器传递给外层收集器来实现多级分组。但进一步说，传递给第一个groupingBy的第二个收集器可以是任何类型，而不一定是另一个groupingBy。例如，要数一数菜单中每类菜有多少个，可以传递counting收集器作为groupingBy收集器的第二个参数：</p>
+<pre><code>Map&lt;Dish.Type, Long&gt; typesCount = menu.stream().collect(
+                    groupingBy(Dish::getType, counting()));</code></pre><p>其结果是下面的Map：</p>
+<p>{MEAT=3, FISH=2, OTHER=4}</p>
+<p>还要注意，普通的单参数groupingBy(f)（其中f是分类函数）实际上是groupingBy(f, toList())的简便写法。</p>
+<p>再举一个例子，你可以把前面用于查找菜单中热量最高的菜肴的收集器改一改，按照菜的类型分类：</p>
+<pre><code>Map&lt;Dish.Type, Optional&lt;Dish&gt;&gt; mostCaloricByType =
+    menu.stream()
+        .collect(groupingBy(Dish::getType,
+                            maxBy(comparingInt(Dish::getCalories))));</code></pre><p>这个分组的结果显然是一个Map，以Dish的类型作为键，以包装了该类型中热量最高的Dish的Optional<Dish>作为值：</p>
+<p>{FISH=Optional[salmon], OTHER=Optional[pizza], MEAT=Optional[pork]}</p>
+<p>注意　这个Map中的值是Optional，因为这是maxBy工厂方法生成的收集器的类型，但实际上，如果菜单中没有某一类型的Dish，这个类型就不会对应一个Optional.empty()值，而且根本不会出现在Map的键中。groupingBy收集器只有在应用分组条件后，第一次在流中找到某个键对应的元素时才会把键加入分组Map中。这意味着Optional包装器在这里不是很有用，因为它不会仅仅因为是归约收集器的返回类型而表达一个最终可能不存在却意外存在的值。</p>
+<h4 id="4-3-3-1-收集器的结果转换为另一种类型"><a href="#4-3-3-1-收集器的结果转换为另一种类型" class="headerlink" title="4.3.3.1 收集器的结果转换为另一种类型"></a>4.3.3.1 收集器的结果转换为另一种类型</h4><p>因为分组操作的Map结果中的每个值上包装的Optional没什么用，所以你可能想要把它们去掉。要做到这一点，或者更一般地来说，把收集器返回的结果转换为另一种类型，你可以使用<strong>Collectors.collectingAndThen</strong>工厂方法返回的收集器，如下所示。</p>
+<p>代码清单 6-3　查找每个子组中热量最高的Dish</p>
+<pre><code>Map&lt;Dish.Type, Dish&gt; mostCaloricByType =
+    menu.stream()
+        .collect(groupingBy(Dish::getType,       // 分类函数
+                 collectingAndThen(
+                   maxBy(comparingInt(Dish::getCalories)),       //包装后的收集器
+                 Optional::get)));       //转换函数</code></pre><p>这个工厂方法接受两个参数——<strong>要转换的收集器</strong>以及<strong>转换函数</strong>，并返回另一个收集器。这个收集器相当于旧收集器的一个包装，collect操作的最后一步就是将返回值用转换函数做一个映射。在这里，被包起来的收集器就是用maxBy建立的那个，而转换函数Optional::get则把返回的Optional中的值提取出来。前面已经说过，这个操作放在这里是安全的，因为reducing收集器永远都不会返回Optional.empty()。其结果是下面的Map：</p>
+<p>{FISH=salmon, OTHER=pizza, MEAT=pork}</p>
+<p>把好几个收集器嵌套起来很常见，它们之间到底发生了什么可能不那么明显。图4-6可以直观地展示它们是怎么工作的。从最外层开始逐层向里，注意以下几点。</p>
+<ul>
+<li>收集器用虚线表示，因此groupingBy是最外层，根据菜肴的类型把菜单流分组，得到三个子流。</li>
+</ul>
+<p>groupingBy收集器包裹着collectingAndThen收集器，因此分组操作得到的每个子流都用这第二个收集器做进一步归约。</p>
+<ul>
+<li>collectingAndThen收集器又包裹着第三个收集器maxBy。</li>
+<li>随后由归约收集器进行子流的归约操作，然后包含它的collectingAndThen收集器会对其结果应用Optional:get转换函数。</li>
+<li>对三个子流分别执行这一过程并转换而得到的三个值，也就是各个类型中热量最高的Dish，将成为groupingBy收集器返回的Map中与各个分类键（Dish的类型）相关联的值。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610796921984-7293f8bd-7dbf-4098-91ab-e6e0d7d6c550.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<h4 id="4-3-3-2-与groupingBy联合使用的其他收集器的例子"><a href="#4-3-3-2-与groupingBy联合使用的其他收集器的例子" class="headerlink" title="4.3.3.2 与groupingBy联合使用的其他收集器的例子"></a>4.3.3.2 与groupingBy联合使用的其他收集器的例子</h4><p>一般来说，通过groupingBy工厂方法的第二个参数传递的收集器将会对分到同一组中的所有流元素执行进一步归约操作。例如，你还重用求出所有菜肴热量总和的收集器，不过这次是对每一组Dish求和：</p>
+<pre><code>Map&lt;Dish.Type, Integer&gt; totalCaloriesByType =
+               menu.stream().collect(groupingBy(Dish::getType,
+                       summingInt(Dish::getCalories)));</code></pre><p>然而常常和groupingBy联合使用的另一个收集器是mapping方法生成的。这个方法接受两个参数：一个<strong>函数对流中的元素做变换</strong>，另一个则<strong>将变换的结果对象收集起来</strong>。其目的是在累加之前对每个输入元素应用一个映射函数，这样就可以让接受特定类型元素的收集器适应不同类型的对象。我们来看一个使用这个收集器的实际例子。比方说你想要知道，对于每种类型的Dish，菜单中都有哪些CaloricLevel。可以把groupingBy和mapping收集器结合起来，如下所示：</p>
+<pre><code>Map&lt;Dish.Type, Set&lt;CaloricLevel&gt;&gt; caloricLevelsByType =
+menu.stream().collect(
+    groupingBy(Dish::getType, mapping(dish -&gt; {
+            if (dish.getCalories() &lt;= 400) return CaloricLevel.DIET;
+            else if (dish.getCalories() &lt;= 700) return CaloricLevel.NORMAL;
+            else return CaloricLevel.FAT; },
+    toSet() )));</code></pre><p>这里，就像前面见到过的，传递给映射方法的转换函数将Dish映射成了它的CaloricLevel：生成的CaloricLevel流传递给一个toSet收集器，它和toList类似，不过是把流中的元素累积到一个Set而不是List中，以便仅保留各不相同的值。如先前的示例所示，这个映射收集器将会收集分组函数生成的各个子流中的元素，让你得到这样的Map结果：</p>
+<p>{OTHER=[DIET, NORMAL], MEAT=[DIET, NORMAL, FAT], FISH=[DIET, NORMAL]}</p>
+<p>请注意在上一个示例中，对于返回的Set是什么类型并没有任何保证。但通过使用toCollection，你就可以有更多的控制。例如，你可以给它传递一个构造函数引用来要求HashSet：</p>
+<pre><code>Map&lt;Dish.Type, Set&lt;CaloricLevel&gt;&gt; caloricLevelsByType =
+menu.stream().collect(
+    groupingBy(Dish::getType, mapping(dish -&gt; {
+            if (dish.getCalories() &lt;= 400) return CaloricLevel.DIET;
+            else if (dish.getCalories() &lt;= 700) return CaloricLevel.NORMAL;
+            else return CaloricLevel.FAT; },
+    toCollection(HashSet::new) )));</code></pre><h2 id="4-4-分区"><a href="#4-4-分区" class="headerlink" title="4.4　分区"></a>4.4　分区</h2><p>分区是分组的特殊情况：由一个谓词（返回一个布尔值的函数）作为分类函数，它称分区函数。分区函数返回一个布尔值，这意味着得到的分组Map的键类型是Boolean，于是它最多可以分为两组——true是一组，false是一组。例如，如果你是素食者或是请了一位素食的朋友来共进晚餐，可能会想要把菜单按照素食和非素食分开：</p>
+<pre><code>Map&lt;Boolean, List&lt;Dish&gt;&gt; partitionedMenu =
+             menu.stream().collect(partitioningBy(Dish::isVegetarian));       // 分区函数</code></pre><p>这会返回下面的Map：</p>
+<p>{false=[pork, beef, chicken, prawns, salmon],</p>
+<p> true=[french fries, rice, season fruit, pizza]}</p>
+<p>那么通过Map中键为true的值，就可以找出所有的素食菜肴了：</p>
+<pre><code>List&lt;Dish&gt; vegetarianDishes = partitionedMenu.get(true);</code></pre><p>请注意，用同样的分区谓词，对菜单List创建的流作筛选，然后把结果收集到另外一个List中也可以获得相同的结果：</p>
+<pre><code>List&lt;Dish&gt; vegetarianDishes =
+            menu.stream().filter(Dish::isVegetarian).collect(toList());</code></pre><h3 id="4-4-1-分区的优势"><a href="#4-4-1-分区的优势" class="headerlink" title="4.4.1　分区的优势"></a>4.4.1　分区的优势</h3><p>分区的好处在于保留了分区函数返回true或false的两套流元素列表。在上一个例子中，要得到非素食Dish的List，你可以使用两个筛选操作来访问partitionedMenu这个Map中false键的值：一个利用谓词，一个利用该谓词的非。而且就像你在分组中看到的，partitioningBy工厂方法有一个重载版本，可以像下面这样传递第二个收集器：</p>
+<pre><code>Map&lt;Boolean, Map&lt;Dish.Type, List&lt;Dish&gt;&gt;&gt; vegetarianDishesByType =
+menu.stream().collect(
+        partitioningBy(Dish::isVegetarian,       // 分区函数
+                       groupingBy(Dish::getType)));       // 第二个收集器</code></pre><p>这将产生一个二级Map：</p>
+<p>{false={FISH=[prawns, salmon], MEAT=[pork, beef, chicken]},</p>
+<p> true={OTHER=[french fries, rice, season fruit, pizza]}}</p>
+<p>这里，对于分区产生的素食和非素食子流，分别按类型对菜肴分组，得到了一个二级Map，和4.3.1节的二级分组得到的结果类似。再举一个例子，你可以重用前面的代码来找到素食和非素食中热量最高的菜：</p>
+<pre><code>Map&lt;Boolean, Dish&gt; mostCaloricPartitionedByVegetarian =
+menu.stream().collect(
+    partitioningBy(Dish::isVegetarian,
+        collectingAndThen(maxBy(comparingInt(Dish::getCalories)),
+                          Optional::get)));</code></pre><p>这将产生以下结果：</p>
+<p>{false=pork, true=pizza}</p>
+<p>本节开始时说过，你可以把分区看作分组的一种特殊情况。值得一提的是，由partitioningBy返回的Map实现其结构更紧凑，也更高效，这是因为它只包含两个键：true和false。实际上，它的内部实现就是一个特殊的Map，只有两个字段。groupingBy和partitioningBy收集器之间的相似之处并不止于此。你在下一个测验中会看到，还可以按照和4.3.1节中分组类似的方式进行多级分区。</p>
+<p>测验：使用partitioningBy</p>
+<p>我们已经看到，和groupingBy收集器类似，partitioningBy收集器也可以结合其他收集器使用。尤其是它可以与第二个partitioningBy收集器一起使用来实现多级分区。以下多级分区的结果会是什么呢？</p>
+<p>(1)</p>
+<pre><code>menu.stream().collect(partitioningBy(Dish::isVegetarian,
+                      partitioningBy(d -&gt; d.getCalories() &gt; 500)));</code></pre><p>(2)</p>
+<pre><code>menu.stream().collect(partitioningBy(Dish::isVegetarian,
+                      partitioningBy(Dish:: getType)));</code></pre><p>(3)</p>
+<pre><code>menu.stream().collect(partitioningBy(Dish::isVegetarian,
+                      counting()));</code></pre><p>答案：6666</p>
+<p>此处为语雀加密文本，点击链接查看：<a href="https://www.yuque.com/bwcx/tnz/hqniyo#ZWy3x" target="_blank" rel="noopener">https://www.yuque.com/bwcx/tnz/hqniyo#ZWy3x</a></p>
+<p>表4-1 Collectors 类的静态工厂方法</p>
+<table>
+<thead>
+<tr>
+<th>工厂方法</th>
+<th>返回类型</th>
+<th>用于</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>toList</td>
+<td>List<T></td>
+<td>把流中所有项目收集到一个List</td>
+</tr>
+<tr>
+<td>使用示例：List<Dish> dishes = menuStream.collect(toList());</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>toSet</td>
+<td>Set<T></td>
+<td>把流中所有项目收集到一个Set，删除重复项</td>
+</tr>
+<tr>
+<td>使用示例：Set<Dish> dishes = menuStream.collect(toSet());</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>toCollection</td>
+<td>Collection<T></td>
+<td>把流中所有项目收集到给定的供应源创建的集合</td>
+</tr>
+<tr>
+<td>使用示例：Collection<Dish> dishes = menuStream.collect(toCollection(), ArrayList::new);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>counting</td>
+<td>Long</td>
+<td>计算流中元素的个数</td>
+</tr>
+<tr>
+<td>使用示例：long howManyDishes = menuStream.collect(counting());</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>summingInt</td>
+<td>Integer</td>
+<td>对流中项目的一个整数属性求和</td>
+</tr>
+<tr>
+<td>使用示例：int totalCalories = menuStream.collect(summingInt(Dish::getCalories));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>averagingInt</td>
+<td>Double</td>
+<td>计算流中项目Integer属性的平均值</td>
+</tr>
+<tr>
+<td>使用示例：double avgCalories = menuStream.collect(averagingInt(Dish::getCalories));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>summarizingInt</td>
+<td>IntSummaryStatistics</td>
+<td>收集关于流中项目Integer属性的统计值，例如最大、最小、总和与平均值</td>
+</tr>
+<tr>
+<td>使用示例：IntSummaryStatistics menuStatistics =  menuStream.collect(summarizingInt(Dish::getCalories));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>joining</td>
+<td>String</td>
+<td>连接对流中每个项目调用toString方法所生成的字符串</td>
+</tr>
+<tr>
+<td>使用示例：String shortMenu = menuStream.map(Dish::getName).collect(joining(“, “));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>maxBy</td>
+<td>Optional<T></td>
+<td>一个包裹了流中按照给定比较器选出的最大元素的Optional，或如果流为空则为Optional.empty()</td>
+</tr>
+<tr>
+<td>使用示例：Optional<Dish> fattest =  menuStream.collect(maxBy(comparingInt(Dish::getCalories)));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>minBy</td>
+<td>Optional<T></td>
+<td>一个包裹了流中按照给定比较器选出的最小元素的Optional，或如果流为空则为Optional.empty()</td>
+</tr>
+<tr>
+<td>使用示例：Optional<Dish> lightest =  menuStream.collect(minBy(comparingInt(Dish::getCalories)));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>reducing</td>
+<td>归约操作产生的类型</td>
+<td>从一个作为累加器的初始值开始，利用BinaryOperator与流中的元素逐个结合，从而将流归约为单个值</td>
+</tr>
+<tr>
+<td>使用示例：int totalCalories =  menuStream.collect(reducing(0, Dish::getCalories, Integer::sum));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>collectingAndThen</td>
+<td>转换函数返回的类型</td>
+<td>包裹另一个收集器，对其结果应用转换函数</td>
+</tr>
+<tr>
+<td>使用示例：int howManyDishes = menuStream.collect(collectingAndThen(toList(), List::size));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>groupingBy</td>
+<td>Map&lt;K, List<T>&gt;</td>
+<td>根据项目的一个属性的值对流中的项目作分组，并将属性值作为结果Map的键</td>
+</tr>
+<tr>
+<td>使用示例：Map&lt;Dish.Type,List<Dish>&gt; dishesByType =  menuStream.collect(groupingBy(Dish::getType));</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>partitioningBy</td>
+<td>Map&lt;Boolean, List<T>&gt;</td>
+<td>根据对流中每个项目应用谓词的结果来对项目进行分区</td>
+</tr>
+<tr>
+<td>使用示例：Map&lt;Boolean,List<Dish>&gt; vegetarianDishes =  menuStream.collect(partitioningBy(Dish::isVegetarian));</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="5-并行数据处理"><a href="#5-并行数据处理" class="headerlink" title="5 并行数据处理"></a>5 并行数据处理</h1><p>我们已经知道新的Stream接口能让你以声明的方式操纵数据集。我们还解释了由外部迭代切换到内部迭代后，原生Java库可以更好地控制流元素的处理。为加速数据集的处理，往往需要进行额外的显式优化，新的方式将Java程序员从之前的优化工作中解脱了出来。迄今为止，使用Stream最重要的好处是现在能对这些集合执行操作流水线，可以充分利用计算机的多个核了。</p>
+<p>例如，Java 7之前，要对集合数据执行并行处理非常麻烦。第一，你得明确地把包含数据的数据结构拆分成若干子部分。第二，你要给每个子部分分配一个独立的线程。第三，你需要在恰当的时候对它们进行同步来避免不希望出现的竞争条件，等待所有线程完成，最后把这些部分结果合并起来。Java 7引入了一个名为“分支/合并”的框架，能让这些操作更稳定、更不易出错。</p>
+<p>在本节中，你将了解Stream接口如何让你不太费力就能对数据集执行并行操作。它允许你声明性地将顺序流转变成并行流。此外，你还将了解Java是如何做到这一点的，或者更确切的说，流是如何在幕后应用Java 7引入的分支/合并框架的。你还会发现，了解并行流内部是如何工作的很重要，因为如果你忽视这一方面，就可能因误用而得到意外的结果，而这个意外结果极有可能是错误的。</p>
+<h2 id="5-1-并行流"><a href="#5-1-并行流" class="headerlink" title="5.1　并行流"></a>5.1　并行流</h2><p>使用Stream接口能非常方便地并行处理其元素：对收集源调用parallelStream方法就能将集合转换为并行流。并行流就是一个把内容拆分成多个数据块，用不同线程分别处理每个数据块的流。这样一来，你就可以自动地把工作负荷分配到多核处理器的所有核，让它们都忙起来。我们用一个简单的例子来验证一下这个思想。</p>
+<p>假设你需要写一个方法，接受数字￼作为参数，并返回从1到给定参数的所有数字的和。一个直接（也许有点土）的方法是生成由一个数字组成的无限流，将它限制到传入的数目，然后使用对两个数字求和的BinaryOperator来归约这个流，代码如下所示：</p>
+<pre><code>public long sequentialSum(long n) {
+    return Stream.iterate(1L, i -&gt; i + 1)       // 生成自然数无限流
+                 .limit(n)       // 限制到前n个数
+                 .reduce(0L, Long::sum);       // 对所有数字求和来归约流
+}</code></pre><p>如果采用更为传统的Java术语，上述代码与下面这种迭代方式其实是等价的：</p>
+<pre><code>public long iterativeSum(long n) {
+    long result = 0;
+    for (long i = 1L; i &lt;= n; i++) {
+        result += i;
+    }
+    return result;
+}</code></pre><p>这似乎是利用并行处理的好机会，特别是￼很大的时候。那怎么入手呢？你要对结果变量进行同步吗？用多少个线程呢？谁负责生成数呢？谁来做加法呢？</p>
+<p>根本用不着担心。用并行流的话，这问题就简单多了！</p>
+<h3 id="5-1-1-将顺序流转换为并行流"><a href="#5-1-1-将顺序流转换为并行流" class="headerlink" title="5.1.1　将顺序流转换为并行流"></a>5.1.1　将顺序流转换为并行流</h3><p>对顺序流调用parallel方法，你可以将流转换成并行流，让前面的函数式归约过程（也就是求和）并行执行：</p>
+<pre><code>public long parallelSum(long n) {
+    return Stream.iterate(1L, i -&gt; i + 1)
+                 .limit(n)
+                 .parallel()       // 将流转换为并行流
+                 .reduce(0L, Long::sum);
+}</code></pre><p>在上面的代码中，对流中所有数字求和的归约过程，其执行方式与前面介绍的大同小异，不同之处在于现在Stream由内部被分成了几块。因此能对不同的块执行独立并行的归约操作，如图5-1所示。最后，各个子流部分归约的返回值会被同一个归约操作整合，得到整个原始流的归约结果。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610887311672-0b0ec14b-93f8-4a73-b9a9-ae7c4c040fbe.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>图 5-1　并行归约操作</p>
+<p>请注意，实际上，对顺序流调用parallel方法并不意味着流本身有任何实际的变化。它其实仅仅在内部设置了一个boolean标志，表示你想让调用parallel之后进行的所有操作都并行执行。类似地，你只需要对并行流调用sequential方法就可以把它变成顺序流。请注意，你可能以为把这两个方法结合起来，就可以更精细地控制遍历流时哪些操作要并行执行，哪些要顺序执行。例如，你可以这样做：</p>
+<pre><code>stream.parallel()
+      .filter(...)
+      .sequential()
+      .map(...)
+      .parallel()
+      .reduce();</code></pre><p>但最后一次parallel或sequential调用会影响整个流水线。在本例中，流水线会并行执行，因为最后调用的是它。</p>
+<p><strong>配置并行流使用的线程池</strong></p>
+<p>看看流的parallel方法，你可能会想，并行流用的线程是从哪儿来的？有多少个？怎么自定义这个过程呢？</p>
+<p>并行流内部使用了默认的ForkJoinPool（5.2节会进一步讲到分支/合并框架），它默认的线程数量就是你的处理器数量，这个值是由Runtime.getRuntime().availableProcessors()得到的。</p>
+<p>但是这并非一成不变，你可以通过系统属性java.util.concurrent.ForkJoinPool.common.parallelism来修改线程池大小，如下所示：</p>
+<pre><code>System.setProperty(&quot;java.util.concurrent.ForkJoinPool.common.parallelism&quot;,&quot;12&quot;);</code></pre><p>这是一个全局设置，因此它会对代码中所有的并行流产生影响。反过来说，目前我们还无法专为某个并行流指定这个值。一般而言，让ForkJoinPool的大小等于处理器数量是个不错的默认值，除非你有很充足的理由，否则强烈建议你不要修改它。</p>
+<p>回到数字求和练习的例子，我们说过，在多核处理器上运行并行版本时，会有显著的性能提升。现在你有三个方法，用三种不同的方式（迭代式、顺序归约和并行归约）做完全相同的操作，让我们看看谁最快吧！</p>
+<h3 id="5-1-2-正确使用并行流"><a href="#5-1-2-正确使用并行流" class="headerlink" title="5.1.2　正确使用并行流"></a>5.1.2　正确使用并行流</h3><p>错用并行流而产生错误的首要原因，就是使用的算法改变了某些共享状态。下面是另一种实现对前￼个自然数求和的方法，但这会改变一个共享累加器：</p>
+<pre><code>public long sideEffectSum(long n) {
+    Accumulator accumulator = new Accumulator();
+    LongStream.rangeClosed(1, n).forEach(accumulator::add);
+    return accumulator.total;
+}
+public class Accumulator {
+    public long total = 0;
+    public void add(long value) { total += value; }
+}</code></pre><p>这种代码非常普遍，特别是对那些熟悉指令式编程范式的程序员来说。这段代码和你习惯的那种指令式迭代数字列表的方式很像：初始化一个累加器，一个个遍历列表中的元素，把它们和累加器相加。</p>
+<p>那这种代码又有什么问题呢？不幸的是，它真的无可救药，因为它在本质上就是顺序的。每次访问total都会出现数据竞争。如果你尝试用同步来修复，那就完全失去并行的意义了。为了说明这一点，试着把Stream变成并行的：</p>
+<pre><code>public long sideEffectParallelSum(long n) {
+    Accumulator accumulator = new Accumulator();
+    LongStream.rangeClosed(1, n).parallel().forEach(accumulator::add);
+    return accumulator.total;
+}</code></pre><p>用代码来执行这个方法，并打印每次执行的结果：</p>
+<pre><code>System.out.println(&quot;SideEffect parallel sum done in: &quot; +
+    measurePerf(ParallelStreams::sideEffectParallelSum, 10_000_000L) + &quot;
+    msecs&quot; );</code></pre><p>你可能会得到类似于下面这种输出：</p>
+<pre><code>Result: 5959989000692
+Result: 7425264100768
+Result: 6827235020033
+Result: 7192970417739
+Result: 6714157975331
+Result: 7497810541907
+Result: 6435348440385
+Result: 6999349840672
+Result: 7435914379978
+Result: 7715125932481
+SideEffect parallel sum done in: 49 msecs</code></pre><p>这回方法的性能无关紧要了，唯一要紧的是每次执行都会返回不同的结果，都离正确值50000005000000差很远。这是由于多个线程在同时访问累加器，执行total += value，而这一句虽然看似简单，却不是一个原子操作。问题的根源在于，forEach中调用的方法有副作用，它会改变多个线程共享的对象的可变状态。要是你想用并行Stream又不想引发类似的意外，就必须避免这种情况。</p>
+<p>现在你知道了，共享可变状态会影响并行流以及并行计算。现在，记住要避免共享可变状态，确保并行Stream得到正确的结果。接下来，我们会看到一些实用建议，你可以由此判断什么时候可以利用并行流来提升性能。</p>
+<h3 id="5-1-3-高效使用并行流"><a href="#5-1-3-高效使用并行流" class="headerlink" title="5.1.3　高效使用并行流"></a>5.1.3　高效使用并行流</h3><p>一般而言，想给出任何关于什么时候该用并行流的定量建议都是不可能也毫无意义的，因为任何类似于“仅当超过1000个元素的时候才用并行流”的建议对于某台特定机器上的某个特定操作可能是对的，但在略有差异的另一种情况下可能就是大错特错。尽管如此，我们至少可以提出一些定性意见，帮你决定某个特定情况下是否有必要使用并行流。</p>
+<ul>
+<li>如果有疑问，测量（可使用Java微基准套件-Java microbenchmark harness，JMH）。把顺序流转成并行流轻而易举，却不一定是好事。本节中已经指出，并行流并不总是比顺序流快。此外，并行流有时候会和你的直觉不一致，所以在考虑选择顺序流还是并行流时，第一个也是最重要的建议就是用适当的基准来检查其性能。</li>
+<li>留意装箱。自动装箱和拆箱操作会大大降低性能。Java 8中有原始类型流（IntStream、LongStream和DoubleStream）来避免这种操作，但凡有可能都应该用这些流。</li>
+<li>有些操作本身在并行流上的性能就比顺序流差。特别是limit和findFirst等依赖于元素顺序的操作，它们在并行流上执行的代价非常大。例如，findAny会比findFirst性能好，因为它不一定要按顺序来执行。你总是可以调用unordered方法来把有序流变成无序流。那么，如果你需要流中的￼个元素而不是专门要前￼个的话，对无序并行流调用limit可能会比单个有序流（比如数据源是一个List）更高效。</li>
+<li>还要考虑流的操作流水线的总计算成本。设￼是要处理的元素的总数，￼是一个元素通过流水线的大致处理成本，则￼就是这个对成本的一个粗略的定性估计。￼值较高就意味着使用并行流时性能好的可能性比较大。</li>
+<li>对于较小的数据量，选择并行流几乎从来都不是一个好的决定。并行处理少数几个元素的好处还抵不上并行化造成的额外开销。</li>
+<li>要考虑流背后的数据结构是否易于分解。例如，ArrayList的拆分效率比LinkedList高得多，因为前者用不着遍历就可以平均拆分，后者则必须遍历。另外，用range工厂方法创建的原始类型流也可以快速分解。</li>
+<li>流自身的特点以及流水线中的中间操作修改流的方式，都可能会改变分解过程的性能。例如，一个SIZED流可以分成大小相等的两部分，这样每个部分都可以比较高效地并行处理，但筛选操作可能丢弃的元素个数无法预测，从而导致流本身的大小未知。</li>
+<li>还要考虑终端操作中合并步骤的代价是大是小（例如Collector中的combiner方法）。如果这一步代价很大，那么组合每个子流产生的部分结果所付出的代价就可能会超出通过并行流得到的性能提升。</li>
+</ul>
+<p>表5-1按照可分解性总结了一些流数据源适不适于并行。</p>
+<p><strong>表 5-1　流的数据源和可分解性</strong></p>
+<table>
+<thead>
+<tr>
+<th>源</th>
+<th>可分解性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ArrayList</td>
+<td>极佳</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>差</td>
+</tr>
+<tr>
+<td>IntStream.range</td>
+<td>极佳</td>
+</tr>
+<tr>
+<td>Stream.iterate</td>
+<td>差</td>
+</tr>
+<tr>
+<td>HashSet</td>
+<td>好</td>
+</tr>
+<tr>
+<td>TreeSet</td>
+<td>好</td>
+</tr>
+</tbody></table>
+<p>最后，我们还要强调并行流背后使用的基础架构是Java 7中引入的分支/合并框架。并行汇总的示例证明了要想正确使用并行流，了解它的内部原理至关重要，所以下一节会仔细研究分支/合并框架。</p>
+<h2 id="5-2-分支-合并框架"><a href="#5-2-分支-合并框架" class="headerlink" title="5.2　分支/合并框架"></a>5.2　分支/合并框架</h2><p>分支/合并框架的目的是以递归方式将可以并行的任务拆分成更小的任务，然后将每个子任务的结果合并起来生成整体结果。它是ExecutorService接口的一个实现，它把子任务分配给线程池（称为ForkJoinPool）中的工作线程。首先来看看如何定义任务和子任务。</p>
+<h3 id="5-2-1-使用RecursiveTask"><a href="#5-2-1-使用RecursiveTask" class="headerlink" title="5.2.1　使用RecursiveTask"></a>5.2.1　使用RecursiveTask</h3><p>要把任务提交到这个池，必须创建RecursiveTask<R>的一个子类，其中R是并行化任务（以及所有子任务）产生的结果类型，或者如果任务不返回结果，则是RecursiveAction类型（当然它可能会更新其他非局部机构）。要定义RecursiveTask，只需实现它唯一的抽象方法compute：</p>
+<pre><code>protected abstract R compute();</code></pre><p>这个方法同时定义了将任务拆分成子任务的逻辑，以及无法再拆分或不方便再拆分时，生成单个子任务结果的逻辑。正由于此，这个方法的实现类似于下面的伪代码：</p>
+<pre><code>if (任务足够小或不可分) {
+    顺序计算该任务
+} else {
+    将任务分成两个子任务
+    递归调用本方法，拆分每个子任务，等待所有子任务完成
+    合并每个子任务的结果
+}</code></pre><p>一般来说，并没有确切的标准决定一个任务是否应该再拆分，但有几种试探方法可以帮助你做出这一决定。5.2.2节会进一步澄清。递归的任务拆分过程如图5-3所示。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610889015241-b0da99ae-9453-49ad-bbcf-0cb6b1b60a71.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>图 5-3　分支/合并过程</p>
+<p>你可能已经注意到，这只不过是著名的分治算法的并行版本而已。这里举一个用分支/合并框架的实际例子，还以前面的例子为基础，让我们试着用这个框架为一个数字范围（这里用一个long[]数组表示）求和。如前所述，你需要先为RecursiveTask类做一个实现，就是下面代码清单中的ForkJoinSumCalculator。</p>
+<p>代码清单 5-2　用分支/合并框架执行并行求和</p>
+<pre><code>public class ForkJoinSumCalculator
+                extends java.util.concurrent.RecursiveTask&lt;Long&gt; {       // 扩展RecursiveTask来创建可以用于分支/合并框架的任务
+        private final long[] numbers;       // 要求和的数字数组
+        private final int start;       // 由子任务处理的子数组的起始和终止位置
+        private final int end;
+        public static final long THRESHOLD = 10_000;       // 将任务分解为子任务的阈值大小
+        public ForkJoinSumCalculator(long[] numbers) {       // 公共构造函数用于创建主任务
+            this(numbers, 0, numbers.length);
+        }
+        private ForkJoinSumCalculator(long[] numbers, int start, int end) {       // 私有构造函数用于以递归方式为主任务创建子任务
+            this.numbers = numbers;
+            this.start = start;
+            this.end = end;
+        }
+        @Override
+        protected Long compute() {       // 重写RecursiveTask抽象方法
+            int length = end - start;       // 该任务负责求和的子数组大小
+            if (length &lt;= THRESHOLD) {
+                return computeSequentially();       // 如果大小小于或等于阈值，就顺序计算结果
+            }
+            ForkJoinSumCalculator leftTask =
+                new ForkJoinSumCalculator(numbers, start, start + length/2);       // 创建一个子任务来为数组的前一半求和
+            leftTask.fork();       // 利用ForkJoinPool的另一个线程异步地执行新创建的子任务
+            ForkJoinSumCalculator rightTask =
+                new ForkJoinSumCalculator(numbers, start + length/2, end);       // 创建一个子任务来为数组的后一半求和
+            Long rightResult = rightTask.compute();       // 同步执行第二个子任务，有可能进行进一步的递归划分
+            Long leftResult = leftTask.join();       // 读取第一个子任务的结果，如果尚未完成就等待
+            return leftResult + rightResult;       // 整合两个子任务的计算结果
+        }
+        private long computeSequentially() {       // 大小小于阈值时所采用的一个简单的顺序算法
+            long sum = 0;
+            for (int i = start; i &lt; end; i++) {
+                sum += numbers[i];
+            }
+            return sum;
+        }
+    }</code></pre><p>现在编写一个方法来并行对前￼个自然数求和就很简单了。你只需把想要的数字数组传给ForkJoinSumCalculator的构造函数：</p>
+<pre><code>public static long forkJoinSum(long n) {
+    long[] numbers = LongStream.rangeClosed(1, n).toArray();
+    ForkJoinTask&lt;Long&gt; task = new ForkJoinSumCalculator(numbers);
+    return new ForkJoinPool().invoke(task);
+}</code></pre><p>这里用了一个LongStream来生成包含前￼个自然数的数组，然后创建一个ForkJoinTask（RecursiveTask的父类），并把数组传递给代码清单5-2所示的ForkJoinSumCalculator的公共构造函数。最后，你创建了一个新的ForkJoinPool，并把任务传给它的调用方法。在ForkJoinPool中执行时，最后一个方法返回的值就是ForkJoinSumCalculator类定义的任务结果。</p>
+<p>请注意在实际应用时，使用多个ForkJoinPool是没有什么意义的。正是出于这个原因，一般来说把它实例化一次，然后把实例保存在静态字段中，使之成为单例，这样就可以在软件中任何部分方便地重用了。这里创建时用了其默认的无参数构造函数，这意味着想让线程池使用JVM能够使用的所有处理器。更确切地说，该构造函数将使用Runtime.availableProcessors的返回值来决定线程池使用的线程数。请注意availableProcessors方法虽然看起来是处理器，但它实际上返回的是可用核的数量，包括超线程生成的虚拟核。</p>
+<p><strong>运行ForkJoinSumCalculator</strong></p>
+<p>当把ForkJoinSumCalculator任务传给ForkJoinPool时，这个任务就由池中的一个线程执行，这个线程会调用任务的compute方法。该方法会检查任务是否小到足以顺序执行，如果不够小则会把要求和的数组分成两半，分给两个新的ForkJoinSumCalculator，而它们也由ForkJoinPool安排执行。因此，这一过程可以递归重复，把原任务分为更小的任务，直到满足不方便或不可能再进一步拆分的条件（本例中是求和的项目数小于等于10 000）。这时会顺序计算每个任务的结果，然后由分支过程创建的（隐含的）任务二叉树遍历回到它的根。接下来会合并每个子任务的部分结果，从而得到总任务的结果。这一过程如图5-4所示。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610889287586-75d86307-a27e-45a3-9664-3380cf117dd5.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>图 5-4　分支/合并算法</p>
+<h3 id="5-2-2-使用分支-合并框架的最佳做法"><a href="#5-2-2-使用分支-合并框架的最佳做法" class="headerlink" title="5.2.2　使用分支/合并框架的最佳做法"></a>5.2.2　使用分支/合并框架的最佳做法</h3><p>虽然分支/合并框架还算简单易用，但不幸的是它也很容易被误用。以下是几个有效使用它的最佳做法。</p>
+<ul>
+<li>对一个任务调用join方法会阻塞调用方，直到该任务做出结果。因此，有必要在两个子任务的计算都开始之后再调用它。否则，你得到的版本会比原始的顺序算法更慢且更复杂，因为每个子任务都必须等待另一个子任务完成才能启动。</li>
+<li>不应该在RecursiveTask内部使用ForkJoinPool的invoke方法。相反，你应该始终直接调用compute或fork方法，只有顺序代码才应该用invoke来启动并行计算。</li>
+<li>对子任务调用fork方法可以把它排进ForkJoinPool。同时对左边和右边的子任务调用它似乎很自然，但这样做的效率要比直接对其中一个调用compute低。这样做你可以为其中一个子任务重用同一线程，从而避免在线程池中多分配一个任务造成的开销。</li>
+<li>调试使用分支/合并框架的并行计算可能有点棘手。特别是你平常都在你喜欢的IDE里面看栈跟踪（stack trace）来找问题，但放在分支/合并计算上就不行了，因为调用compute的线程并不是概念上的调用方，后者是调用fork的那个。</li>
+<li>和并行流一样，你不应理所当然地认为在多核处理器上使用分支/合并框架就比顺序计算快。我们已经说过，一个任务可以分解成多个独立的子任务，才能让性能在并行化时有所提升。所有这些子任务的运行时间都应该比分出新任务所花的时间长。一个惯用方法是把输入/输出放在一个子任务里，计算放在另一个里，这样计算就可以和输入/输出同时进行。此外，在比较同一算法的顺序和并行版本的性能时还有别的因素要考虑。就像任何其他Java代码一样，分支/合并框架需要“预热”或者说要执行几遍才会被JIT编译器优化。这就是为什么在测量性能之前跑几遍程序很重要，我们的测试框架就是这么做的。同时还要知道，编译器内置的优化可能会为顺序版本带来一些优势（例如执行死码分析——删去从未被使用的计算）。</li>
+</ul>
+<p>对于分支/合并拆分策略还有最后一点补充：你必须选择一个标准，来决定子任务是要进一步拆分还是已小到可以顺序求值。下一节中会就此给出一些提示。</p>
+<h3 id="5-2-3-工作窃取"><a href="#5-2-3-工作窃取" class="headerlink" title="5.2.3　工作窃取"></a>5.2.3　工作窃取</h3><p>在ForkJoinSumCalculator的例子中，我们决定在要求和的数组中最多包含10 000个项目时就不再创建子任务了。这个选择是很随意的，但大多数情况下也很难找到一个好的启发式方法来确定它，只能试几个不同的值来尝试优化它。在我们的测试案例中，我们先用了一个有1000万项目的数组，意味着ForkJoinSumCalculator至少会分出1000个子任务来。这似乎有点浪费资源，因为我们用来运行它的机器上只有四个核。在这个特定例子中可能确实是这样，因为所有的任务都受CPU约束，预计所花的时间也差不多。</p>
+<p>但分出大量的小任务一般来说都是一个好的选择。这是因为，理想情况下，划分并行任务时，应该让每个任务都用完全相同的时间完成，让所有的CPU核都同样繁忙。不幸的是，实际中，每个子任务所花的时间可能天差地别，要么是因为划分策略效率低，要么是有不可预知的原因，比如磁盘访问慢，或是需要和外部服务协调执行。</p>
+<p>分支/合并框架工程用一种称为工作窃取（work stealing）的技术来解决这个问题。在实际应用中，这意味着这些任务差不多被平均分配到ForkJoinPool中的所有线程上。每个线程都为分配给它的任务保存一个双向链式队列，每完成一个任务，就会从队列头上取出下一个任务开始执行。基于前面所述的原因，某个线程可能早早完成了分配给它的所有任务，也就是它的队列已经空了，而其他的线程还很忙。这时，这个线程并没有闲下来，而是随机选了一个别的线程，从队列的尾巴上“偷走”一个任务。这个过程一直继续下去，直到所有的任务都执行完毕，所有的队列都清空。这就是为什么要划成许多小任务而不是少数几个大任务，这有助于更好地在工作线程之间平衡负载。</p>
+<p>一般来说，这种工作窃取算法用于在池中的工作线程之间重新分配和平衡任务。图5-5展示了这个过程。当工作线程队列中有一个任务被分成两个子任务时，一个子任务就被闲置的工作线程“偷走”了。如前所述，这个过程可以不断递归，直到规定子任务应顺序执行的条件为真。</p>
+<p>￼<img src="https://cdn.nlark.com/yuque/0/2021/png/163287/1610889682097-8ea10d9f-2f41-43e8-b416-38dff026af0a.png?x-oss-process=image%2Fresize%2Cw_1500" alt="image.png"></p>
+<p>图 5-5　分支/合并框架使用的工作窃取算法</p>
+<p>现在你应该清楚流如何使用分支/合并框架来并行处理它的项目了，不过还有一点没有讲。本节中我们分析了一个例子，你明确地指定了将数字数组拆分成多个任务的逻辑。但是，使用本节前面讲的并行流时就用不着这么做了，这就意味着，肯定有一种自动机制来为你拆分流。这种新的自动机制称为Spliterator，有兴趣的同学可以深入去了解。</p>
+<p>– 本文基本摘自《Java实战 第二版》</p>
+<p>本文来自</p>
+<h4 id="图南志"><a href="#图南志" class="headerlink" title="图南志"></a><a href="https://www.yuque.com/bwcx/tnz" target="_blank" rel="noopener">图南志</a></h4><p>而后今将图南</p>
+<p>关注</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about"
+                       rel="external nofollow noreferrer">刘钦华</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.liuqinhua.com/2021/01/19/cheng-xu-she-ji/java8-stem-liu/">http://www.liuqinhua.com/2021/01/19/cheng-xu-she-ji/java8-stem-liu/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer"
+                       target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">刘钦华</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+        document.addEventListener("copy", function (e) {
+            let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+            M.toast({html: toastHTML})
+        });
+
+        function navToReprintStatement() {
+            $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+        }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+        <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin"
+             data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+        <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge left-badge text-color">
+                    <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <div class="card">
+                    <a href="/2021/01/25/raspberry-pi/shu-mei-pai-wifi-shi-xian-yuan-cheng-kong-zhi/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/7.jpg" class="responsive-img"
+                                     alt="Raspberry Pi/树莓派WiFi实现远程控制">
+                            
+                            <span class="card-title">Raspberry Pi/树莓派WiFi实现远程控制</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                树莓派WiFi实现远程控制总的来说有好几种远程控制的方法
+
+FTP
+Ngrok（收费）
+固定IP映射公网（DMZ）
+
+固定IP映射公网（DMZ）我用的是红米的AC2100
+这个一般上路由器都是会带有的
+直接找到你当前树莓派的IP地址，之后使
+                            
+                        </div>
+                        <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-25
+                        </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-user fa-fw"></i>
+                                    刘钦华
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge right-badge text-color">
+                    下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="card">
+                    <a href="/2021/01/16/tools/spring-wei-fu-wu-ji-zhu-zhan/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/6.jpg" class="responsive-img"
+                                     alt="Tools/Spring微服务技术栈">
+                            
+                            <span class="card-title">Tools/Spring微服务技术栈</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+服务注册和服务发现：consul
+
+服务健康检查：consul
+
+配置管理：consul、archaius
+
+集群容错：hystrix
+
+计数监控：codahale-metrics、java-statsd-client、hystrix-d
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-user fa-fw"></i>
+                                    刘钦华
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('180')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: LQH<br />'
+                + '文章作者: 刘钦华<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+    </style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align"
+        style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">刘钦华</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">137.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "4";
+                    var startDate = "26";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+
+                setInterval(siteTime, 1000);
+            </script>
+            
+            |
+            
+            <span id="icp"><img src="/medias/icp.png"
+                    style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备20049015号</a>
+            </span>
+            
+            <!--            <a href="http://www.beian.miit.gov.cn/" style="color:wheat" target="_blank">粤ICP备20049015号</a>-->
+
+
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/RosePuff" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:LiuQinHua2020@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=775204521" class="tooltipped"
+       target="_blank" data-tooltip="QQ联系我: 775204521" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top"
+       data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+            zIndex="-1" src="/libs/background/ribbon-refresh.min.js"
+            async="async"></script>
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

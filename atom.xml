@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>LQH</title>
+  
+  <subtitle>RosePuff</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.liuqinhua.com/"/>
+  <updated>2021-03-24T11:38:22.863Z</updated>
+  <id>http://www.liuqinhua.com/</id>
+  
+  <author>
+    <name>刘钦华</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tools/Python常见错误</title>
+    <link href="http://www.liuqinhua.com/2021/03/24/tools/python-chang-jian-cuo-wu/"/>
+    <id>http://www.liuqinhua.com/2021/03/24/tools/python-chang-jian-cuo-wu/</id>
+    <published>2021-03-24T03:24:57.066Z</published>
+    <updated>2021-03-24T11:38:22.863Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;python中安装包出现Retrying-Retry-total-4-connect-None-read-None-redirect-None-status-None-…………&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式</title>
+    <link href="http://www.liuqinhua.com/2021/03/15/hou-duan/java/ji-chu/she-ji-mo-shi/"/>
+    <id>http://www.liuqinhua.com/2021/03/15/hou-duan/java/ji-chu/she-ji-mo-shi/</id>
+    <published>2021-03-15T09:26:26.000Z</published>
+    <updated>2021-03-15T09:46:38.034Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;设计模式&quot;&gt;&lt;a href=&quot;#设计模式&quot; class=&quot;headerlink&quot; title=&quot;设计模式&quot;&gt;&lt;/a&gt;设计模式&lt;/h1&gt;&lt;h2 id=&quot;单例模式&quot;&gt;&lt;a href=&quot;#单例模式&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="基础" scheme="http://www.liuqinhua.com/categories/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="设计模式" scheme="http://www.liuqinhua.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自学</title>
+    <link href="http://www.liuqinhua.com/2021/02/26/zi-xue/"/>
+    <id>http://www.liuqinhua.com/2021/02/26/zi-xue/</id>
+    <published>2021-02-26T02:57:13.013Z</published>
+    <updated>2021-02-26T02:57:26.714Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>自学/CS/CS61C-计算机组成原理</title>
+    <link href="http://www.liuqinhua.com/2021/02/14/zi-xue/cs/cs61c-ji-suan-ji-zu-cheng-yuan-li/"/>
+    <id>http://www.liuqinhua.com/2021/02/14/zi-xue/cs/cs61c-ji-suan-ji-zu-cheng-yuan-li/</id>
+    <published>2021-02-14T15:24:47.491Z</published>
+    <updated>2021-02-26T06:47:59.883Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;计算机系统的概念&quot;&gt;&lt;a href=&quot;#计算机系统的概念&quot; class=&quot;headerlink&quot; title=&quot;计算机系统的概念&quot;&gt;&lt;/a&gt;计算机系统的概念&lt;/h1&gt;&lt;h2 id=&quot;计算机体系结构的六大理念&quot;&gt;&lt;a href=&quot;#计算机体系结构的六大理念&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Raspberry Pi/Ubuntu Server 20.04 LTS安装MySQL5.67版本</title>
+    <link href="http://www.liuqinhua.com/2021/02/08/raspberry-pi/ubuntu-server-20.04-lts-an-zhuang-mysql5.67-ban-ben/"/>
+    <id>http://www.liuqinhua.com/2021/02/08/raspberry-pi/ubuntu-server-20.04-lts-an-zhuang-mysql5.67-ban-ben/</id>
+    <published>2021-02-08T06:03:26.060Z</published>
+    <updated>2021-02-08T06:03:26.060Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派安装Ubuntu Server 20.04 LTS</title>
+    <link href="http://www.liuqinhua.com/2021/02/08/raspberry-pi/shu-mei-pai-ubuntu-server-20.04-lts/"/>
+    <id>http://www.liuqinhua.com/2021/02/08/raspberry-pi/shu-mei-pai-ubuntu-server-20.04-lts/</id>
+    <published>2021-02-08T05:15:20.000Z</published>
+    <updated>2021-02-28T16:34:01.113Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;树莓派-Ubuntu-Server-20-04-LTS&quot;&gt;&lt;a href=&quot;#树莓派-Ubuntu-Server-20-04-LTS&quot; class=&quot;headerlink&quot; title=&quot;树莓派 Ubuntu Server 20.04 LTS&quot;&gt;&lt;/a&gt;树莓派
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Raspberry Pi" scheme="http://www.liuqinhua.com/categories/Raspberry-Pi/"/>
+    
+    
+      <category term="树莓派" scheme="http://www.liuqinhua.com/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EMQ X 消息服务器</title>
+    <link href="http://www.liuqinhua.com/2021/02/08/hou-duan/zhong-jian-jian/emq-x/"/>
+    <id>http://www.liuqinhua.com/2021/02/08/hou-duan/zhong-jian-jian/emq-x/</id>
+    <published>2021-02-07T19:42:12.000Z</published>
+    <updated>2021-02-08T15:34:33.998Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;h2 id=&quot;What-is-EMQ-X？&quot;&gt;&lt;a href=&quot;#What-is-EMQ-X？&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="http://www.liuqinhua.com/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="EMQ X" scheme="http://www.liuqinhua.com/tags/EMQ-X/"/>
+    
+      <category term="消息服务器" scheme="http://www.liuqinhua.com/tags/%E6%B6%88%E6%81%AF%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java8使用Comparator排序</title>
+    <link href="http://www.liuqinhua.com/2021/02/05/hou-duan/java/ji-chu/java8-shi-yong-comparator-pai-xu/"/>
+    <id>http://www.liuqinhua.com/2021/02/05/hou-duan/java/ji-chu/java8-shi-yong-comparator-pai-xu/</id>
+    <published>2021-02-05T07:40:49.000Z</published>
+    <updated>2021-02-05T08:27:46.424Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Java8使用Comparator-comparing排序&quot;&gt;&lt;a href=&quot;#Java8使用Comparator-comparing排序&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="http://www.liuqinhua.com/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="Java8" scheme="http://www.liuqinhua.com/tags/Java8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Raspberry Pi/ubuntu Server常用命令</title>
+    <link href="http://www.liuqinhua.com/2021/01/31/raspberry-pi/ubuntu-server-chang-yong-ming-ling/"/>
+    <id>http://www.liuqinhua.com/2021/01/31/raspberry-pi/ubuntu-server-chang-yong-ming-ling/</id>
+    <published>2021-01-30T16:26:51.319Z</published>
+    <updated>2021-03-02T02:28:27.569Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;pre class=&quot; language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;# 获取当前版本号&lt;/span&gt;
+&lt;span class=&quot;token
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Raspberry Pi/树莓派WiFi实现远程控制</title>
+    <link href="http://www.liuqinhua.com/2021/01/25/raspberry-pi/shu-mei-pai-wifi-shi-xian-yuan-cheng-kong-zhi/"/>
+    <id>http://www.liuqinhua.com/2021/01/25/raspberry-pi/shu-mei-pai-wifi-shi-xian-yuan-cheng-kong-zhi/</id>
+    <published>2021-01-25T03:59:17.906Z</published>
+    <updated>2021-02-08T06:22:21.577Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;树莓派WiFi实现远程控制&quot;&gt;&lt;a href=&quot;#树莓派WiFi实现远程控制&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>程序设计/Java8_Stem流</title>
+    <link href="http://www.liuqinhua.com/2021/01/19/cheng-xu-she-ji/java8-stem-liu/"/>
+    <id>http://www.liuqinhua.com/2021/01/19/cheng-xu-she-ji/java8-stem-liu/</id>
+    <published>2021-01-19T09:51:07.210Z</published>
+    <updated>2021-01-20T06:10:59.907Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;实战攻略：Java8-Stream&quot;&gt;&lt;a href=&quot;#实战攻略：Java8-Stream&quot; class=&quot;headerlink&quot; title=&quot;实战攻略：Java8-Stream&quot;&gt;&lt;/a&gt;实战攻略：Java8-Stream&lt;/h1&gt;&lt;h1
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Tools/Spring微服务技术栈</title>
+    <link href="http://www.liuqinhua.com/2021/01/16/tools/spring-wei-fu-wu-ji-zhu-zhan/"/>
+    <id>http://www.liuqinhua.com/2021/01/16/tools/spring-wei-fu-wu-ji-zhu-zhan/</id>
+    <published>2021-01-16T07:43:28.631Z</published>
+    <updated>2021-01-16T07:43:46.253Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;服务注册和服务发现：consul&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;服务健康检查：consul&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置管理：consul、archaius&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;集群容错：hystrix&lt;/p&gt;
+&lt;/li&gt;
+&lt;l
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/SUMMARY</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/summary/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/summary/</id>
+    <published>2021-01-12T01:59:46.985Z</published>
+    <updated>2021-01-10T13:47:23.230Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;README.md&quot;&gt;概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;SUMMARY.md&quot;&gt;目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;1、Feign&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;[0、声明式调用 Feign
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/README</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/readme/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/readme/</id>
+    <published>2021-01-12T01:59:46.983Z</published>
+    <updated>2019-12-09T16:28:32.348Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/4、OpenFeign/2、超时机制</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/4-openfeign/2-chao-shi-ji-zhi/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/4-openfeign/2-chao-shi-ji-zhi/</id>
+    <published>2021-01-12T01:59:46.970Z</published>
+    <updated>2021-01-11T11:59:23.968Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;Spring Cloud&lt;/code&gt; 作为微服务解决方案
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/4、OpenFeign/1、OpenFeign介绍</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/4-openfeign/1-openfeign-jie-shao/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/4-openfeign/1-openfeign-jie-shao/</id>
+    <published>2021-01-12T01:59:46.967Z</published>
+    <updated>2021-01-11T11:45:18.016Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt; &lt;strong&gt;Spring Cloud OpenFeign&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将 Feign 集成到 Spring Cloud 体系中，实现服务的&lt;strong&gt;声明式 HTTP
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/3、Hystrix/9、失败回调</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/9-shi-bai-hui-diao/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/9-shi-bai-hui-diao/</id>
+    <published>2021-01-12T01:59:46.926Z</published>
+    <updated>2020-12-21T11:03:26.567Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;以下情况会进行失败回退&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;处理&lt;strong&gt;链路处于熔断&lt;/strong&gt;的回退逻辑&lt;/li&gt;
+&lt;li&gt;处理&lt;strong&gt;信号量获得失败&lt;/strong&gt;的回退逻辑&lt;/li&gt;
+&lt;li&gt;处理&lt;strong&gt;线程池提交任务拒绝&lt;/strong&gt;的回退
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/3、Hystrix/8、超时时间</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/8-chao-shi-shi-jian/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/8-chao-shi-shi-jian/</id>
+    <published>2021-01-12T01:59:46.924Z</published>
+    <updated>2020-12-21T09:38:29.612Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;开启&lt;strong&gt;执行超时&lt;/strong&gt;功能，需要配置 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;HystrixCommandProperties.executionTimeoutEnabled&lt;/code&gt;,执行命令超时功能开关。&lt;ul&gt;
+&lt;li&gt;值
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/3、Hystrix/7、正常执行逻辑</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/7-zheng-chang-zhi-xing-luo-ji/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/7-zheng-chang-zhi-xing-luo-ji/</id>
+    <published>2021-01-12T01:59:46.923Z</published>
+    <updated>2020-12-21T03:35:25.644Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;assets/01.jpeg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;蓝&lt;/strong&gt;圈正常执行逻辑。&lt;/p&gt;
+&lt;h1 id=&quot;正常执行逻辑&quot;&gt;&lt;a href=&quot;#正常执行逻辑&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/3、Hystrix/6、执行缓存</title>
+    <link href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/6-zhi-xing-huan-cun/"/>
+    <id>http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/6-zhi-xing-huan-cun/</id>
+    <published>2021-01-12T01:59:46.921Z</published>
+    <updated>2020-12-20T13:20:11.924Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;执行命令的结果缓存&quot;&gt;&lt;a href=&quot;#执行命令的结果缓存&quot; class=&quot;headerlink&quot; title=&quot;执行命令的结果缓存&quot;&gt;&lt;/a&gt;&lt;strong&gt;执行命令的结果缓存&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;在
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>

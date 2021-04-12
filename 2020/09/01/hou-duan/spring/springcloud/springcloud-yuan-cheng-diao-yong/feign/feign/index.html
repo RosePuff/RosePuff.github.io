@@ -1,0 +1,1768 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Feign, LQH">
+    <meta name="description" content="茕茕白兔，东走西顾。衣不如新，人不如故">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Feign | LQH</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="LQH" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LQH</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LQH</div>
+        <div class="logo-desc">
+            
+            茕茕白兔，东走西顾。衣不如新，人不如故
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/RosePuff" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/RosePuff" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Feign</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+        <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Feign/">
+                                    <span class="chip bg-color">Feign</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/Feign/" class="post-category">
+                                    Feign
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        2020-09-01
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                        2021-03-04
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.9k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        22 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p> 是由 Netflix 开源的<strong>声明式的 HTTP 客户端</strong>，目前已经捐献给 <a href="https://github.com/OpenFeign" target="_blank" rel="noopener">OpenFeign</a> 社区。</p>
+<p> 是一个http请求调用的轻量级框架，可以以Java接口注解的方式调用Http请求，而不用像Java中通过封装HTTP请求报文的方式直接调用。Feign通过处理注解，将请求模板化，当实际调用的时候，传入参数，根据参数再应用到请求上，进而转化成真正的请求，这种请求相对而言比较直观。</p>
+<p>相比使用 RestTemplate 实现服务的调用，Feign 简化了代码的编写，提高了代码的可读性，大大提升了开发的效率。</p>
+<h2 id="Feign解决了什么问题？"><a href="#Feign解决了什么问题？" class="headerlink" title="Feign解决了什么问题？"></a>Feign解决了什么问题？</h2><p>在服务调用的场景中，我们经常调用基于Http协议的服务，而我们经常使用到的框架可能有HttpURLConnection、Apache HttpComponnets、OkHttp3 、Netty等等，这些框架在基于自身的专注点提供了自身特性。而从角色划分上来看，他们的职能是一致的提供Http调用服务。具体流程如下：</p>
+<p><img src="http://nanxiang-liu.test.upcdn.net/%20image/20210221115229.png" alt="image-20201207235257603"></p>
+<h2 id="处理过程图"><a href="#处理过程图" class="headerlink" title="处理过程图"></a><strong>处理过程图</strong></h2><p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304102550.png" alt="在这里插入图片描述"></p>
+<h3 id="基于面向接口的动态代理方式生成实现类"><a href="#基于面向接口的动态代理方式生成实现类" class="headerlink" title="基于面向接口的动态代理方式生成实现类"></a>基于面向接口的动态代理方式生成实现类</h3><p>在使用feign 时，会定义对应的接口类，在接口类上使用Http相关的注解，标识HTTP请求参数信息,如下所示：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">interface</span> <span class="token class-name">GitHub</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@RequestLine</span><span class="token punctuation">(</span><span class="token string">"GET /repos/{owner}/{repo}/contributors"</span><span class="token punctuation">)</span>
+  List<span class="token operator">&lt;</span>Contributor<span class="token operator">></span> <span class="token function">contributors</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"owner"</span><span class="token punctuation">)</span> String owner<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"repo"</span><span class="token punctuation">)</span> String repo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Contributor</span> <span class="token punctuation">{</span>
+  String login<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> contributions<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyApp</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    GitHub github <span class="token operator">=</span> Feign<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                         <span class="token punctuation">.</span><span class="token function">decoder</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">GsonDecoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                         <span class="token punctuation">.</span><span class="token function">target</span><span class="token punctuation">(</span>GitHub<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string">"https://api.github.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Fetch and print a list of the contributors to this library.</span>
+    List<span class="token operator">&lt;</span>Contributor<span class="token operator">></span> contributors <span class="token operator">=</span> github<span class="token punctuation">.</span><span class="token function">contributors</span><span class="token punctuation">(</span><span class="token string">"OpenFeign"</span><span class="token punctuation">,</span> <span class="token string">"feign"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Contributor contributor <span class="token operator">:</span> contributors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>contributor<span class="token punctuation">.</span>login <span class="token operator">+</span> <span class="token string">" ("</span> <span class="token operator">+</span> contributor<span class="token punctuation">.</span>contributions <span class="token operator">+</span> <span class="token string">")"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在Feign 底层，通过基于面向接口的动态代理方式生成实现类，将请求调用委托到动态代理实现类，基本原理如下所示：</p>
+<p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304102555.png" alt="img"></p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ReflectiveFeign</span> <span class="token keyword">extends</span> <span class="token class-name">Feign</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">///省略部分代码</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">newInstance</span><span class="token punctuation">(</span>Target<span class="token operator">&lt;</span>T<span class="token operator">></span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//根据接口类和Contract协议解析方式，解析接口类上的方法和注解，转换成内部的MethodHandler处理方式</span>
+    Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span> nameToHandler <span class="token operator">=</span> targetToHandlersByName<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Map<span class="token operator">&lt;</span>Method<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span> methodToHandler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>Method<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>DefaultMethodHandler<span class="token operator">></span> defaultMethodHandlers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span>DefaultMethodHandler<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Method method <span class="token operator">:</span> target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>method<span class="token punctuation">.</span><span class="token function">getDeclaringClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> Object<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">continue</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>Util<span class="token punctuation">.</span><span class="token function">isDefault</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        DefaultMethodHandler handler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultMethodHandler</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        defaultMethodHandlers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        methodToHandler<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        methodToHandler<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> nameToHandler<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>Feign<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    InvocationHandler handler <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> methodToHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 基于Proxy.newProxyInstance 为接口类创建动态实现，将所有的请求转换给InvocationHandler 处理。</span>
+    T proxy <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Class</span><span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span>target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span><span class="token punctuation">(</span>DefaultMethodHandler defaultMethodHandler <span class="token operator">:</span> defaultMethodHandlers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      defaultMethodHandler<span class="token punctuation">.</span><span class="token function">bindTo</span><span class="token punctuation">(</span>proxy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> proxy<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">//省略部分代码</span></code></pre>
+<p>所有的请求都会经过feign.ReflectiveFeign.FeignInvocationHandler#invoke</p>
+<p><img src="assets/image-20201208001001222.png" alt="image-20201208001001222"></p>
+<h3 id="PHASE-2-根据Contract协议规则，解析接口类的注解信息，解析成内部表现："><a href="#PHASE-2-根据Contract协议规则，解析接口类的注解信息，解析成内部表现：" class="headerlink" title="PHASE 2. 根据Contract协议规则，解析接口类的注解信息，解析成内部表现："></a>PHASE 2. 根据Contract协议规则，解析接口类的注解信息，解析成内部表现：</h3><p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304102600.png" alt="在这里插入图片描述"></p>
+<p>Feign 定义了转换协议，定义如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * Defines what annotations and values are valid on interfaces.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Contract</span> <span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * Called to parse the methods in the class that are linked to HTTP requests.
+   * 传入接口定义，解析成相应的方法内部元数据表示
+   * @param targetType {@link feign.Target#type() type} of the Feign interface.
+   */</span>
+  <span class="token comment" spellcheck="true">// TODO: break this and correct spelling at some point</span>
+  List<span class="token operator">&lt;</span>MethodMetadata<span class="token operator">></span> <span class="token function">parseAndValidatateMetadata</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> targetType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>Contract.BaseContract是个抽象类，<ul>
+<li>processAnnotationOnClass、解析类上的注解</li>
+<li>processAnnotationOnMethod、解析方法上的注解</li>
+<li>processAnnotationsOnParameter、解析参数上的注解</li>
+</ul>
+</li>
+<li>它的parseAndValidatateMetadata方法的实现主要是调用了parseAndValidateMetadata方法，而该方法会调用processAnnotationOnClass、processAnnotationOnMethod、processAnnotationsOnParameter这些方法</li>
+</ul>
+<blockquote>
+<p>Contract.Default继承了BaseContract，其processAnnotationOnClass方法处理feign.Headers注解；其processAnnotationOnMethod方法处理feign.RequestLine、feign.Body注解；其processAnnotationsOnParameter方法处理feign.Param、feign.QueryMap、feign.HeaderMap注解</p>
+</blockquote>
+<p>Feign 默认的协议规范</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>接口Target</th>
+<th>使用说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@RequestLine</code></td>
+<td>方法上</td>
+<td>定义HttpMethod 和 UriTemplate. UriTemplate 中使用<code>{}</code> 包裹的表达式，可以通过在方法参数上使用@Param 自动注入</td>
+</tr>
+<tr>
+<td><code>@Param</code></td>
+<td>方法参数</td>
+<td>定义模板变量，模板变量的值可以使用名称的方式使用模板注入解析</td>
+</tr>
+<tr>
+<td><code>@Headers</code></td>
+<td>类上或者方法上</td>
+<td>定义头部模板变量，使用@Param 注解提供参数值的注入。如果该注解添加在接口类上，则所有的请求都会携带对应的Header信息；如果在方法上，则只会添加到对应的方法请求上</td>
+</tr>
+<tr>
+<td><code>@QueryMap</code></td>
+<td>方法上</td>
+<td>定义一个键值对或者 pojo，参数值将会被转换成URL上的 query 字符串上</td>
+</tr>
+<tr>
+<td><code>@HeaderMap</code></td>
+<td>方法上</td>
+<td>定义一个HeaderMap, 与 UrlTemplate 和HeaderTemplate 类型，可以使用@Param 注解提供参数值</td>
+</tr>
+</tbody></table>
+<h4 id="基于Spring-MVC的协议规范SpringMvcContract"><a href="#基于Spring-MVC的协议规范SpringMvcContract" class="headerlink" title="基于Spring MVC的协议规范SpringMvcContract:"></a>基于Spring MVC的协议规范SpringMvcContract:</h4><p>当前Spring Cloud 微服务解决方案中，为了降低学习成本，采用了Spring MVC的部分注解来完成 请求协议解析，也就是说 ，写客户端请求接口和像写服务端代码一样：客户端和服务端可以通过SDK的方式进行约定，客户端只需要引入服务端发布的SDK API，就可以使用面向接口的编码方式对接服务：</p>
+<p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304102602.png" alt="在这里插入图片描述"></p>
+<h3 id="PHASE-3-基于-RequestBean，动态生成Request"><a href="#PHASE-3-基于-RequestBean，动态生成Request" class="headerlink" title="PHASE 3. 基于 RequestBean，动态生成Request"></a>PHASE 3. 基于 RequestBean，动态生成Request</h3><p>根据传入的Bean对象和注解信息，从中提取出相应的值，来构造Http Request 对象：</p>
+<p><img src="http://nanxiang-liu.test.upcdn.net/%20image/20210221115248" alt="img"></p>
+<h3 id="PHASE-4-使用Encoder-将Bean转换成-Http报文正文（消息解析和转码逻辑）"><a href="#PHASE-4-使用Encoder-将Bean转换成-Http报文正文（消息解析和转码逻辑）" class="headerlink" title="PHASE 4. 使用Encoder 将Bean转换成 Http报文正文（消息解析和转码逻辑）"></a>PHASE 4. 使用Encoder 将Bean转换成 Http报文正文（消息解析和转码逻辑）</h3><p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304102605.png" alt="在这里插入图片描述"></p>
+<p>目前Feign 有以下实现：</p>
+<table>
+<thead>
+<tr>
+<th>Encoder/ Decoder 实现</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JacksonEncoder，JacksonDecoder</td>
+<td>基于 Jackson 格式的持久化转换协议</td>
+</tr>
+<tr>
+<td>GsonEncoder，GsonDecoder</td>
+<td>基于Google GSON 格式的持久化转换协议</td>
+</tr>
+<tr>
+<td>SaxEncoder，SaxDecoder</td>
+<td>基于XML 格式的Sax 库持久化转换协议</td>
+</tr>
+<tr>
+<td>JAXBEncoder，JAXBDecoder</td>
+<td>基于XML 格式的JAXB 库持久化转换协议</td>
+</tr>
+<tr>
+<td>ResponseEntityEncoder，ResponseEntityDecoder</td>
+<td>Spring MVC 基于 ResponseEntity&lt; T &gt; 返回格式的转换协议</td>
+</tr>
+<tr>
+<td>SpringEncoder，SpringDecoder</td>
+<td>基于Spring MVC HttpMessageConverters 一套机制实现的转换协议 ,应用于Spring Cloud 体系中</td>
+</tr>
+</tbody></table>
+<h3 id="PHASE-5-拦截器负责对请求和返回进行装饰处理"><a href="#PHASE-5-拦截器负责对请求和返回进行装饰处理" class="headerlink" title="PHASE 5. 拦截器负责对请求和返回进行装饰处理"></a>PHASE 5. 拦截器负责对请求和返回进行装饰处理</h3><p>在请求转换的过程中，Feign 抽象出来了拦截器接口，用于用户自定义对请求的操作：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">RequestInterceptor</span> <span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * 可以在构造RequestTemplate 请求时，增加或者修改Header, Method, Body 等信息
+   * Called for every request. Add data using methods on the supplied {@link RequestTemplate}.
+   */</span>
+  <span class="token keyword">void</span> <span class="token function">apply</span><span class="token punctuation">(</span>RequestTemplate template<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="PHASE-6-日志记录"><a href="#PHASE-6-日志记录" class="headerlink" title="PHASE 6. 日志记录"></a>PHASE 6. 日志记录</h3><p>在发送和接收请求的时候，Feign定义了统一的日志门面来输出日志信息 , 并且将日志的输出定义了四个等级：</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NONE</td>
+<td>不做任何记录</td>
+</tr>
+<tr>
+<td>BASIC</td>
+<td>只记录输出Http 方法名称、请求URL、返回状态码和执行时间</td>
+</tr>
+<tr>
+<td>HEADERS</td>
+<td>记录输出Http 方法名称、请求URL、返回状态码和执行时间 和 Header 信息</td>
+</tr>
+<tr>
+<td>FULL</td>
+<td>记录Request 和Response的Header，Body和一些请求元数据</td>
+</tr>
+</tbody></table>
+<h3 id="PHASE-7-基于重试器发送HTTP请求"><a href="#PHASE-7-基于重试器发送HTTP请求" class="headerlink" title="PHASE 7 . 基于重试器发送HTTP请求"></a>PHASE 7 . 基于重试器发送HTTP请求</h3><p>Feign 内置了一个重试器，当HTTP请求出现IO异常时，Feign会有一个最大尝试次数发送请求，以下是Feign核心</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">SynchronousMethodHandler</span> <span class="token keyword">implements</span> <span class="token class-name">MethodHandler</span> <span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">// 省略部分代码</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object<span class="token punctuation">[</span><span class="token punctuation">]</span> argv<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+   <span class="token comment" spellcheck="true">//根据输入参数，构造Http 请求。</span>
+    RequestTemplate template <span class="token operator">=</span> buildTemplateFromArgs<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 克隆出一份重试器</span>
+    Retryer retryer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>retryer<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 尝试最大次数，如果中间有结果，直接返回</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">executeAndDecode</span><span class="token punctuation">(</span>template<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RetryableException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        retryer<span class="token punctuation">.</span><span class="token function">continueOrPropagate</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>logLevel <span class="token operator">!=</span> Logger<span class="token punctuation">.</span>Level<span class="token punctuation">.</span>NONE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          logger<span class="token punctuation">.</span><span class="token function">logRetry</span><span class="token punctuation">(</span>metadata<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> logLevel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">continue</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<p>重试器有如下几个控制参数：</p>
+<table>
+<thead>
+<tr>
+<th>重试参数</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>period</td>
+<td>初始重试时间间隔，当请求失败后，重试器将会暂停 初始时间间隔(线程 sleep 的方式)后再开始，避免强刷请求，浪费性能</td>
+<td>100ms</td>
+</tr>
+<tr>
+<td>maxPeriod</td>
+<td>当请求连续失败时，重试的时间间隔将按照：<code>long interval = (long) (period * Math.pow(1.5, attempt - 1));</code> 计算，按照等比例方式延长，但是最大间隔时间为 maxPeriod, 设置此值能够避免 重试次数过多的情况下执行周期太长</td>
+<td>1000ms</td>
+</tr>
+<tr>
+<td>maxAttempts</td>
+<td>最大重试次数</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="PHASE-8-发送Http请求"><a href="#PHASE-8-发送Http请求" class="headerlink" title="PHASE 8. 发送Http请求"></a>PHASE 8. 发送Http请求</h3><p>Feign 真正发送HTTP请求是委托给 <code>feign.Client</code> 来做的：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * Executes a request against its {@link Request#url() url} and returns a response.
+   *  执行Http请求，并返回Response
+   * @param request safe to replay.
+   * @param options options to apply to this request.
+   * @return connected response, {@link Response.Body} is absent or unread.
+   * @throws IOException on a network error connecting to {@link Request#url()}.
+   */</span>
+  Response <span class="token function">execute</span><span class="token punctuation">(</span>Request request<span class="token punctuation">,</span> Options options<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre>
+<p>Feign 默认底层通过JDK 的 <code>java.net.HttpURLConnection</code> 实现了<code>feign.Client</code>接口类,在每次发送请求的时候，都会创建新的HttpURLConnection 链接，这也就是为什么默认情况下Feign的性能很差的原因。可以通过拓展该接口，使用Apache HttpClient 或者OkHttp3等基于连接池的高性能Http客户端，我们项目内部使用的就是OkHttp3作为Http 客户端。</p>
+<h1 id="Feign动态代理"><a href="#Feign动态代理" class="headerlink" title="Feign动态代理"></a>Feign动态代理</h1><p><code>Feign</code> 的基本用法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 1. Feign 动态代理</span>
+GitHub github <span class="token operator">=</span> Feign<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">decoder</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">GsonDecoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">target</span><span class="token punctuation">(</span>GitHub<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string">"https://api.github.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 2. Feign 执行</span>
+List<span class="token operator">&lt;</span>Contributor<span class="token operator">></span> contributors <span class="token operator">=</span> github<span class="token punctuation">.</span><span class="token function">contributors</span><span class="token punctuation">(</span><span class="token string">"OpenFeign"</span><span class="token punctuation">,</span> <span class="token string">"feign"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>总结：</strong> <code>Feign</code> 使用时分成两步：一是生成 Feign 的动态代理；二是 Feign 执行。</p>
+<h2 id="JDK的动态代理"><a href="#JDK的动态代理" class="headerlink" title="JDK的动态代理"></a>JDK的动态代理</h2><p>jdk的动态代理的简单示例</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * JDKDynamicProxy
+ * jdkd动态代理
+ *
+ * @author
+ * @create 2018-03-29 16:17
+ **/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JDKDynamicProxy</span> <span class="token keyword">implements</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Object target<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">JDKDynamicProxy</span><span class="token punctuation">(</span>Object target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>target <span class="token operator">=</span> target<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取被代理接口实例对象
+     * @param &lt;T>
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">getProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Do something before"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Object result <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Do something after"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>当使用getProxy获取的代理对象执行方法的的时候都会经过invoke方法</p>
+<h2 id="Feign-动态代理"><a href="#Feign-动态代理" class="headerlink" title="Feign 动态代理"></a>Feign 动态代理</h2><p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304102828.png" alt="img"></p>
+<p>先了解一下 <code>Target</code> 这个对象</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Target</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 接口的类型</span>
+  Class<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 代理对象的名称，默认为url,负载均衡时有用</span>
+  String <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 请求的url地址，eg: https://api/v2</span>
+  String <span class="token function">url</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>有一个默认的实现，硬编码实现。其中 Target.type 是用来生成代理对象的，url 是 Client 对象发送请求的地址。</p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">HardCodedTarget</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token keyword">implements</span> <span class="token class-name">Target</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> Class<span class="token operator">&lt;</span>T<span class="token operator">></span> type<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String url<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">HardCodedTarget</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span>T<span class="token operator">></span> type<span class="token punctuation">,</span> String url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> url<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">HardCodedTarget</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span>T<span class="token operator">></span> type<span class="token punctuation">,</span> String name<span class="token punctuation">,</span> String url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> <span class="token function">checkNotNull</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token string">"type"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token function">checkNotNull</span><span class="token punctuation">(</span><span class="token function">emptyToNull</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token function">checkNotNull</span><span class="token punctuation">(</span><span class="token function">emptyToNull</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"url"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>就像示例中的一样使用硬编码的方式构建。</p>
+<p>Feign的默认实现是ReflectiveFeign。feign.Feign.Builder#build</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> Feign <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//客户端 </span>
+            <span class="token comment" spellcheck="true">// client 有三种实现 JdkHttp/ApacheHttp/okHttp，默认是 jdk 的实现</span>
+      Client client <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>client<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//重试参数</span>
+      Retryer retryer <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>retryer<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      List<span class="token operator">&lt;</span>RequestInterceptor<span class="token operator">></span> requestInterceptors <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>requestInterceptors<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>ri <span class="token operator">-</span><span class="token operator">></span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span>ri<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//日志</span>
+      Logger logger <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>logger<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//契约</span>
+      Contract contract <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>contract<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      Options options <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>options<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//编码器</span>
+      Encoder encoder <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>encoder<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//解码器</span>
+      Decoder decoder <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>decoder<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//InvocationHandler的工厂类</span>
+      InvocationHandlerFactory invocationHandlerFactory <span class="token operator">=</span>
+          Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>invocationHandlerFactory<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      QueryMapEncoder queryMapEncoder <span class="token operator">=</span> Capability<span class="token punctuation">.</span><span class="token function">enrich</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>queryMapEncoder<span class="token punctuation">,</span> capabilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//</span>
+      SynchronousMethodHandler<span class="token punctuation">.</span>Factory synchronousMethodHandlerFactory <span class="token operator">=</span>
+          <span class="token keyword">new</span> <span class="token class-name">SynchronousMethodHandler<span class="token punctuation">.</span>Factory</span><span class="token punctuation">(</span>client<span class="token punctuation">,</span> retryer<span class="token punctuation">,</span> requestInterceptors<span class="token punctuation">,</span> logger<span class="token punctuation">,</span>
+              logLevel<span class="token punctuation">,</span> decode404<span class="token punctuation">,</span> closeAfterDecode<span class="token punctuation">,</span> propagationPolicy<span class="token punctuation">,</span> forceDecoding<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      ParseHandlersByName handlersByName <span class="token operator">=</span>
+          <span class="token keyword">new</span> <span class="token class-name">ParseHandlersByName</span><span class="token punctuation">(</span>contract<span class="token punctuation">,</span> options<span class="token punctuation">,</span> encoder<span class="token punctuation">,</span> decoder<span class="token punctuation">,</span> queryMapEncoder<span class="token punctuation">,</span>
+              errorDecoder<span class="token punctuation">,</span> synchronousMethodHandlerFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ReflectiveFeign</span><span class="token punctuation">(</span>handlersByName<span class="token punctuation">,</span> invocationHandlerFactory<span class="token punctuation">,</span> queryMapEncoder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="生成代理对象"><a href="#生成代理对象" class="headerlink" title="生成代理对象"></a>生成代理对象</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">newInstance</span><span class="token punctuation">(</span>Target<span class="token operator">&lt;</span>T<span class="token operator">></span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 1Contract 将 target.type 接口类上的方法和注解解析成 MethodMetadata，</span>
+    Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span> nameToHandler <span class="token operator">=</span> targetToHandlersByName<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Map<span class="token operator">&lt;</span>Method<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span> methodToHandler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>Method<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>DefaultMethodHandler<span class="token operator">></span> defaultMethodHandlers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span>DefaultMethodHandler<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Method method <span class="token operator">:</span> target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//过滤掉公共方法</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>method<span class="token punctuation">.</span><span class="token function">getDeclaringClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> Object<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>Util<span class="token punctuation">.</span><span class="token function">isDefault</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            DefaultMethodHandler handler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultMethodHandler</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            defaultMethodHandlers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            methodToHandler<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//将需要处理的方法，以method为key，MethodHandler为value</span>
+            methodToHandler<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> nameToHandler<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>Feign<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 2. 生成 target.type 的 jdk 动态代理对象</span>
+    InvocationHandler handler <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> methodToHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    T proxy <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                         <span class="token keyword">new</span> <span class="token class-name">Class</span><span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span>target<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//将默认不处理的方法，从动态代理中去除</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>DefaultMethodHandler defaultMethodHandler <span class="token operator">:</span> defaultMethodHandlers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        defaultMethodHandler<span class="token punctuation">.</span><span class="token function">bindTo</span><span class="token punctuation">(</span>proxy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> proxy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304102828.png" alt="image-20201210003632911"></p>
+<p> newInstance 生成了 JDK 的动态代理，从 <code>factory.create(target, methodToHandler)</code> 也可以看出 InvocationHandler 实际委托给了 methodToHandler。methodToHandler 默认是 SynchronousMethodHandler.Factory 工厂类创建的。</p>
+<h1 id="MethodHandler-方法执行器"><a href="#MethodHandler-方法执行器" class="headerlink" title="MethodHandler 方法执行器"></a>MethodHandler 方法执行器</h1><p>ParseHandlersByName.apply 生成了每个方法的执行器 MethodHandler，其中最重要的一步就是通过 Contract 解析 MethodMetadata。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span> <span class="token function">apply</span><span class="token punctuation">(</span>Target key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 1. contract 将接口类中的方法和注解解析 MethodMetadata</span>
+    List<span class="token operator">&lt;</span>MethodMetadata<span class="token operator">></span> metadata <span class="token operator">=</span> contract<span class="token punctuation">.</span><span class="token function">parseAndValidatateMetadata</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> MethodHandler<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>MethodMetadata md <span class="token operator">:</span> metadata<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 2. buildTemplate 实际上将 Method 方法的参数转换成 Request</span>
+        BuildTemplateByResolvingArgs buildTemplate<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>md<span class="token punctuation">.</span><span class="token function">formParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> md<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bodyTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 2.1 表单</span>
+            buildTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BuildFormEncodedTemplateFromArgs</span><span class="token punctuation">(</span>md<span class="token punctuation">,</span> encoder<span class="token punctuation">,</span> queryMapEncoder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>md<span class="token punctuation">.</span><span class="token function">bodyIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 2.2 @Body 注解</span>
+            buildTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BuildEncodedTemplateFromArgs</span><span class="token punctuation">(</span>md<span class="token punctuation">,</span> encoder<span class="token punctuation">,</span> queryMapEncoder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 2.3 其余</span>
+            buildTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BuildTemplateByResolvingArgs</span><span class="token punctuation">(</span>md<span class="token punctuation">,</span> queryMapEncoder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 3. 将 metadata 和 buildTemplate 封装成 MethodHandler</span>
+        result<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>md<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                   factory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> md<span class="token punctuation">,</span> buildTemplate<span class="token punctuation">,</span> options<span class="token punctuation">,</span> decoder<span class="token punctuation">,</span> errorDecoder<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="合约"><a href="#合约" class="headerlink" title="合约"></a>合约</h2><p>Contract的中文意义是合约，parseAndValidatateMetadata的作用顾名思义就是将我们传入的接口进行解析验证，看注解的使用是否符合规范，然后返回给我们接口上各种相应的元数据。</p>
+<h3 id="BaseContract-子类"><a href="#BaseContract-子类" class="headerlink" title="BaseContract 子类"></a>BaseContract 子类</h3><p>其主要逻辑是验证我们使用的时候是否符合了规范。<br>抽取元数据的逻辑留给了子类</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>MethodMetadata<span class="token operator">></span> <span class="token function">parseAndValidatateMetadata</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> targetType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true">//检查传入的接口不能带有泛型</span>
+      <span class="token function">checkState</span><span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getTypeParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"Parameterized types unsupported: %s"</span><span class="token punctuation">,</span>
+                 targetType<span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//检查传入的接口最多只能有一个父接口</span>
+      <span class="token function">checkState</span><span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"Only single inheritance supported: %s"</span><span class="token punctuation">,</span>
+                 targetType<span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//找到传入的接口的父接口，父接口必须没有接口了。既整个继承体系只能有一层</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">checkState</span><span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                   <span class="token string">"Only single-level inheritance supported: %s"</span><span class="token punctuation">,</span>
+                   targetType<span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//新建一个结果集容器</span>
+      Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> MethodMetadata<span class="token operator">></span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> MethodMetadata<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//取得接口里面的所有public方法，包括从父接口继承而来的</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span>Method method <span class="token operator">:</span> targetType<span class="token punctuation">.</span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//排除掉从Object继承的方法，static方法，接口中的default方法</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>method<span class="token punctuation">.</span><span class="token function">getDeclaringClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> Object<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token operator">||</span>
+            <span class="token punctuation">(</span>method<span class="token punctuation">.</span><span class="token function">getModifiers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> Modifier<span class="token punctuation">.</span>STATIC<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">||</span>
+            Util<span class="token punctuation">.</span><span class="token function">isDefault</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//</span>
+        MethodMetadata metadata <span class="token operator">=</span> <span class="token function">parseAndValidateMetadata</span><span class="token punctuation">(</span>targetType<span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">checkState</span><span class="token punctuation">(</span><span class="token operator">!</span>result<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>metadata<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Overrides unsupported: %s"</span><span class="token punctuation">,</span>
+                   metadata<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>metadata<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> metadata<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>MethodMetadata<span class="token operator">></span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<h3 id="解析接口中的单个方法"><a href="#解析接口中的单个方法" class="headerlink" title="解析接口中的单个方法"></a>解析接口中的单个方法</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> MethodMetadata <span class="token function">parseAndValidateMetadata</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> targetType<span class="token punctuation">,</span> Method method<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//方法元数据封装类</span>
+      MethodMetadata data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MethodMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//解析出方法的返回类型</span>
+      data<span class="token punctuation">.</span><span class="token function">returnType</span><span class="token punctuation">(</span>Types<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>targetType<span class="token punctuation">,</span> targetType<span class="token punctuation">,</span> method<span class="token punctuation">.</span><span class="token function">getGenericReturnType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//用Feign中的静态方法configKey解析出接口&amp;方法作为一种String key</span>
+      data<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span>Feign<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span>targetType<span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//如果传入的接口有一个父接口，处理父接口上的注解，放入MethodMetadata</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">processAnnotationOnClass</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> targetType<span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//处理传入的这个接口上自己的注解</span>
+      <span class="token function">processAnnotationOnClass</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> targetType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//注意这个方法虚方法，留给了子类去实现。</span>
+
+      <span class="token comment" spellcheck="true">//处理这个方法上的注解，同样是虚方法</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span>Annotation methodAnnotation <span class="token operator">:</span> method<span class="token punctuation">.</span><span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">processAnnotationOnMethod</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> methodAnnotation<span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//检查data里面template是否已放入了这个方法关于HHTP method的信息，比如时GET方法，POST方法之类的。这个操作之前应该是由processAnnotationOnMethod去实现的。</span>
+      <span class="token function">checkState</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">,</span>
+                 <span class="token string">"Method %s not annotated with HTTP method type (ex. GET, POST)"</span><span class="token punctuation">,</span>
+                 method<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//得到方法的参数类型</span>
+      Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> parameterTypes <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">getParameterTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//得到参数的泛型信息</span>
+      Type<span class="token punctuation">[</span><span class="token punctuation">]</span> genericParameterTypes <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">getGenericParameterTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//得到方法的参数上的在注解</span>
+      Annotation<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> parameterAnnotations <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">getParameterAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment" spellcheck="true">//遍历参数的注解</span>
+      <span class="token keyword">int</span> count <span class="token operator">=</span> parameterAnnotations<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> isHttpAnnotation <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//是否是一个“http注解”？</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>parameterAnnotations<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          isHttpAnnotation <span class="token operator">=</span> <span class="token function">processAnnotationsOnParameter</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> parameterAnnotations<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//如果参数是URL类型的，data中放入urlIndex?</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>parameterTypes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> URI<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          data<span class="token punctuation">.</span><span class="token function">urlIndex</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isHttpAnnotation<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">//如果“http注解”为false，检查data中formParams“表单参数”如果不为空，则报错。</span>
+          <span class="token comment" spellcheck="true">//body参数不能和form参数一起？？？？？</span>
+          <span class="token function">checkState</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">formParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     <span class="token string">"Body parameters cannot be used with form parameters."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment" spellcheck="true">//如果data中bodyIndex不为空，？？？？？？？</span>
+          <span class="token function">checkState</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">bodyIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">,</span> <span class="token string">"Method has too many Body parameters: %s"</span><span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment" spellcheck="true">//设置bodyIndex</span>
+          data<span class="token punctuation">.</span><span class="token function">bodyIndex</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment" spellcheck="true">//设置bodyType？？？？</span>
+          data<span class="token punctuation">.</span><span class="token function">bodyType</span><span class="token punctuation">(</span>Types<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>targetType<span class="token punctuation">,</span> targetType<span class="token punctuation">,</span> genericParameterTypes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//检查headerMap所在的参数必须是一个Map类型，key为String</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">headerMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">checkMapString</span><span class="token punctuation">(</span><span class="token string">"HeaderMap"</span><span class="token punctuation">,</span> parameterTypes<span class="token punctuation">[</span>data<span class="token punctuation">.</span><span class="token function">headerMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> genericParameterTypes<span class="token punctuation">[</span>data<span class="token punctuation">.</span><span class="token function">headerMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//同理</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">queryMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">checkMapString</span><span class="token punctuation">(</span><span class="token string">"QueryMap"</span><span class="token punctuation">,</span> parameterTypes<span class="token punctuation">[</span>data<span class="token punctuation">.</span><span class="token function">queryMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> genericParameterTypes<span class="token punctuation">[</span>data<span class="token punctuation">.</span><span class="token function">queryMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<h2 id="默认实现"><a href="#默认实现" class="headerlink" title="默认实现"></a>默认实现</h2><p>实现了以下3个方法的具体逻辑，负责抽取元信息<br>processAnnotationOnClass<br>processAnnotationOnMethod<br>processAnnotationsOnParameter</p>
+<pre class=" language-kotlin"><code class="language-kotlin">  <span class="token keyword">protected</span> <span class="token keyword">final</span> void <span class="token function">processAnnotationOnClass</span><span class="token punctuation">(</span>MethodMetadata <span class="token keyword">data</span><span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> targetType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> List<span class="token operator">&lt;</span>GuardedAnnotationProcessor<span class="token operator">></span> processors <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">annotation</span> <span class="token operator">-></span> classAnnotationProcessors<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>processor <span class="token operator">-></span> processor<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token keyword">annotation</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>processors<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Arrays<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">annotation</span> <span class="token operator">-></span> processors<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>processor <span class="token operator">-></span> processor<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token keyword">annotation</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>processor <span class="token operator">-></span> processor<span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token keyword">annotation</span><span class="token punctuation">,</span> <span class="token keyword">data</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">data</span><span class="token punctuation">.</span><span class="token function">addWarning</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+            <span class="token string">"Class %s has no annotations, it may affect contract %s"</span><span class="token punctuation">,</span>
+            targetType<span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">data</span><span class="token punctuation">.</span><span class="token function">addWarning</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+            <span class="token string">"Class %s has annotations %s that are not used by contract %s"</span><span class="token punctuation">,</span>
+            targetType<span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            Arrays<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>targetType<span class="token punctuation">.</span><span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">annotation</span> <span class="token operator">-></span> <span class="token keyword">annotation</span><span class="token punctuation">.</span><span class="token function">annotationType</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span></code></pre>
+<p>最后都委托到feign.Contract.Default#Default进行处理</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">Default</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">registerClassAnnotation</span><span class="token punctuation">(</span>Headers<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>header<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> headersOnType <span class="token operator">=</span> header<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">checkState</span><span class="token punctuation">(</span>headersOnType<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"Headers annotation was empty on type %s."</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Collection<span class="token operator">&lt;</span>String<span class="token operator">>></span> headers <span class="token operator">=</span> <span class="token function">toMap</span><span class="token punctuation">(</span>headersOnType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headers<span class="token punctuation">.</span><span class="token function">putAll</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// to clear</span>
+    data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">registerMethodAnnotation</span><span class="token punctuation">(</span>RequestLine<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>ann<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> String requestLine <span class="token operator">=</span> ann<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">checkState</span><span class="token punctuation">(</span><span class="token function">emptyToNull</span><span class="token punctuation">(</span>requestLine<span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">,</span>
+        <span class="token string">"RequestLine annotation was empty on method %s."</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">final</span> Matcher requestLineMatcher <span class="token operator">=</span> REQUEST_LINE_PATTERN<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>requestLine<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>requestLineMatcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+          <span class="token string">"RequestLine annotation didn't start with an HTTP verb on method %s"</span><span class="token punctuation">,</span>
+          data<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">method</span><span class="token punctuation">(</span>HttpMethod<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>requestLineMatcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">uri</span><span class="token punctuation">(</span>requestLineMatcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">decodeSlash</span><span class="token punctuation">(</span>ann<span class="token punctuation">.</span><span class="token function">decodeSlash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">collectionFormat</span><span class="token punctuation">(</span>ann<span class="token punctuation">.</span><span class="token function">collectionFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">registerMethodAnnotation</span><span class="token punctuation">(</span>Body<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>ann<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> String body <span class="token operator">=</span> ann<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">checkState</span><span class="token punctuation">(</span><span class="token function">emptyToNull</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">,</span> <span class="token string">"Body annotation was empty on method %s."</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>body<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'{'</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bodyTemplate</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">registerMethodAnnotation</span><span class="token punctuation">(</span>Headers<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>header<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> headersOnMethod <span class="token operator">=</span> header<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">checkState</span><span class="token punctuation">(</span>headersOnMethod<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"Headers annotation was empty on method %s."</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">.</span><span class="token function">configKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span><span class="token function">toMap</span><span class="token punctuation">(</span>headersOnMethod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">registerParameterAnnotation</span><span class="token punctuation">(</span>Param<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>paramAnnotation<span class="token punctuation">,</span> data<span class="token punctuation">,</span> paramIndex<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> String name <span class="token operator">=</span> paramAnnotation<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">checkState</span><span class="token punctuation">(</span><span class="token function">emptyToNull</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">,</span> <span class="token string">"Param annotation was empty on param %s."</span><span class="token punctuation">,</span>
+        paramIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">nameParam</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> name<span class="token punctuation">,</span> paramIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Param<span class="token punctuation">.</span>Expander</span><span class="token operator">></span> expander <span class="token operator">=</span> paramAnnotation<span class="token punctuation">.</span><span class="token function">expander</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>expander <span class="token operator">!=</span> Param<span class="token punctuation">.</span>ToStringExpander<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      data<span class="token punctuation">.</span><span class="token function">indexToExpanderClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>paramIndex<span class="token punctuation">,</span> expander<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>data<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hasRequestVariable</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      data<span class="token punctuation">.</span><span class="token function">formParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">registerParameterAnnotation</span><span class="token punctuation">(</span>QueryMap<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>queryMap<span class="token punctuation">,</span> data<span class="token punctuation">,</span> paramIndex<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">checkState</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">queryMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">,</span>
+        <span class="token string">"QueryMap annotation was present on multiple parameters."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data<span class="token punctuation">.</span><span class="token function">queryMapIndex</span><span class="token punctuation">(</span>paramIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data<span class="token punctuation">.</span><span class="token function">queryMapEncoded</span><span class="token punctuation">(</span>queryMap<span class="token punctuation">.</span><span class="token function">encoded</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">registerParameterAnnotation</span><span class="token punctuation">(</span>HeaderMap<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>queryMap<span class="token punctuation">,</span> data<span class="token punctuation">,</span> paramIndex<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">checkState</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">headerMapIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">,</span>
+        <span class="token string">"HeaderMap annotation was present on multiple parameters."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data<span class="token punctuation">.</span><span class="token function">headerMapIndex</span><span class="token punctuation">(</span>paramIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="Feign-默认的协议规范"><a href="#Feign-默认的协议规范" class="headerlink" title="Feign 默认的协议规范"></a>Feign 默认的协议规范</h2><table>
+<thead>
+<tr>
+<th>注解</th>
+<th>接口Target</th>
+<th>使用说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@RequestLine</code></td>
+<td>方法上</td>
+<td>定义HttpMethod 和 UriTemplate. UriTemplate 中使用<code>{}</code> 包裹的表达式，可以通过在方法参数上使用@Param 自动注入</td>
+</tr>
+<tr>
+<td><code>@Param</code></td>
+<td>方法参数</td>
+<td>定义模板变量，模板变量的值可以使用名称的方式使用模板注入解析</td>
+</tr>
+<tr>
+<td><code>@Headers</code></td>
+<td>类上或者方法上</td>
+<td>定义头部模板变量，使用@Param 注解提供参数值的注入。如果该注解添加在接口类上，则所有的请求都会携带对应的Header信息；如果在方法上，则只会添加到对应的方法请求上</td>
+</tr>
+<tr>
+<td><code>@QueryMap</code></td>
+<td>方法上</td>
+<td>定义一个键值对或者 pojo，参数值将会被转换成URL上的 query 字符串上</td>
+</tr>
+<tr>
+<td><code>@HeaderMap</code></td>
+<td>方法上</td>
+<td>定义一个HeaderMap, 与 UrlTemplate 和HeaderTemplate 类型，可以使用@Param 注解提供参数值</td>
+</tr>
+</tbody></table>
+<h2 id="MethodMetadata"><a href="#MethodMetadata" class="headerlink" title="MethodMetadata"></a>MethodMetadata</h2><p>目的就是为了屏蔽 <code>Feign、JAX-RS 1/2、Spring Web MVC</code> 等 REST 声明式注解的差异，</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> String configKey<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// 方法签名，类全限名+方法全限名</span>
+<span class="token keyword">private</span> <span class="token keyword">transient</span> Type returnType<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 方法返回值类型</span>
+<span class="token keyword">private</span> Integer urlIndex<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// 方法参数为url时，为 urlIndex</span>
+<span class="token keyword">private</span> Integer bodyIndex<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// Body注解的对应的参数位置</span>
+<span class="token keyword">private</span> Integer headerMapIndex<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// @HeaderMap参数注解的位置</span>
+<span class="token keyword">private</span> Integer queryMapIndex<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// @QueryMap参数注解的位置</span>
+<span class="token keyword">private</span> <span class="token keyword">boolean</span> queryMapEncoded<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// @QueryMap注解的Encoded</span>
+<span class="token keyword">private</span> <span class="token keyword">transient</span> Type bodyType<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// @QueryMap注解的</span>
+<span class="token keyword">private</span> RequestTemplate template <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RequestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 核心</span>
+<span class="token comment" spellcheck="true">//form表单提交的时候参数名称</span>
+<span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> formParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//参数的名称和位置的对应关系</span>
+<span class="token keyword">private</span> Map<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Collection<span class="token operator">&lt;</span>String<span class="token operator">>></span> indexToName <span class="token operator">=</span>
+    <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Collection<span class="token operator">&lt;</span>String<span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//参数的位置和类型的对应关系</span>
+<span class="token keyword">private</span> Map<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Expander</span><span class="token operator">>></span> indexToExpanderClass <span class="token operator">=</span>
+    <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Expander</span><span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> Map<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Boolean<span class="token operator">></span> indexToEncoded <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Boolean<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">transient</span> Map<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Expander<span class="token operator">></span> indexToExpander<span class="token punctuation">;</span></code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>类上只有一个注解：</p>
+<ol>
+<li>@Headers -&gt; data.template().headers</li>
+</ol>
+<p>方法上可能有三个注解：</p>
+<ol>
+<li>@RequestLine -&gt; data.template().method + data.template().uri</li>
+<li>@Body -&gt; data.template().body</li>
+<li>@Headers -&gt; data.template().headers</li>
+</ol>
+<p>参数上可能有三个注解：</p>
+<ol>
+<li>@Param-&gt; data.indexToName</li>
+<li>@QueryMap-&gt; data.queryMapIndex</li>
+<li>@HeaderMap-&gt; data.headerMapIndex</li>
+</ol>
+<p>Feign 如何兼容 JAX-RS 1/2、Spring Web MVC?</p>
+<p>只需要实现自己的 Contract，将对应的注解信息解析成 MethodMetadata，即可完成适配工作。</p>
+<ol>
+<li><code>jaxrs</code> Feign 原生支持，感兴趣的可以看一下其实现：<code>feign.jaxrs.JAXRSContract</code></li>
+<li><code>Spring Web MVC</code> Spring Cloud OpenFeign 提供了支持</li>
+</ol>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about"
+                       rel="external nofollow noreferrer">刘钦华</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.liuqinhua.com/2020/09/01/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/feign/feign/">http://www.liuqinhua.com/2020/09/01/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/feign/feign/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer"
+                       target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">刘钦华</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+        document.addEventListener("copy", function (e) {
+            let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+            M.toast({html: toastHTML})
+        });
+
+        function navToReprintStatement() {
+            $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+        }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Feign/">
+                                    <span class="chip bg-color">Feign</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+        <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin"
+             data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+        <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge left-badge text-color">
+                    <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <div class="card">
+                    <a href="/2020/09/01/hou-duan/spring/springcloud/springcloud/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/16.jpg" class="responsive-img"
+                                     alt="Spring Cloud">
+                            
+                            <span class="card-title">Spring Cloud</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                前提知识点
+JavaEE
+数据库
+前端
+Sevlet
+Http
+MyBatis
+Spring
+SpringMVC
+SpringBoot
+Dubbo、Zookeeper、分布式基础
+Maven、Git
+Ajax、Json
+……
+
+Spring
+                            
+                        </div>
+                        <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
+                        </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                        <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                                    
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                        <div class="card-action article-tags">
+                            
+                                <a href="/tags/SpringCloud/">
+                                    <span class="chip bg-color">SpringCloud</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+                                    <span class="chip bg-color">微服务</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge right-badge text-color">
+                    下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="card">
+                    <a href="/2020/09/01/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/feign/feign-qing-qiu-mo-ban/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/18.jpg" class="responsive-img"
+                                     alt="Feign请求模板">
+                            
+                            <span class="card-title">Feign请求模板</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+请求模板,用于根据解析的java信息转换为请求对象
+
+
+FeignInvocationHandler的invoke方法在执行的时候又委托给了MethodHandler。
+feign.ReflectiveFeign.FeignInvocat
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                        <a href="/categories/Feign/" class="post-category">
+                                    Feign
+                                </a>
+                                    
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                        <div class="card-action article-tags">
+                            
+                                <a href="/tags/Feign/">
+                                    <span class="chip bg-color">Feign</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('180')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: LQH<br />'
+                + '文章作者: 刘钦华<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+    </style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align"
+        style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">刘钦华</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">137.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "4";
+                    var startDate = "26";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+
+                setInterval(siteTime, 1000);
+            </script>
+            
+            |
+            
+            <span id="icp"><img src="/medias/icp.png"
+                    style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备20049015号</a>
+            </span>
+            
+            <!--            <a href="http://www.beian.miit.gov.cn/" style="color:wheat" target="_blank">粤ICP备20049015号</a>-->
+
+
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/RosePuff" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:LiuQinHua2020@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=775204521" class="tooltipped"
+       target="_blank" data-tooltip="QQ联系我: 775204521" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top"
+       data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+            zIndex="-1" src="/libs/background/ribbon-refresh.min.js"
+            async="async"></script>
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

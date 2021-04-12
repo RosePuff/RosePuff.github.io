@@ -1,0 +1,1885 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="后端/Spring/SpringCloud/SpringCloud远程调用/2、Ribbon/3、负载均衡器的核心, LQH">
+    <meta name="description" content="茕茕白兔，东走西顾。衣不如新，人不如故">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>后端/Spring/SpringCloud/SpringCloud远程调用/2、Ribbon/3、负载均衡器的核心 | LQH</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="LQH" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LQH</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LQH</div>
+        <div class="logo-desc">
+            
+            茕茕白兔，东走西顾。衣不如新，人不如故
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/RosePuff" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/RosePuff" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">后端/Spring/SpringCloud/SpringCloud远程调用/2、Ribbon/3、负载均衡器的核心</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+        <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        2021-01-12
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                        2021-03-04
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        6.2k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        25 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>LoadBalancer 的职能主要有三个：</p>
+<ol>
+<li>维护Sever列表的数量(新增、更新、删除等)</li>
+<li>维护Server列表的状态(状态更新)</li>
+<li>当请求Server实例时，能否返回最合适的Server实例</li>
+</ol>
+<h1 id="负载均衡器的基本实现"><a href="#负载均衡器的基本实现" class="headerlink" title="负载均衡器的基本实现"></a>负载均衡器的基本实现</h1><p><img src="https://chin-puff.oss-cn-beijing.aliyuncs.com/img/20210304104408.png" alt="在这里插入图片描述"></p>
+<table>
+<thead>
+<tr>
+<th>组成部分</th>
+<th>职能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Server</td>
+<td><code>Server</code> 作为服务实例的表示，会记录服务实例的相关信息，如：服务地址，所属zone，服务名称，实例ID等</td>
+</tr>
+<tr>
+<td>ServerList</td>
+<td>维护着一组<code>Server</code>实例列表,在应用运行的过程中，Ribbon通过ServerList中的服务实例供负载均衡器选择。ServerList维护列表可能在运行的过程中动态改变</td>
+</tr>
+<tr>
+<td>ServerStats</td>
+<td>作为对应<code>Server</code> 的运行情况统计，一般是服务调用过程中的<code>Server</code>平均响应时间，累计请求失败计数，熔断时间控制等。一个<code>ServerStats</code>实例唯一对应一个<code>Server</code>实例</td>
+</tr>
+<tr>
+<td>LoadBalancerStats</td>
+<td>作为 <code>ServerStats</code>实例列表的容器，统一维护</td>
+</tr>
+<tr>
+<td>ServerListUpdater</td>
+<td>负载均衡器通过<code>ServerListUpdater</code>来更新<code>ServerList</code>,比如实现一个定时任务，每隔一段时间获取最新的Server实例列表</td>
+</tr>
+<tr>
+<td>Pinger</td>
+<td>服务状态检验器，负责维护<code>ServerList</code>列表中的服务状态<code>注意：Pinger仅仅负责Server的状态，没有能力决定是否删除</code></td>
+</tr>
+<tr>
+<td>PingerStrategy</td>
+<td>定义以何种方式还检验服务是否有效，比如是按照顺序的方式还是并行的方式</td>
+</tr>
+<tr>
+<td>IPing</td>
+<td>Ping，检验服务是否可用的方法，常见的是通过HTTP，或者TCP/IP的方式看服务有无认为正常的请求</td>
+</tr>
+</tbody></table>
+<p>虽然Spring Cloud中定义了<code>LoadBalancerClient</code>为负载均衡器的接口,但是<code>LoadBalancerClient</code>还只是一个抽象的负载均衡器接口，并且针对Ribbon实现了<code>RibbonLoadBalancerClient</code>，它在具体实现客户端负载均衡时，则是通过Ribbon的<code>ILoadBalancer</code>接口实现。虽然Spring Cloud中定义了<code>LoadBalancerClient</code>为负载均衡器的接口，并且针对Ribbon实现了<code>RibbonLoadBalancerClient</code>，但是它在具体实现客户端负载均衡时，则是通过Ribbon的<code>ILoadBalancer</code>接口实现。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">LoadBalancerClient</span> <span class="token keyword">extends</span> <span class="token class-name">ServiceInstanceChooser</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 通过LoadBalancer的ServiceInstance对指定的服务执行请求操作
+     */</span>
+    <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">execute</span><span class="token punctuation">(</span>String serviceId<span class="token punctuation">,</span> LoadBalancerRequest<span class="token operator">&lt;</span>T<span class="token operator">></span> request<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">;</span>
+
+    <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">execute</span><span class="token punctuation">(</span>String serviceId<span class="token punctuation">,</span> ServiceInstance serviceInstance<span class="token punctuation">,</span> LoadBalancerRequest<span class="token operator">&lt;</span>T<span class="token operator">></span> request<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 为系统构建一个合适的host:port形式的url。在分布式系统中，我们使用逻辑上的服务名称作为host来构建URI
+     * （替代服务实例的host:port形式）进行请求，比如说myservice/path/to/service。
+     */</span>
+    URI <span class="token function">reconstructURI</span><span class="token punctuation">(</span>ServiceInstance instance<span class="token punctuation">,</span> URI original<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>实现方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">execute</span><span class="token punctuation">(</span>String serviceId<span class="token punctuation">,</span> LoadBalancerRequest<span class="token operator">&lt;</span>T<span class="token operator">></span> request<span class="token punctuation">,</span> Object hint<span class="token punctuation">)</span>
+      <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+   ILoadBalancer loadBalancer <span class="token operator">=</span> <span class="token function">getLoadBalancer</span><span class="token punctuation">(</span>serviceId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   Server server <span class="token operator">=</span> <span class="token function">getServer</span><span class="token punctuation">(</span>loadBalancer<span class="token punctuation">,</span> hint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>server <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"No instances available for "</span> <span class="token operator">+</span> serviceId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   RibbonServer ribbonServer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RibbonServer</span><span class="token punctuation">(</span>serviceId<span class="token punctuation">,</span> server<span class="token punctuation">,</span>
+         <span class="token function">isSecure</span><span class="token punctuation">(</span>server<span class="token punctuation">,</span> serviceId<span class="token punctuation">)</span><span class="token punctuation">,</span>
+         <span class="token function">serverIntrospector</span><span class="token punctuation">(</span>serviceId<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMetadata</span><span class="token punctuation">(</span>server<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token keyword">return</span> <span class="token function">execute</span><span class="token punctuation">(</span>serviceId<span class="token punctuation">,</span> ribbonServer<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在<code>execute</code>函数的实现中，第一步做的就是通过<code>getServer</code>根据传入的服务名<code>serviceId</code>去获得具体的服务实例</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> Server <span class="token function">getServer</span><span class="token punctuation">(</span>ILoadBalancer loadBalancer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>loadBalancer <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> loadBalancer<span class="token punctuation">.</span><span class="token function">chooseServer</span><span class="token punctuation">(</span><span class="token string">"default"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>通过<code>getServer</code>函数的实现源码，我们可以看到这里获取具体服务实例的时候使用了ribbon自身的<code>ILoadBalancer</code>接口中定义的<code>chooseServer</code>函数。</p>
+<h1 id="ILoadBalancer接口"><a href="#ILoadBalancer接口" class="headerlink" title="ILoadBalancer接口"></a>ILoadBalancer接口</h1><p>com.netflix.loadbalancer.ILoadBalancer</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ILoadBalancer</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addServers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>Server<span class="token operator">></span> newServers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> Server <span class="token function">chooseServer</span><span class="token punctuation">(</span>Object key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">markServerDown</span><span class="token punctuation">(</span>Server server<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>Server<span class="token operator">></span> <span class="token function">getReachableServers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>Server<span class="token operator">></span> <span class="token function">getAllServers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li><code>addServers</code>：向负载均衡器中维护的实例列表增加服务实例。</li>
+<li><code>chooseServer</code>：通过某种策略，从负载均衡器中挑选出一个具体的服务实例。</li>
+<li><code>markServerDown</code>：用来通知和标识负载均衡器中某个具体实例已经停止服务，不然负载均衡器在下一次获取服务实例清单前都会认为服务实例均是正常服务的。</li>
+<li><code>getReachableServers</code>：获取当前正常服务的实例列表。</li>
+<li><code>getAllServers</code>：获取所有已知的服务实例列表，包括正常服务和停止服务的实例。</li>
+</ul>
+<p><img src="assets/ribbon-code-2.png" alt="img"></p>
+<p>在整合时默认采用了<code>ZoneAwareLoadBalancer</code>来实现负载均衡器。</p>
+<h2 id="AbstractLoadBalancer"><a href="#AbstractLoadBalancer" class="headerlink" title="AbstractLoadBalancer"></a>AbstractLoadBalancer</h2><p>com.netflix.loadbalancer.AbstractLoadBalancer</p>
+<p><code>AbstractLoadBalancer</code>是<code>ILoadBalancer</code>接口的抽象实现。在该抽象类中定义了一个关于服务实例的分组枚举类<code>ServerGroup</code>，它包含了三种不同类型：</p>
+<ul>
+<li>ALL-所有服务实例、</li>
+<li>STATUS_UP-正常服务的实例、</li>
+<li>STATUS_NOT_UP-停止服务的实例</li>
+</ul>
+<p>现了一个<code>chooseServer()</code>函数，该函数通过调用接口中的<code>chooseServer(Object key)</code>实现，其中参数<code>key</code>为null，表示在选择具体服务实例时忽略<code>key</code>的条件判断；最后还定义了两个抽象函数，</p>
+<ul>
+<li><code>getServerList(ServerGroup serverGroup)</code>定义了根据分组类型来获取不同的服务实例列表</li>
+<li><code>getLoadBalancerStats()</code>定义了获取<code>LoadBalancerStats</code>对象的方法，<code>LoadBalancerStats</code>对象被用来存储负载均衡器中各个服务实例当前的属性和统计信息，这些信息非常有用，我们可以利用这些信息来观察负载均衡器的运行情况，同时这些信息也是用来制定负载均衡策略的重要依据。</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractLoadBalancer</span> <span class="token keyword">implements</span> <span class="token class-name">ILoadBalancer</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">enum</span> ServerGroup<span class="token punctuation">{</span>
+        ALL<span class="token punctuation">,</span>
+        STATUS_UP<span class="token punctuation">,</span>
+        STATUS_NOT_UP
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> Server <span class="token function">chooseServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">chooseServer</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> List<span class="token operator">&lt;</span>Server<span class="token operator">></span> <span class="token function">getServerList</span><span class="token punctuation">(</span>ServerGroup serverGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> LoadBalancerStats <span class="token function">getLoadBalancerStats</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="BaseLoadBalancer"><a href="#BaseLoadBalancer" class="headerlink" title="BaseLoadBalancer"></a>BaseLoadBalancer</h2><p><code>BaseLoadBalancer</code>类是Ribbon负载均衡器的基础实现类，在该类中定义很多关于均衡负载器相关的基础内容：</p>
+<p>定义并维护了两个存储服务实例<code>Server</code>对象的列表。一个用于存储所有服务实例的清单，一个用于存储正常服务的实例清单。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Monitor</span><span class="token punctuation">(</span>name <span class="token operator">=</span> PREFIX <span class="token operator">+</span> <span class="token string">"AllServerList"</span><span class="token punctuation">,</span> type <span class="token operator">=</span> DataSourceType<span class="token punctuation">.</span>INFORMATIONAL<span class="token punctuation">)</span>
+<span class="token keyword">protected</span> <span class="token keyword">volatile</span> List<span class="token operator">&lt;</span>Server<span class="token operator">></span> allServerList <span class="token operator">=</span> Collections
+        <span class="token punctuation">.</span><span class="token function">synchronizedList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Server<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token annotation punctuation">@Monitor</span><span class="token punctuation">(</span>name <span class="token operator">=</span> PREFIX <span class="token operator">+</span> <span class="token string">"UpServerList"</span><span class="token punctuation">,</span> type <span class="token operator">=</span> DataSourceType<span class="token punctuation">.</span>INFORMATIONAL<span class="token punctuation">)</span>
+<span class="token keyword">protected</span> <span class="token keyword">volatile</span> List<span class="token operator">&lt;</span>Server<span class="token operator">></span> upServerList <span class="token operator">=</span> Collections
+        <span class="token punctuation">.</span><span class="token function">synchronizedList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Server<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>负载均衡器的基本实现，可以将任意服务器列表设置为服务器池。可以设置ping来确定服务器的活跃程度。在内部，这个类维护一个“所有”服务器列表和一个“up”服务器列表，并根据调用者的要求使用它们</li>
+<li>TimerTask定时任务进行ping</li>
+<li>SerialPingStrategy<ul>
+<li>如果IPing接口实现效率较慢，或者有大量服务器，则表现不是很好。 逐个进行ping，耗时较长，改善方式可以放入线程池中执行，但这个策略设计之初是运行在内存中eureka之间的信息调用</li>
+</ul>
+</li>
+<li>默认规则：最著名和最基本的负载平衡策略 Round Robin Rule</li>
+</ul>
+<h2 id="NoOpLoadBalancer"><a href="#NoOpLoadBalancer" class="headerlink" title="NoOpLoadBalancer"></a>NoOpLoadBalancer</h2><ul>
+<li>啥都不做</li>
+</ul>
+<h1 id="维护Server列表-新增、更新、删除"><a href="#维护Server列表-新增、更新、删除" class="headerlink" title="维护Server列表(新增、更新、删除)"></a>维护Server列表(新增、更新、删除)</h1><p><img src="assets/20190522002347117.png" alt="在这里插入图片描述"></p>
+<ol>
+<li>基于配置的服务列表<br>这种方式一般是通过配置文件，静态地配置服务器列表，这种方式相对而言比较简单，但并不是意味着在机器运行的时候就一直不变。<code>netflix</code> 在做Spring cloud 套件时，使用了分布式配置框架<code>netflix archaius</code> ，<code>archaius</code> 框架有一个特点是会动态的监控配置文件的变化，将变化刷新到各个应用上。也就是说，当我们在不关闭服务的情况下，如果修改了基于配置的服务列表时, 服务列表可以直接刷新</li>
+<li>结合服务发现组件（如<code>Eureka</code>）的服务注册信息动态维护服务列表<br>基于<code>Spring Cloud</code>框架下，服务注册和发现是一个分布式服务集群必不可少的一个组件，它负责维护不同的服务实例（注册、续约、取消注册</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>更新策略</th>
+<th>ServerListUpdater实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基于定时任务的拉取服务列表</td>
+<td>com.netflix.loadbalancer.PollingServerListUpdater</td>
+</tr>
+<tr>
+<td>基于Eureka服务事件通知的方式更新</td>
+<td>com.netflix.loadbalancer.EurekaNotificationServerListUpdater</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ribbon在默认情况下，采用基于配置的服务列表维护，基于定时任务按时拉取服务列表的方式，频率为30s.</p>
+<p>Spring Cloud集成下的配置,采用基于服务发现组件</p>
+</blockquote>
+<p> ServerListUpdater</p>
+<p>这个接口实现的是对ServerList的更新，可以称之为”服务更新器”。它定义了一系列控制它的方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ServerListUpdater</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//内部接口</span>
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UpdateAction</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//实现对ServerList的更新操作</span>
+        <span class="token keyword">void</span> <span class="token function">doUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//启动服务更新器</span>
+    <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span>UpdateAction updateAction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//停止服务更新器</span>
+    <span class="token keyword">void</span> <span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//返回最近的更新时间戳</span>
+    String <span class="token function">getLastUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//返回上一次更新到现在的时间间隔，单位为ms</span>
+    <span class="token keyword">long</span> <span class="token function">getDurationSinceLastUpdateMs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//返回错过的更新周期数</span>
+    <span class="token keyword">int</span> <span class="token function">getNumberMissedCycles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//返回核心线程数</span>
+    <span class="token keyword">int</span> <span class="token function">getCoreThreads</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>它的实现类有两个</p>
+<ul>
+<li><strong>PollingServerListUpdater</strong><br>DynamicServerListLoadBalancer默认的策略，它是通过定时任务的方式进行服务列表的更新</li>
+<li><strong>EurekaNotificationServerListUpdater</strong><br>它需要利用Eureka的事件监听器来驱动服务列表的更新操作</li>
+</ul>
+<h2 id="基于定时任务拉取服务列表方式"><a href="#基于定时任务拉取服务列表方式" class="headerlink" title="基于定时任务拉取服务列表方式"></a><strong>基于定时任务拉取服务列表方式</strong></h2><ul>
+<li>这种方式的实现为：<code>com.netflix.loadbalancer.PollingServerListUpdater</code>,其内部维护了一个周期性的定时任务，拉取最新的服务列表，然后将最新的服务列表更新到ServerList之中</li>
+</ul>
+<h2 id="基于Eureka服务事件通知的方式更新"><a href="#基于Eureka服务事件通知的方式更新" class="headerlink" title="基于Eureka服务事件通知的方式更新"></a><strong>基于Eureka服务事件通知的方式更新</strong></h2><p>基于Eureka的更新方式则有些不同, 当Eureka注册中心发生了Server服务注册信息变更时，会将消息通知发送到<code>EurekaNotificationServerListUpdater</code> 上，然后此Updator触发刷新ServerList</p>
+<h1 id="更新服务实例的状态"><a href="#更新服务实例的状态" class="headerlink" title="更新服务实例的状态"></a>更新服务实例的状态</h1><p>Ribbon负载均衡器将服务实例的状态维护托交给<code>Pinger</code>、 <code>PingerStrategy</code>、<code>IPing</code> 来维护，具体交互模式如下所示：</p>
+<p><img src="assets/20190522002441294.png" alt="在这里插入图片描述"></p>
+<h2 id="创建Ping定时任务"><a href="#创建Ping定时任务" class="headerlink" title="创建Ping定时任务"></a>创建Ping定时任务</h2><p>启动定时任务</p>
+<p>com.netflix.loadbalancer.BaseLoadBalancer#BaseLoadBalancer()</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">setupPingTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">canSkipPing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>lbTimer <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        lbTimer<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    lbTimer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShutdownEnabledTimer</span><span class="token punctuation">(</span><span class="token string">"NFLoadBalancer-PingTimer-"</span> <span class="token operator">+</span> name<span class="token punctuation">,</span>
+            <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//默认是10秒的周期</span>
+    lbTimer<span class="token punctuation">.</span><span class="token function">schedule</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PingTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> pingIntervalSeconds <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">forceQuickPing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>相关的接口</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* 定义Ping服务状态是否有效的策略，是序列化顺序Ping，还是并行的方式Ping，在此过程中，应当保证相互不受影响
+ *
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IPingStrategy</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">pingServers</span><span class="token punctuation">(</span>IPing ping<span class="token punctuation">,</span> Server<span class="token punctuation">[</span><span class="token punctuation">]</span> servers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">/**
+ * 定义如何Ping一个服务，确保是否有效
+ * @author stonse
+ *
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IPing</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Checks whether the given &lt;code>Server&lt;/code> is "alive" i.e. should be
+     * considered a candidate while loadbalancing
+     * 校验是否存活
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAlive</span><span class="token punctuation">(</span>Server server<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="Ping策略"><a href="#Ping策略" class="headerlink" title="Ping策略"></a>Ping策略</h2><p>默认的PingStrategy，<strong>采用序列化的实现方式，依次检查服务实例是否可用</strong>:</p>
+<p>我们可以通过实现<code>IPingStrategy</code>接口并实现<code>pingServers(IPing ping, Server[] servers)</code>函数去扩展ping的执行策略</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SerialPingStrategy</span> <span class="token keyword">implements</span> <span class="token class-name">IPingStrategy</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">pingServers</span><span class="token punctuation">(</span>IPing ping<span class="token punctuation">,</span> Server<span class="token punctuation">[</span><span class="token punctuation">]</span> servers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> numCandidates <span class="token operator">=</span> servers<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">boolean</span><span class="token punctuation">[</span>numCandidates<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"LoadBalancer:  PingTask executing ["</span>
+                         <span class="token operator">+</span> numCandidates <span class="token operator">+</span> <span class="token string">"] servers configured"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numCandidates<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            results<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>ping <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    results<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> ping<span class="token punctuation">.</span><span class="token function">isAlive</span><span class="token punctuation">(</span>servers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Exception while pinging Server:"</span>
+                             <span class="token operator">+</span> servers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>IPing还有如下几种实现：</p>
+<p><img src="assets/20190522002513342.png" alt="在这里插入图片描述"></p>
+<p>IPing是用来向server发起”ping”，来判断该server是否有响应，从而判断该server是否可用。它有一个boolean isAlive(Server)方法，IPing的实现类有以下几种</p>
+<ul>
+<li><strong>PingUrl</strong><br>真实的去ping 某个url，判断其是否alive</li>
+<li><strong>PingConstant</strong><br>固定返回某服务是否可用，默认返回true，即可用</li>
+<li><strong>NoOpPing</strong><br>不去ping,直接返回true,即可用</li>
+<li><strong>DummyPing</strong><br>直接返回true</li>
+<li><strong>NIWSDiscoveryPing</strong><br>根据DiscoveryEnabledServer的InstanceInfo的InstanceStatus去判断，如果为InstanceStatus.UP，则为可用，否则不可用</li>
+</ul>
+<blockquote>
+<p>Ribbon默认的IPing实现:DummyPing</p>
+</blockquote>
+<h1 id="挑选一个合适的服务实例"><a href="#挑选一个合适的服务实例" class="headerlink" title="挑选一个合适的服务实例"></a>挑选一个合适的服务实例</h1><p>LoadBalancer 选择服务实例的流程</p>
+<ol>
+<li>通过<code>ServerList</code>获取当前可用的服务实例列表；</li>
+<li>通过<code>ServerListFilter</code>将步骤1 得到的服务列表进行一次过滤，返回满足过滤器条件的服务实例列表；</li>
+<li>应用<code>Rule</code>规则，结合<code>服务实例的统计信息</code>,返回满足规则的某一个服务实例；</li>
+</ol>
+<blockquote>
+<p>实际上，在服务实例列表选择的过程中，有两次过滤的机会：第一次是首先通过ServerListFilter过滤器，另外一次是用过IRule 的选择规则进行过滤</p>
+</blockquote>
+<h2 id="ServerList的维护"><a href="#ServerList的维护" class="headerlink" title="ServerList的维护"></a>ServerList的维护</h2><p>负载均衡器通过 ServerList来统一维护服务实例,并使用<code>ServerListFilter</code>过滤器过滤出符合要求的服务实例列表<code>List&lt;Server&gt;</code></p>
+<p><img src="assets/20190522002555762.png" alt="在这里插入图片描述"></p>
+<p>接口定义：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * Interface that defines the methods sed to obtain the List of Servers
+ * @author stonse
+ *
+ * @param &lt;T>
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ServerList</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Server</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//获取初始化的服务列表</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">getInitialListOfServers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Return updated list of servers. This is called say every 30 secs
+     * (configurable) by the Loadbalancer's Ping cycle
+     * 获取更新后的的服务列表
+     */</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">getUpdatedListOfServers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在Ribbon的实现中，在<code>ServerList</code>中，维护着Server的实例，并返回最新的<code>List&lt;Server&gt;</code>集合，供<code>LoadBalancer</code>使用</p>
+<p><img src="assets/20190522002637955.png" alt="在这里插入图片描述"></p>
+<h2 id="服务实例列表过滤器"><a href="#服务实例列表过滤器" class="headerlink" title="服务实例列表过滤器"></a>服务实例列表过滤器</h2><blockquote>
+<p>传入一个服务实例列表，过滤出满足过滤条件的服务列表</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ServerListFilter</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Server</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">getFilteredListOfServers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>T<span class="token operator">></span> servers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="ServerListFilter"><a href="#ServerListFilter" class="headerlink" title="ServerListFilter"></a>ServerListFilter</h3><p>该接口很简单，只有一个方法List getFilteredListOfServers(List)，它主要用于实现服务实例列表的过滤，通过传入服务实例清单，根据一些规则返回过滤后的服务实例清单。</p>
+<ul>
+<li><strong>ZoneAffinityServerListFilter</strong><br>该过滤器基于”区域感知”(Zone Affinity)的方式实现服务实例的过滤，它会根据提供服务的实例所在的区域(Zone)与消费者自身所在的区域(Zone)进行比较，过滤掉那些不是在同一区域的实例。</li>
+<li><strong>DefaultNIWSServerListFilter</strong><br>该过滤器完全继承ZoneAffinityServerListFilter</li>
+<li><strong>ServerListSubsetFilter</strong><br>该过滤器适用于大规模服务器集群(上百或更多)的系统，因为它可以产生一个”区域感知”结果的子集列表，同时它还能够通过比较服务实例的通信失败数和并发连接数来判定该服务是否健康来选择性的从服务实例列表中剔除那些相对不够健康的实例</li>
+<li><strong>ZonePreferenceServerListFilter</strong><br>使用spring cloud整合eureka和ribbon时默认使用的该过滤器。它实现了通过配置或eureka实例无数据的所属区域(Zone)来过滤出同区域的服务实例。</li>
+</ul>
+<blockquote>
+<p><strong>Ribbon 的默认</strong><code>ServerListFilter</code><strong>实现：</strong><code>ZoneAffinityServerListFilter</code> </p>
+</blockquote>
+<h3 id="ZoneAffinityServerListFilter"><a href="#ZoneAffinityServerListFilter" class="headerlink" title="ZoneAffinityServerListFilter"></a><strong>ZoneAffinityServerListFilter</strong></h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ZoneAffinityServerListFilter</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Server</span><span class="token operator">></span> <span class="token keyword">extends</span>
+        <span class="token class-name">AbstractServerListFilter</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token keyword">implements</span> <span class="token class-name">IClientConfigAware</span> <span class="token punctuation">{</span>
+
+     <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">getFilteredListOfServers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>T<span class="token operator">></span> servers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">//zone非空，并且开启了区域优先，并且服务实例数量不为空</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>zone <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>zoneAffinity <span class="token operator">||</span> zoneExclusive<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> servers <span class="token operator">!=</span>null <span class="token operator">&amp;&amp;</span> servers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+           <span class="token comment" spellcheck="true">//基于断言过滤服务列表 </span>
+           List<span class="token operator">&lt;</span>T<span class="token operator">></span> filteredServers <span class="token operator">=</span> Lists<span class="token punctuation">.</span><span class="token function">newArrayList</span><span class="token punctuation">(</span>Iterables<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>
+                    servers<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>zoneAffinityPredicate<span class="token punctuation">.</span><span class="token function">getServerOnlyPredicate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//如果允许区域优先，则返回过滤列表</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">shouldEnableZoneAffinity</span><span class="token punctuation">(</span>filteredServers<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> filteredServers<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>zoneAffinity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                overrideCounter<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> servers<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 判断是否应该使用区域优先过滤条件</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">shouldEnableZoneAffinity</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>T<span class="token operator">></span> filtered<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>zoneAffinity <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>zoneExclusive<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>zoneExclusive<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+       <span class="token comment" spellcheck="true">// 获取统计信息</span>
+        LoadBalancerStats stats <span class="token operator">=</span> <span class="token function">getLoadBalancerStats</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>stats <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> zoneAffinity<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Determining if zone affinity should be enabled with given server list: {}"</span><span class="token punctuation">,</span> filtered<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//获取区域Server快照，包含统计数据</span>
+            ZoneSnapshot snapshot <span class="token operator">=</span> stats<span class="token punctuation">.</span><span class="token function">getZoneSnapshot</span><span class="token punctuation">(</span>filtered<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//平均负载，此负载的意思是，当前所有的Server中，平均每台机器上的活跃请求数</span>
+           <span class="token keyword">double</span> loadPerServer <span class="token operator">=</span> snapshot<span class="token punctuation">.</span><span class="token function">getLoadPerServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> instanceCount <span class="token operator">=</span> snapshot<span class="token punctuation">.</span><span class="token function">getInstanceCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+            <span class="token keyword">int</span> circuitBreakerTrippedCount <span class="token operator">=</span> snapshot<span class="token punctuation">.</span><span class="token function">getCircuitTrippedCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 1. 如果Server断路的比例超过了设置的上限(默认`0.8`)</span>
+            <span class="token comment" spellcheck="true">// 2. 或者当前负载超过了设置的负载上限</span>
+            <span class="token comment" spellcheck="true">// 3. 如果可用的服务小于设置的服务上限`默认为2`</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> circuitBreakerTrippedCount<span class="token punctuation">)</span> <span class="token operator">/</span> instanceCount <span class="token operator">>=</span> blackOutServerPercentageThreshold<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+                    <span class="token operator">||</span> loadPerServer <span class="token operator">>=</span> activeReqeustsPerServerThreshold<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token operator">||</span> <span class="token punctuation">(</span>instanceCount <span class="token operator">-</span> circuitBreakerTrippedCount<span class="token punctuation">)</span> <span class="token operator">&lt;</span> availableServersThreshold<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"zoneAffinity is overriden. blackOutServerPercentage: {}, activeReqeustsPerServer: {}, availableServers: {}"</span><span class="token punctuation">,</span> 
+                        <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> circuitBreakerTrippedCount <span class="token operator">/</span> instanceCount<span class="token punctuation">,</span>  loadPerServer<span class="token punctuation">,</span> instanceCount <span class="token operator">-</span> circuitBreakerTrippedCount<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+
+<span class="token punctuation">}</span></code></pre>
+<h3 id="ZonePreferenceServerListFilter"><a href="#ZonePreferenceServerListFilter" class="headerlink" title="ZonePreferenceServerListFilter"></a><strong>ZonePreferenceServerListFilter</strong></h3><p><code>ZonePreferenceServerListFilter</code> 集成自 <code>ZoneAffinityServerListFilter</code>，在此基础上做了拓展，在 <code>ZoneAffinityServerListFilter</code>返回结果的基础上，再过滤出和本地服务相同区域(<code>zone</code>)的服务列表。</p>
+<blockquote>
+<p>当指定了当前服务的所在Zone，并且 <code>ZoneAffinityServerListFilter</code> 没有起到过滤效果时，<code>ZonePreferenceServerListFilter</code>会返回当前Zone的Server列表。</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ZonePreferenceServerListFilter</span> <span class="token keyword">extends</span> <span class="token class-name">ZoneAffinityServerListFilter</span><span class="token operator">&lt;</span>Server<span class="token operator">></span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> String zone<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initWithNiwsConfig</span><span class="token punctuation">(</span>IClientConfig niwsClientConfig<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">initWithNiwsConfig</span><span class="token punctuation">(</span>niwsClientConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>ConfigurationManager<span class="token punctuation">.</span><span class="token function">getDeploymentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>zone <span class="token operator">=</span> ConfigurationManager<span class="token punctuation">.</span><span class="token function">getDeploymentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span>
+                    ContextKey<span class="token punctuation">.</span>zone<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>Server<span class="token operator">></span> <span class="token function">getFilteredListOfServers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>Server<span class="token operator">></span> servers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//父类的基础上，获取过滤结果</span>
+                List<span class="token operator">&lt;</span>Server<span class="token operator">></span> output <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getFilteredListOfServers</span><span class="token punctuation">(</span>servers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//没有起到过滤效果，则进行区域优先过滤</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>zone <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> output<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> servers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            List<span class="token operator">&lt;</span>Server<span class="token operator">></span> local <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>Server server <span class="token operator">:</span> output<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>zone<span class="token punctuation">.</span><span class="token function">equalsIgnoreCase</span><span class="token punctuation">(</span>server<span class="token punctuation">.</span><span class="token function">getZone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    local<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>server<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>local<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> local<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> output<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getZone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> zone<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setZone</span><span class="token punctuation">(</span>String zone<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>zone <span class="token operator">=</span> zone<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="ServerListSubsetFilter"><a href="#ServerListSubsetFilter" class="headerlink" title="ServerListSubsetFilter"></a><strong>ServerListSubsetFilter</strong></h3><p>这个过滤器作用于当Server数量列表特别庞大时（比如有上百个<code>Server</code>实例），这时，长时间保持Http链接也不太合适，可以适当地保留部分服务，舍弃其中一些服务，这样可使释放没必要的链接。</p>
+<h2 id="Server统计信息"><a href="#Server统计信息" class="headerlink" title="Server统计信息"></a><strong>Server统计信息</strong></h2><p>在ServerListFilter过滤的时候都会根据服务的统计信息进行过滤。负载均衡器LoaderBalancer 统计了服务实例Server相关的如下信息</p>
+<table>
+<thead>
+<tr>
+<th>ServerStats</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>zone</td>
+<td>当前服务所属的可用区</td>
+<td>配置</td>
+<td>可通过 <code>eureka.instance.meta.zone</code> 指定</td>
+</tr>
+<tr>
+<td>totalRequests</td>
+<td>总请求数量，client每次调用，数量会递增</td>
+<td>实时</td>
+<td>0</td>
+</tr>
+<tr>
+<td>activeRequestsCountTimeout</td>
+<td>活动请求计数时间窗<code>niws.loadbalancer.serverStats.activeRequestsCount.effectiveWindowSeconds</code>,如果时间窗范围之内没有<code>activeRequestsCount</code>值的改变，则<code>activeRequestsCounts</code>初始化为0</td>
+<td>配置</td>
+<td>60*10(seconds)</td>
+</tr>
+<tr>
+<td>successiveConnectionFailureCount</td>
+<td>连续连接失败计数</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>connectionFailureThreshold</td>
+<td>连接失败阈值通过属性<code>niws.loadbalancer.default.connectionFailureCountThreshold</code> 进行配置</td>
+<td>配置</td>
+<td>3</td>
+</tr>
+<tr>
+<td>circuitTrippedTimeoutFactor</td>
+<td>断路器超时因子,<code>niws.loadbalancer.default.circuitTripTimeoutFactorSeconds</code></td>
+<td>配置</td>
+<td>10(seconds)</td>
+</tr>
+<tr>
+<td>maxCircuitTrippedTimeout</td>
+<td>最大断路器超时秒数，<code>niws.loadbalancer.default.circuitTripMaxTimeoutSeconds</code></td>
+<td>配置</td>
+<td>30(seconds)</td>
+</tr>
+<tr>
+<td>totalCircuitBreakerBlackOutPeriod</td>
+<td>累计断路器终端时间区间</td>
+<td>实时</td>
+<td>milliseconds</td>
+</tr>
+<tr>
+<td>lastAccessedTimestamp</td>
+<td>最后连接时间</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>lastConnectionFailedTimestamp</td>
+<td>最后连接失败时间</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>firstConnectionTimestamp</td>
+<td>首次连接时间</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>activeRequestsCount</td>
+<td>当前活跃的连接数</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>failureCountSlidingWindowInterval</td>
+<td>失败次数统计时间窗</td>
+<td>配置</td>
+<td>1000(ms)</td>
+</tr>
+<tr>
+<td>serverFailureCounts</td>
+<td>当前时间窗内连接失败的数量</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>responseTimeDist.mean</td>
+<td>请求平均响应时间</td>
+<td>实时</td>
+<td>(ms)</td>
+</tr>
+<tr>
+<td>responseTimeDist.max</td>
+<td>请求最大响应时间</td>
+<td>实时</td>
+<td>(ms)</td>
+</tr>
+<tr>
+<td>responseTimeDist.minimum</td>
+<td>请求最小响应时间</td>
+<td>实时</td>
+<td>(ms)</td>
+</tr>
+<tr>
+<td>responseTimeDist.minimum</td>
+<td>请求最小响应时间</td>
+<td>实时</td>
+<td>(ms)</td>
+</tr>
+<tr>
+<td>responseTimeDist.stddev</td>
+<td>请求响应时间标准差</td>
+<td>实时</td>
+<td>(ms)</td>
+</tr>
+<tr>
+<td>dataDist.sampleSize</td>
+<td>QoS服务质量采集点大小</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>dataDist.timestamp</td>
+<td>QoS服务质量最后计算时间点</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>dataDist.timestampMillis</td>
+<td>QoS服务质量最后计算时间点毫秒数，自1970.1.1开始</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>dataDist.mean</td>
+<td>QoS 最近的时间窗内的请求平均响应时间</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>dataDist.10thPercentile</td>
+<td>QoS 10% 处理请求的时间</td>
+<td>实时</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>dataDist.25thPercentile</td>
+<td>QoS 25% 处理请求的时间</td>
+<td>实时</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>dataDist.50thPercentile</td>
+<td>QoS 50% 处理请求的时间</td>
+<td>实时</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>dataDist.75thPercentile</td>
+<td>QoS 75% 处理请求的时间</td>
+<td>实时</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>dataDist.95thPercentile</td>
+<td>QoS 95% 处理请求的时间</td>
+<td>实时</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>dataDist.99thPercentile</td>
+<td>QoS 99% 处理请求的时间</td>
+<td>实时</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>dataDist.99.5thPercentile</td>
+<td>QoS 前99.5% 处理请求的时间</td>
+<td>实时</td>
+<td>ms</td>
+</tr>
+</tbody></table>
+<p>当有某个服务存在多个实例时，在请求的过程中，负载均衡器会统计每次请求的情况（请求相应时间，是否发生网络异常等），当出现了请求出现累计重试时，负载均衡器会标识当前<code>服务实例</code>，设置当前<code>服务实例</code>的断路的时间区间，在此区间内，当请求过来时，负载均衡器会将此<code>服务实例</code>从<code>可用服务实例列表中</code>暂时剔除，优先选择其他服务实例。</p>
+<p><strong>相关统计信息如下</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>ServerStats</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>successiveConnectionFailureCount</td>
+<td>连续连接失败计数</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>connectionFailureThreshold</td>
+<td>连接失败阈值通过属性<code>niws.loadbalancer.default.connectionFailureCountThreshold</code> 进行配置，当<code>successiveConnectionFailureCount</code> 超过了此限制时，将计算熔断时间</td>
+<td>配置</td>
+<td>3</td>
+</tr>
+<tr>
+<td>circuitTrippedTimeoutFactor</td>
+<td>断路器超时因子,<code>niws.loadbalancer.default.circuitTripTimeoutFactorSeconds</code></td>
+<td>配置</td>
+<td>10(seconds)</td>
+</tr>
+<tr>
+<td>maxCircuitTrippedTimeout</td>
+<td>最大断路器超时秒数，<code>niws.loadbalancer.default.circuitTripMaxTimeoutSeconds</code></td>
+<td>配置</td>
+<td>30(seconds)</td>
+</tr>
+<tr>
+<td>totalCircuitBreakerBlackOutPeriod</td>
+<td>累计断路器终端时间区间</td>
+<td>实时</td>
+<td>milliseconds</td>
+</tr>
+<tr>
+<td>lastAccessedTimestamp</td>
+<td>最后连接时间</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>lastConnectionFailedTimestamp</td>
+<td>最后连接失败时间</td>
+<td>实时</td>
+<td></td>
+</tr>
+<tr>
+<td>firstConnectionTimestamp</td>
+<td>首次连接时间</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="挑选具体的服务实例"><a href="#挑选具体的服务实例" class="headerlink" title="挑选具体的服务实例"></a>挑选具体的服务实例</h2><p>定义了负载均衡的处理规则<code>IRule</code>对象，从<code>BaseLoadBalancer</code>中<code>chooseServer(Object key)</code>的实现源码，我们可以知道负载均衡器实际进行服务实例选择任务是委托给了<code>IRule</code>实例中的<code>choose</code>函数来实现。而在这里，默认初始化了<code>RoundRobinRule</code>为<code>IRule</code>的实现对象。<code>RoundRobinRule</code>实现了最基本且常用的轮询</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> Server <span class="token function">chooseServer</span><span class="token punctuation">(</span>Object key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>counter <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        counter <span class="token operator">=</span> <span class="token function">createCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    counter<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>rule <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> rule<span class="token punctuation">.</span><span class="token function">choose</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"LoadBalancer [{}]:  Error choosing server for key {}"</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> key<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Ribbon定义了一些常见的规则</p>
+<table>
+<thead>
+<tr>
+<th>实现</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RoundRobinRule</td>
+<td>通过轮询的方式，选择过程会有最多10次的重试机制</td>
+</tr>
+<tr>
+<td>RandomRule</td>
+<td>随机方式，从列表中随机挑选一个服务</td>
+</tr>
+<tr>
+<td>ZoneAvoidanceRule</td>
+<td>基于ZoneAvoidancePredicate断言和AvailabilityPredicate断言的规则。ZoneAvoidancePredicate计算出哪个Zone的服务最差，然后将此Zone的服务从服务列表中剔除掉；而AvaliabitiyPredicate是过滤掉正处于熔断状态的服务；上述两个断言过滤出来的结果后，再通过RoundRobin轮询的方式从列表中挑选一个服务</td>
+</tr>
+<tr>
+<td>BestAvailableRule</td>
+<td>最优匹配规则：从服务列表中给挑选出并发数最少的Server</td>
+</tr>
+<tr>
+<td>RetryRule</td>
+<td>采用了装饰模式，为Rule提供了重试机制</td>
+</tr>
+<tr>
+<td>WeightedResponseTimeRule</td>
+<td>基于请求响应时间加权计算的规则，如果此规则没有生效，将采用 RoundRobinRule的的策略选择服务实例</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Monitor</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"CircuitBreakerTripped"</span><span class="token punctuation">,</span> type <span class="token operator">=</span> DataSourceType<span class="token punctuation">.</span>INFORMATIONAL<span class="token punctuation">)</span>    
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isCircuitBreakerTripped</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">isCircuitBreakerTripped</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isCircuitBreakerTripped</span><span class="token punctuation">(</span><span class="token keyword">long</span> currentTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//断路器熔断的时间戳</span>
+        <span class="token keyword">long</span> circuitBreakerTimeout <span class="token operator">=</span> <span class="token function">getCircuitBreakerTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>circuitBreakerTimeout <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> circuitBreakerTimeout <span class="token operator">></span> currentTime<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//还在熔断区间内，则返回熔断结果</span>
+    <span class="token punctuation">}</span>
+   <span class="token comment" spellcheck="true">//获取熔断超时时间</span>
+   <span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">getCircuitBreakerTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> blackOutPeriod <span class="token operator">=</span> <span class="token function">getCircuitBreakerBlackoutPeriod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>blackOutPeriod <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> lastConnectionFailedTimestamp <span class="token operator">+</span> blackOutPeriod<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//返回中断毫秒数</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">getCircuitBreakerBlackoutPeriod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> failureCount <span class="token operator">=</span> successiveConnectionFailureCount<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> threshold <span class="token operator">=</span> connectionFailureThreshold<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token comment" spellcheck="true">// 连续失败，但是尚未超过上限，则服务中断周期为 0 ，表示可用 </span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span>failureCount <span class="token operator">&lt;</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//当链接失败超过阈值时，将进行熔断，熔断的时间间隔为：</span>
+        <span class="token keyword">int</span> diff <span class="token operator">=</span> <span class="token punctuation">(</span>failureCount <span class="token operator">-</span> threshold<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">16</span> <span class="token operator">?</span> <span class="token number">16</span> <span class="token operator">:</span> <span class="token punctuation">(</span>failureCount <span class="token operator">-</span> threshold<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> blackOutSeconds <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> diff<span class="token punctuation">)</span> <span class="token operator">*</span> circuitTrippedTimeoutFactor<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>blackOutSeconds <span class="token operator">></span> maxCircuitTrippedTimeout<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            blackOutSeconds <span class="token operator">=</span> maxCircuitTrippedTimeout<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> blackOutSeconds <span class="token operator">*</span> 1000L<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p><strong>熔断时间的计算</strong></p>
+<ol>
+<li>计算<strong>累计连接失败计数</strong><code>successiveConnectionFailureCount</code> 是否超过 <strong>链接失败阈值</strong><code>connectionFailureThreshold</code>。如果 <code>successiveConnectionFailureCount</code> &lt; <code>connectionFailureThreshold</code>,即尚未超过限额，则熔断时间为 0 ；反之，如果超过限额，则进行步骤2的计算；</li>
+<li>计算失败基数，最大不得超过 16：<code>diff = (failureCount - threshold) &gt; 16 ? 16 : (failureCount - threshold)</code></li>
+<li>根据<strong>超时因子</strong><code>circuitTrippedTimeoutFactor</code>计算超时时间： <code>int blackOutSeconds = (1 &lt;&lt; diff) * circuitTrippedTimeoutFactor.get();</code></li>
+<li>超时时间不得超过<strong>最大超时时间</strong>`maxCircuitTrippedTimeout 上线，</li>
+</ol>
+<p>当有链接失败情况出现断路逻辑时，将会最多：<code>1&lt;&lt;16 * 10 =320s</code>、最少<code>1&lt;&lt;1 * 10 =100s</code> 的请求熔断时间，再此期间内，此Server将会被忽略。<br>即：<br><strong>熔断时间最大值：1&lt;&lt;16 * 10 =320s</strong><br><strong>熔断时间最小值：1&lt;&lt;1 * 10 =100s</strong></p>
+<p><strong>熔断统计何时清空？</strong></p>
+<blockquote>
+<p>熔断的统计有自己的清除策略，当如下几种场景存在时，熔断统计会清空归零：</p>
+<ol>
+<li>当请求时，发生的异常不是<code>断路拦截类</code>的异常（<code>Exception</code>）时(至于如何节点是否是断路拦截类异常，可以自定义)</li>
+<li>当请求未发生异常，切且有结果返回时</li>
+</ol>
+</blockquote>
+<h1 id="ServiceInstance"><a href="#ServiceInstance" class="headerlink" title="ServiceInstance"></a>ServiceInstance</h1><p>在通过<code>ZoneAwareLoadBalancer</code>的<code>chooseServer</code>函数获取了负载均衡策略分配到的服务实例对象<code>Server</code>之后，将其内容包装成<code>RibbonServer</code>对象（该对象除了存储了服务实例的信息之外，还增加了服务名serviceId、是否需要使用HTTPS等其他信息），然后使用该对象再回调<code>LoadBalancerInterceptor</code>请求拦截器中<code>LoadBalancerRequest</code>的<code>apply(final ServiceInstance instance)</code>函数，向一个实际的具体服务实例发起请求，从而实现一开始以服务名为host的URI请求，到实际访问host:post形式的具体地址的转换。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ServiceInstance</span> <span class="token punctuation">{</span>
+
+    String <span class="token function">getServiceId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    String <span class="token function">getHost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> <span class="token function">getPort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">boolean</span> <span class="token function">isSecure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    URI <span class="token function">getUri</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> <span class="token function">getMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>包装<code>Server</code>服务实例的<code>RibbonServer</code>对象就是<code>ServiceInstance</code>接口的实现，可以看到它除了包含了<code>Server</code>对象之外，还存储了服务名、是否使用https标识以及一个Map类型的元数据集合。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">RibbonServer</span> <span class="token keyword">implements</span> <span class="token class-name">ServiceInstance</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String serviceId<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> Server server<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> secure<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> metadata<span class="token punctuation">;</span>
+
+    <span class="token keyword">protected</span> <span class="token function">RibbonServer</span><span class="token punctuation">(</span>String serviceId<span class="token punctuation">,</span> Server server<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span>serviceId<span class="token punctuation">,</span> server<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> Collections<span class="token punctuation">.</span>&lt;String<span class="token punctuation">,</span> String<span class="token operator">></span> <span class="token function">emptyMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">protected</span> <span class="token function">RibbonServer</span><span class="token punctuation">(</span>String serviceId<span class="token punctuation">,</span> Server server<span class="token punctuation">,</span> <span class="token keyword">boolean</span> secure<span class="token punctuation">,</span>
+            Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> metadata<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>serviceId <span class="token operator">=</span> serviceId<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>server <span class="token operator">=</span> server<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>secure <span class="token operator">=</span> secure<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>metadata <span class="token operator">=</span> metadata<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 省略实现ServiceInstance的一些获取Server信息的get函数</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>apply(final ServiceInstance instance)</code>函数，在接收到了具体<code>ServiceInstance</code>实例后,通过<code>LoadBalancerClient</code>接口中的<code>reconstructURI</code>操作来组织具体请求地址。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> ClientHttpResponse <span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">final</span> ServiceInstance instance<span class="token punctuation">)</span>
+            <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+    HttpRequest serviceRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServiceRequestWrapper</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> execution<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>serviceRequest<span class="token punctuation">,</span> body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>从<code>apply</code>的实现中，我们可以看到它具体执行的时候，还传入了<code>ServiceRequestWrapper</code>对象，该对象继承了<code>HttpRequestWrapper</code>并重写了<code>getURI</code>函数，重写后的<code>getURI</code>会通过调用<code>LoadBalancerClient</code>接口的<code>reconstructURI</code>函数来重新构建一个URI来进行访问。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">ServiceRequestWrapper</span> <span class="token keyword">extends</span> <span class="token class-name">HttpRequestWrapper</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ServiceInstance instance<span class="token punctuation">;</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> URI <span class="token function">getURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        URI uri <span class="token operator">=</span> LoadBalancerInterceptor<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>loadBalancer<span class="token punctuation">.</span><span class="token function">reconstructURI</span><span class="token punctuation">(</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>instance<span class="token punctuation">,</span> <span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> uri<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>RibbonLoadBalancerClient</code>中实现的<code>reconstructURI</code>来组织具体请求的服务实例地址。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> URI <span class="token function">reconstructURI</span><span class="token punctuation">(</span>ServiceInstance instance<span class="token punctuation">,</span> URI original<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Assert<span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"instance can not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String serviceId <span class="token operator">=</span> instance<span class="token punctuation">.</span><span class="token function">getServiceId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    RibbonLoadBalancerContext context <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>clientFactory
+            <span class="token punctuation">.</span><span class="token function">getLoadBalancerContext</span><span class="token punctuation">(</span>serviceId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Server server <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Server</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span><span class="token function">getHost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> instance<span class="token punctuation">.</span><span class="token function">getPort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">boolean</span> secure <span class="token operator">=</span> <span class="token function">isSecure</span><span class="token punctuation">(</span>server<span class="token punctuation">,</span> serviceId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    URI uri <span class="token operator">=</span> original<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>secure<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        uri <span class="token operator">=</span> UriComponentsBuilder<span class="token punctuation">.</span><span class="token function">fromUri</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">scheme</span><span class="token punctuation">(</span><span class="token string">"https"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUri</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> context<span class="token punctuation">.</span><span class="token function">reconstructURIWithServer</span><span class="token punctuation">(</span>server<span class="token punctuation">,</span> uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>从<code>reconstructURI</code>函数中，我们可以看到，它通过<code>ServiceInstance</code>实例对象的<code>serviceId</code>，从<code>SpringClientFactory</code>类的<code>clientFactory</code>对象中获取对应<code>serviceId</code>的负载均衡器的上下文<code>RibbonLoadBalancerContext</code>对象。然后根据<code>ServiceInstance</code>中的信息来构建具体服务实例信息的<code>Server</code>对象，并使用<code>RibbonLoadBalancerContext</code>对象的<code>reconstructURIWithServer</code>函数来构建服务实例的URI。</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about"
+                       rel="external nofollow noreferrer">刘钦华</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/2-ribbon/3-fu-zai-jun-heng-qi-de-he-xin/">http://www.liuqinhua.com/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/2-ribbon/3-fu-zai-jun-heng-qi-de-he-xin/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer"
+                       target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">刘钦华</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+        document.addEventListener("copy", function (e) {
+            let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+            M.toast({html: toastHTML})
+        });
+
+        function navToReprintStatement() {
+            $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+        }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+        <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin"
+             data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+        <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge left-badge text-color">
+                    <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <div class="card">
+                    <a href="/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/3-hystrix/10-zhu-jie-fang-shi-de-shi-xian/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/19.jpg" class="responsive-img"
+                                     alt="后端/Spring/SpringCloud/SpringCloud远程调用/3、Hystrix/10、注解方式的实现">
+                            
+                            <span class="card-title">后端/Spring/SpringCloud/SpringCloud远程调用/3、Hystrix/10、注解方式的实现</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                hystrix-core实现的熔断器，需要写大量的代码.所以Javanica就出来了，通过引入支持注解。
+@Configuration
+@EnableAspectJAutoProxy // 开启 AOP 代理的支持
+public class
+                            
+                        </div>
+                        <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-12
+                        </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-user fa-fw"></i>
+                                    刘钦华
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge right-badge text-color">
+                    下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="card">
+                    <a href="/2021/01/12/hou-duan/spring/springcloud/springcloud-yuan-cheng-diao-yong/2-ribbon/2-ribbon-yuan-li-gai-lan/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/12.jpg" class="responsive-img"
+                                     alt="后端/Spring/SpringCloud/SpringCloud远程调用/2、Ribbon/2、Ribbon原理概览">
+                            
+                            <span class="card-title">后端/Spring/SpringCloud/SpringCloud远程调用/2、Ribbon/2、Ribbon原理概览</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+项目启动的时候会自动的为我们加载LoadBalancerAutoConfiguration自动配置类，该自动配置类初始化条件是要求classpath必须要有RestTemplate这个类，必须要有LoadBalancerClient实现类
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-user fa-fw"></i>
+                                    刘钦华
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('180')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: LQH<br />'
+                + '文章作者: 刘钦华<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+    </style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align"
+        style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">刘钦华</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">137.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "4";
+                    var startDate = "26";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+
+                setInterval(siteTime, 1000);
+            </script>
+            
+            |
+            
+            <span id="icp"><img src="/medias/icp.png"
+                    style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备20049015号</a>
+            </span>
+            
+            <!--            <a href="http://www.beian.miit.gov.cn/" style="color:wheat" target="_blank">粤ICP备20049015号</a>-->
+
+
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/RosePuff" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:LiuQinHua2020@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=775204521" class="tooltipped"
+       target="_blank" data-tooltip="QQ联系我: 775204521" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top"
+       data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+            zIndex="-1" src="/libs/background/ribbon-refresh.min.js"
+            async="async"></script>
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

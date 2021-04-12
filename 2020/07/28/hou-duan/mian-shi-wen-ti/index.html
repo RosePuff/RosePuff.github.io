@@ -1,0 +1,1350 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="面试问题, LQH">
+    <meta name="description" content="茕茕白兔，东走西顾。衣不如新，人不如故">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>面试问题 | LQH</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="LQH" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LQH</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LQH</div>
+        <div class="logo-desc">
+            
+            茕茕白兔，东走西顾。衣不如新，人不如故
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/RosePuff" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/RosePuff" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">面试问题</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+        <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        2020-07-28
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                        2020-09-02
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        8.2k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        28 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="和equals-的区别"><a href="#和equals-的区别" class="headerlink" title="==和equals()的区别"></a>==和equals()的区别</h2><p>基本类型：比较值是否相同</p>
+<p>引用类型：比较近引用是否相同</p>
+<pre class=" language-java"><code class="language-java">String x <span class="token operator">=</span> <span class="token string">"string"</span><span class="token punctuation">;</span>
+String y <span class="token operator">=</span> <span class="token string">"string"</span><span class="token punctuation">;</span>
+String z <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"string"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token operator">==</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token operator">==</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span></code></pre>
+<p>equals 本质上就是 ==，只不过 String 和 Integer 等重写了 equals 方法，把它变成了值比较</p>
+<p>String 重写了 Object 的 equals 方法，把引用比较改成了值比较</p>
+<p>== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重写了 equals 方法</p>
+<h2 id="为什么要重写hashCode和equals方法"><a href="#为什么要重写hashCode和equals方法" class="headerlink" title="为什么要重写hashCode和equals方法"></a>为什么要重写hashCode和equals方法</h2><p>因为要得到散列码（hash）的时候要通过key.hashcode（）去得到key的哈希码才可以做hash运算；不论是put和get方法，都要使用equals方法，equals方法是object的一个方法，直接调用是比较内存</p>
+<h2 id="static的关键字"><a href="#static的关键字" class="headerlink" title="static的关键字"></a>static的关键字</h2><ul>
+<li>修饰代码块</li>
+<li>修饰成员变量</li>
+<li>修饰方法</li>
+</ul>
+<p>static关键字虽然不能修饰普通类，但可以用static关键字修饰内部类使其变成静态内部类。static关键字本身的含义就是共享，而Java类加载到JVM内存的方法区，也是线程共享的，所以没必要用static关键字修饰普通类</p>
+<h2 id="String、StringBuilder和StringBuffer的区别"><a href="#String、StringBuilder和StringBuffer的区别" class="headerlink" title="String、StringBuilder和StringBuffer的区别"></a>String、StringBuilder和StringBuffer的区别</h2><ul>
+<li>String是字符串常量，而StringBuffer和StringBuilder是字符串变量</li>
+<li>String创建的字符内容是不可改变的，而由StringBuffer和StringBuilder创建的字符内容是可以改变的</li>
+<li>StringBuffer是线程安全的，而StringBuilder是非线程安全的</li>
+</ul>
+<p>在使用时应优先考虑使用StringBuilder，因为它支持StringBuffer的所有操作，但是因为它不执行同步，不会有线程安全带来额外的系统消耗，所以速度更快</p>
+<p>虽然三个在底层都是使用的char数组进行实现的，但是String类中定义的char数组是final的，而StringBuffer和StringBuilder都是继承自AbstractStringBuilder类</p>
+<h2 id="异步、同步、BIO、NIO"><a href="#异步、同步、BIO、NIO" class="headerlink" title="异步、同步、BIO、NIO"></a>异步、同步、BIO、NIO</h2><h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="Collection下的ArrayList、LinkedList"><a href="#Collection下的ArrayList、LinkedList" class="headerlink" title="Collection下的ArrayList、LinkedList"></a>Collection下的ArrayList、LinkedList</h3><p>ArrayList的底层是数组，初始化的时候数据量是0，当add的时候会变成10，每次扩容的话是之前容量的1.5倍，特性是查询快，删除效率比较低，查询快是因为通过脚标查询的</p>
+<p>LinkedList的底层是带有头节点和尾节点的双向链表，有两种插入方式：<code>LInkedFirst</code>（头部插入）、<code>LinkedLast</code>（尾部插入），特性是非常适合经常增加、删除的操作，但是查询在量大的时候会说是比较慢，主要是因为是链表查询，通过顺序进行比较</p>
+<p>在保证线程安全的情况下又想使用<code>List</code>的话可以采用<code>Vector</code>，和<code>ArrayList</code>一样使用是是一个数组的结构，区别是大部分的方法都是被<code>snchronized</code>修饰的，所以说是一个线程安全的，扩容的时候和<code>ArrayList</code>区别在于ArrayList是1.5倍扩容，而<code>Vector</code>是采用的2倍扩容机制的</p>
+<h3 id="Set下的HashSet"><a href="#Set下的HashSet" class="headerlink" title="Set下的HashSet"></a>Set下的HashSet</h3><h3 id="Map中的HashMap，涉及到线程安全的话采用的是ConcurrentHashMap"><a href="#Map中的HashMap，涉及到线程安全的话采用的是ConcurrentHashMap" class="headerlink" title="Map中的HashMap，涉及到线程安全的话采用的是ConcurrentHashMap"></a>Map中的HashMap，涉及到线程安全的话采用的是ConcurrentHashMap</h3><p>底层结构在1.7版本和1.8版本是不一样的</p>
+<p>1.7版本的时候是数组+链表的一个结构</p>
+<p>1.8的时候的是数组+单链表+红黑树</p>
+<p>在单链表和红黑树之间的转换的话，是当链表的长度大于等于8以及Hash桶大于等于64的时候转换为红黑树存储，在红黑树的数量在小于等于6的时候会重新转换为链表的的一个结构，Hash桶的数量默认是16个，而那个点的阈值默认是0.75，扩容的方式是先检测数组里面的个数，因为负载因子为0.75，桶的默认是16的，所以说阈值为12，当Hash桶占用的容量到达了12或往上的时候，会触发扩容机制，会从16变成32按照2倍扩容，之后会把之前的元素再次进行一个Hash运算，add到新的Hash桶里面，按照链表或红黑树的方式组合排列起来。</p>
+<p>这里不是线程安全的，因为在insert的时候多线程会有数据覆盖的可能，另外也是在1.7的时候<code>PUT</code>操作的时候有个<code>Resize</code>的过程会造成一个头插的一个环形链表导致一直死循环，在1.8版本的时候已经做了修复改成了尾插</p>
+<p><strong>当要在多线程情况下安全操作Map的话有三种解决方式</strong></p>
+<ul>
+<li>使用Hashtable</li>
+<li>使用Collections.synchronizedMap，对方法加同步锁</li>
+<li>使用JUC并发包中的ConcurrentHashMap类</li>
+</ul>
+<p>Hashtable的话是一个线程安全的类，但是底层那边使用的给全部方法都加了synchronize同步锁，相当于给整个Hash表加了一个大锁，多线程访问的时候只要有一个线程访问到该对象，其他的线程就只能说是阻塞等待获取当前线程的锁，在多线程的情况下体验很差</p>
+<p>Collections.synchronizedMap的话底层如果传入的是HashMap对象，其实也是对HashMap的方法做了一层封装，里面使用了对象锁来进行保护在多线程的情况下操作安全，本质上也是对于HashMap进行的一个全表锁</p>
+<p>ConcurrentHashMap数据结构在1.7的时候是个分片数组，为了保证线程安全是有个Segment锁，是继承于ReentrantLock（可重入锁），来保证线程的安全，每次就只给一段的加速保证并发度，1.8的时候是改成了HashMap一样的数据结构，放弃了分片锁的这个结构，而采用了<code>Synchronized</code>的和<code>CAS</code>操作，在1.6的时候采用<code>JVM</code>优化的力度非常大的，数据结构和HashMap结构类似，都是数组+链表的结构，</p>
+<p><code>ConcurrentHashMap</code>中<code>synchronized</code>只锁定当前链表或红黑二叉树的首节点，只要节点 hash 不冲突，就不会产生并发</p>
+<p>CAS相当于说是一个轻量级的加锁的一个过程，在修改并发量不是很大的情况下，会先查一遍之后再修改，准备写之前再查一次，和修改之前的结果看看是否有区别，如果有区别的话就是这个修改是不安全的，如果没有区别的话这个修改就是安全的，这时候可以安全的去进行一个修改，而不是用加锁的形式进行修改，在低并发的情况下会好一点</p>
+<p>CAS<strong>缺点：</strong>当并发量特别大的时候对于CPU性能消耗比较大，因为有个忙循环的过程，高并发的时候还是直接使用状态机，重量级锁之类的；另外就是ABA的问题在第一次读的时候和第二次读的时候可能会有被第三线程修改过，但是后来又被改回来的情况，这种情况可以说是通过并发包里面的戳或标志位来进行一个解决，相当于给一个版本号</p>
+<h2 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h2><p>关于synchronized的使用方式：</p>
+<ul>
+<li><p>同步代码块：当用在同步代码块的时候可以指定任意的锁</p>
+</li>
+<li><p>方法：锁的方法就是锁当前的this</p>
+</li>
+<li><p>静态方法：锁的是当前的class对象</p>
+<p>synchronized首先锁的是一个种类，在无锁状态下，因为synchronized的偏向锁，到轻量级锁，到重量级锁</p>
+</li>
+<li><p>偏向锁：会偏向于获得第一个锁的线程，会将获得锁的线程拉到这个锁对象的对象头中，当有另外的线程来的时候会立刻结束这个偏向的状态，从而跑到一个轻量级锁的状态</p>
+</li>
+<li><p>轻量级锁：在线程进入的在虚拟栈中开辟一个空间（LockRecord）将锁对象的MarkWord写入，之后尝试将另一个的Lock Record的指针使用CAS去修改锁对象头的区域，这时候时候判断指针是否进行一个修改，如果修改成功的话，就是获得锁，修改不成功的话进入到自旋锁的状态；也是适用于低并发的一个情况</p>
+</li>
+<li><p>重量级锁：也就是自旋锁，用的是互斥锁的一个过程，加锁过程主要实现原理是</p>
+<ul>
+<li>同步代码块编译之后会代码前后添加两个指令，<code>mointerenter</code>、<code>mointerexit</code>；当一个线程来的时候发现这个锁的标志位是无锁的一个状态，会尝试给一个互斥锁对象，这个锁对象的时候会和另外一个对象关联，即监视器锁<code>monitor</code>，会在<code>monitor</code>的锁定器+1，并且将指针写入到对象头中，并修改锁对象头的标志位为10，就是重量级锁的一个标志位，这里就完成了一个换锁的过程，这个过程是一个可重入的，并不会说是每次都出去进行一个加锁的过程，每次进来让这个锁记录+1即可，当其他锁来的时候会检查这个锁对象头中<code>monitor</code>计数不为0的时候会在监视状态下去等待竞争这个锁，当之前的结束了这个操作的时候就会退出并释放这个锁，逐步将加上的锁释放几次，将其锁定器上的计数归零完成一个锁的释放让其余线程进行竞争锁</li>
+<li>同步方法：采用的是<code>ACC_SYNCHRONIZED</code>标记位，当<code>JVM</code>检测到这个<code>flag</code>，自动走了一个同步方法调用的策略，</li>
+</ul>
+</li>
+</ul>
+<h3 id="ReentrantLock和synchronized的使用考虑"><a href="#ReentrantLock和synchronized的使用考虑" class="headerlink" title="ReentrantLock和synchronized的使用考虑"></a>ReentrantLock和synchronized的使用考虑</h3><p>从<code>JVM</code>层面上来说的话<code>synchronized</code>是<code>JVM</code>的一个关键字，<code>ReentrantLock</code>的话是一个类，需要手动编码</p>
+<p><code>synchronized</code>使用的时候是可以直接通过代码块或同步方法，不需要关心锁的释放，<code>ReentrantLock</code>需要手动释放锁，并且还需要配合Try finally代码块一定要去把锁进行一个释放</p>
+<p><code>ReentrantLock</code>对于<code>synchronized</code>来说有几个高级特性，提供了一个线程长期等待不到一个锁的时候，为了防止死锁的话可以手动调用一个<code>lockInterruptibly</code>方法去尝试释放这个锁从而不用去等待，<code>ReentrantLock</code>提供了一个构建公平锁的方法，函数有一个但是不推荐使用，因为会让<code>ReentrantLock</code>的等级下降，还提供了一个<code>condition</code>，可以指定唤醒绑定到<code>condition</code>上的线程</p>
+<p>选择方面的话需要根据场景进行一个选择，当某一个时刻QPS很高的时候，另一个时刻却不高，这样如果选择<code>synchronized</code>进行一个加锁的过程的话全部升级到重量级锁，这样对于QPS高的时候是好处的，但是在并发的一个情况的下的话很多时候是不需要这么高的锁的，因为不可逆，一旦加到重量级锁的话就始终是那个状态了</p>
+<h2 id="JUC下的包"><a href="#JUC下的包" class="headerlink" title="JUC下的包"></a>JUC下的包</h2><h3 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h3><p><code>CountDownLatch</code>适用于单线程下又希望某一段过程并发执行并且最后回归到单线程的一个状态，适用于一个线程等待一批线程到达一个同步点之前进去，并且计数器是不能重用的</p>
+<p>计数器的保证是因为在初始化的时候会实例化AQS的内部类<code>Synchronized</code>并且将<code>count</code>传给<code>AQS</code>的一个<code>state</code>标志位是用<code>volatile</code>修饰的</p>
+<h3 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h3><p>没有一个一个线程的执行，而是一批线程达到一个同步点的时候才向下执行，计数器也是不能重用的</p>
+<h3 id="Atomic"><a href="#Atomic" class="headerlink" title="Atomic"></a>Atomic</h3><h2 id="Volatile关键字"><a href="#Volatile关键字" class="headerlink" title="Volatile关键字"></a>Volatile关键字</h2><p>是JVM提供的一个最轻量级的一个关键字，这里涉及到了计算机的模型，因为CPU和内存之间的线程效率不同，为了不影响CPU的计算，中间做了很多LLV的缓存，线程就在这些缓存中进行工作会从主内存取到工作内存中进行计算，在工作内存中计算完了之后再传过去，多线程之间的可见性如何保证的，再JVM里面为了解决这些东西，提供了JMM的模型，<code>Volatile</code>修饰的一个变量，就可以保证这个变量在所有线程之间的可见性，这样这个线程在修改变量之后会立刻刷到主内存中，之后使用会从主内存中取值</p>
+<p>无法保证变量的原子性的，可以采用<code>synchronized</code></p>
+<h2 id="foreach删除元素是否能行"><a href="#foreach删除元素是否能行" class="headerlink" title="foreach删除元素是否能行"></a>foreach删除元素是否能行</h2><h2 id="Java异常"><a href="#Java异常" class="headerlink" title="Java异常"></a>Java异常</h2><h3 id="全局异常的处理"><a href="#全局异常的处理" class="headerlink" title="全局异常的处理"></a>全局异常的处理</h3><h3 id="捕获异常的处理方式"><a href="#捕获异常的处理方式" class="headerlink" title="捕获异常的处理方式"></a>捕获异常的处理方式</h3><h3 id="常见的异常"><a href="#常见的异常" class="headerlink" title="常见的异常"></a>常见的异常</h3><h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>有个核心线程数的，当线程运行的时候，当没有设置成预启动加载的话，首发线程为0，提交一个新任务的时候会先建立一个核心线程，然后去执行任务，这里的线程方面的话会做一个判断就如果一直建立核心线程，当达到最大线程的核心线程的时候，如果都是还在继续提交建立线程，会放到<code>BlockingQueue</code>里面作为节点，如果说是桶线程也满了的话，就会继续建立非核心线程，假设一直创建的话，数量达到非核心线程数量<code>MaxAccess</code>的话，就会触发拒绝策略，JDK内置了四种拒绝策略</p>
+<ul>
+<li>AbortPolicy：直接抛异常</li>
+<li>DisCardPolicy：不通知直接丢弃任务</li>
+<li>DisCardOldestPolicy：丢弃最早的未执行的任务</li>
+<li>CallerRunsPolicy：会分配谁调用我的这个线程执行这个任务，这种方式会影响新任务的提交速度</li>
+</ul>
+<p>队列使用的是阻塞队列，JDK提供了两种</p>
+<ul>
+<li>：是不保存任务，JDK提供的new catch线程池使用就是这种队列</li>
+<li>第二种采用的是有界队列，<code>ArrayBlockingQueue</code>我们指定数量，超了的话就OOM</li>
+<li>第三种是无界队列：<code>LInkedBlockingQueue</code>，也是可能因超出上下文的OOM的</li>
+<li>第四种是优先级队列</li>
+</ul>
+<p>线程池中比较重要的是线程构造，在创建一个线程池的时候需要提供一个线程的<code>threadFactory</code>，一定要指定名称，也可以设置为守护线程，当BM关闭的时候可以让线程跟着一块消亡</p>
+<h1 id="高阶"><a href="#高阶" class="headerlink" title="高阶"></a>高阶</h1><h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><h3 id="JVM的内存模型"><a href="#JVM的内存模型" class="headerlink" title="JVM的内存模型"></a>JVM的内存模型</h3><p>运行时的内存区域：</p>
+<ul>
+<li>线程私有区<ul>
+<li>程序计数器：在JVM栈内存来说是比较小的一个区域，也是唯一一块不会OOM的区域，是用于告诉你线程执行的代码是归于哪一行，也就是上下文切换之后这里会回到一个正确的状态</li>
+<li>虚拟机栈：主要使用的是栈帧，一个方法的调用是从入栈到出栈的过程</li>
+<li>本地方法栈：s</li>
+</ul>
+</li>
+<li>线程共享区<ul>
+<li>方法区：JVM规范，在1.7的时候实现的是在<code>HotSpot</code>虚拟机中叫做永久代，存放的是常量池的常量还有类的元数据信息，在1.8的时候转到了一个集结内存中（元空间）存放的是类的元数据信息，这里方法区是会出现OOM的这个情况的，存放的是Java里面产生的对象、对象的实例，同时也是GC重点回收的一个区域，并且也会产生OOM的</li>
+<li>运行时常量池：1.8的时候将运行常量池转移到堆中，在1.8之前是在元空间里面的的，堆里面存放的是一个常量池被加载之后，运行时常量池和静态变量是到了堆中的</li>
+<li>直接内存：主要是存放在JVM的元空间，放在元空间的好处是OOM的几率相对于之前来说小了很多</li>
+</ul>
+</li>
+</ul>
+<h3 id="OOM排查思路和过程"><a href="#OOM排查思路和过程" class="headerlink" title="OOM排查思路和过程"></a>OOM排查思路和过程</h3><p>借助一些<code>jvisualvm</code>的一下工具，去查询<code>dump</code>下下来的堆栈信息中进行一个排查</p>
+<h3 id="垃圾回收算法和垃圾回收器"><a href="#垃圾回收算法和垃圾回收器" class="headerlink" title="垃圾回收算法和垃圾回收器"></a>垃圾回收算法和垃圾回收器</h3><h4 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h4><ul>
+<li>标记清除，标记不可达的对象，将判定为死亡的对象之后依次抹除，使用可能会造成很多的内存碎片，并且当对象是比较大的时候，标记率是比较低的<ul>
+<li>引用计数，但是会产生循环依赖</li>
+<li>Java中可以作为<code>GCRoots</code>根节点，如果不在这个链上的话就是可以判断回收了；在虚拟机中引用的一些对象，方法区中的静态变量所引用的对象、常量所引用对象；可作为可达性分析节点的一些对象</li>
+</ul>
+</li>
+<li>标记复制：简单粗暴将堆划分两块，在GC的时候有引用的对象直接复制到另一半；<strong>缺点</strong>是会造成内存支持量偏低，好处是不太会产生内存大块的碎片</li>
+<li>标记整理：每次只使用一块区域，会把已经死亡对象，往另一侧移动，复制，然后就可以找出剩下额一块区域</li>
+<li>分代回收</li>
+</ul>
+<h4 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h4><p>CMS：可以和用户线程并发操作的，GC线程与用户线程并行执行额一款垃圾回收，特点是低延迟，主要是用于老年代回收的，因为算法用的是标记清除，所以可以容忍一定量的垃圾回收碎片，当达到一个阈值的时候，会触发一次标记整理来清理一下</p>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>最终标记</li>
+<li>筛选回收（并发清理）</li>
+</ul>
+<p>初始标记和最终标记不是并发执行的，会产生短暂的<code>Stop The World</code>，后面的并发标记和筛选回收的耗时比较长，是和用户线程一起并发执行的，可以实现最短的低延迟</p>
+<p>G1：也是并发的，原本是在缩短处理超大堆时产生的停顿，相对于CMS的就是内存碎片大量降低，关注最小时延的垃圾回收器</p>
+<p>引入了分区的概念，合理利用垃圾收集各周期的资源，弥补了CMS的众多缺陷；G1的算法是基于标记-整理的，不会产生空间碎片，分配的大对象的时候不会得到连续的空间触发<code>Full GC</code>，会在年轻代区域使用，而CMS只能作为老年代区域使用</p>
+<p><strong>Stop The World的区别</strong></p>
+<ul>
+<li>G1是有很多的立区域（Region）是可控制的，并且是在回收内存后会马上同时做合并空间内存</li>
+<li>CMS默认是在STW做的</li>
+</ul>
+<h4 id="收集器的应用场景"><a href="#收集器的应用场景" class="headerlink" title="收集器的应用场景"></a>收集器的应用场景</h4><p>G1垃圾收集算法主要应用在多CPU大内存的服务中，在满足高吞吐量的同时，尽可能的满足垃圾回收时的暂停时间。</p>
+<p>就目前而言、CMS还是默认首选的GC策略、可能在以下场景下G1更适合：</p>
+<ul>
+<li>服务端多核CPU、JVM内存占用较大的应用（至少大于4G）</li>
+<li>应用在运行过程中会产生大量内存碎片、需要经常压缩空间</li>
+<li>想要更可控、可预期的GC停顿周期，防止高并发下应用雪崩现象</li>
+</ul>
+<h3 id="GC排查过程"><a href="#GC排查过程" class="headerlink" title="GC排查过程"></a>GC排查过程</h3><p>需要跑命令去查看一下，可以看到当前的CPU高进程的ID，使用<code>jstack</code>命令，登上进程来代替</p>
+<h2 id="RockMQ的使用场景"><a href="#RockMQ的使用场景" class="headerlink" title="RockMQ的使用场景"></a>RockMQ的使用场景</h2><h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ul>
+<li>高访问两的业务上：通过配置监听规则将流量分发到不同服务器上，使用会话保持功能将同一客户端的请求转发到同一台后端服务器上</li>
+<li>横向扩张系统：业务的扩张，当前服务器无法满足需求，增加服务器，分发请求处理</li>
+<li>消除单点故障：多台服务器，一台坏了，就切换另外一台</li>
+<li>同城容灾：主可用区出现机房故障或不可用时切换到另外一个备可用区恢复服务能力</li>
+<li>跨地域容灾：通过DNS进行地址分发到各地的路由器到实例服务器中</li>
+</ul>
+<h2 id="Nginx的负载均衡"><a href="#Nginx的负载均衡" class="headerlink" title="Nginx的负载均衡"></a>Nginx的负载均衡</h2><p>Nginx提供一个服务池配置节点进行轮询访问</p>
+<ul>
+<li>轮询：按时间顺序逐一分配到不同的后端服务器</li>
+<li>加权轮询：weight值越大，分配到的访问几率越高</li>
+<li>ip_hash：每个请求按访问IP的hash结果分配，这样来自同一个IP的固定访问一个后端服务器</li>
+<li>url_hash：按照访问的URL的hash结果来分配请求，是每个URL定向到同一个后端服务器</li>
+<li>least_conn：最少连接数，哪个机器连接数少就分配到哪个</li>
+<li>hash关键数值：hash自定义的key</li>
+</ul>
+<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="IOC和DI"><a href="#IOC和DI" class="headerlink" title="IOC和DI"></a>IOC和DI</h2><p>IOC （Inversion of control ）控制反转/反转控制。它是一种思想不是一个技术实现。描述的是：Java 开发领域对象的创建以及管理的问题</p>
+<ul>
+<li><strong>传统的开发方式</strong> ：往往是在类 A 中手动通过 new 关键字来 new 一个 B 的对象出来</li>
+<li><strong>使用 IOC 思想的开发方式</strong> ：不通过 new 关键字来创建对象，而是通过 IOC 容器(Spring 框架) 来帮助我们实例化对象。我们需要哪个对象，直接从 IOC 容器里面过去即可</li>
+</ul>
+<p>使用了IOC思想的开发方式我们失去了管理创建对象的能力，但是得到的是不用考虑对象的创建、管理等一些列的事情</p>
+<ul>
+<li><strong>控制</strong> ：指的是对象创建（实例化、管理）的权力</li>
+<li><strong>反转</strong> ：控制权交给外部环境（Spring 框架、IOC 容器）</li>
+</ul>
+<p>IOC 的思想就是两方之间不互相依赖，由第三方容器来管理相关资源</p>
+<ol>
+<li>对象之间的耦合度或者说依赖程度降低</li>
+<li>资源变的容易管理；比如你用 Spring 容器提供的话很容易就可以实现一个单例</li>
+</ol>
+<p>IOC（Inverse of Control:控制反转）是一种<strong>设计思想</strong> 或者说是某种模式。这个设计思想就是 <strong>将原本在程序中手动创建对象的控制权，交由 Spring 框架来管理</strong>，<strong>IOC 容器是 Spring 用来实现 IOC 的载体， IOC 容器实际上就是个 Map（key，value）,Map 中存放的是各种对象</strong>，IOC 最常见以及最合理的实现方式叫做依赖注入（Dependency Injection，简称 DI）</p>
+<h2 id="什么是AOP和OOP"><a href="#什么是AOP和OOP" class="headerlink" title="什么是AOP和OOP"></a>什么是AOP和OOP</h2><p>AOP 是 OOP（面向对象编程）的一种延续</p>
+<p>OOP 编程思想可以解决大部分的代码重复问题。但是有一些问题是处理不了的。比如在父类 Animal 中的多个方法的相同位置出现了重复的代码，OOP 就解决不了</p>
+<p>横切逻辑代码存在的问题：</p>
+<ul>
+<li>代码重复问题</li>
+<li>横切逻辑代码和业务代码混杂在一起，代码臃肿，不变维护</li>
+</ul>
+<p><strong>AOP 就是用来解决这些问题的</strong></p>
+<p>AOP 另辟蹊径，提出横向抽取机制，将横切逻辑代码和业务逻辑代码分离</p>
+<p><strong>AOP 主要用来解决</strong>：在不改变原有业务逻辑的情况下，增强横切逻辑代码，根本上解耦合，避免横切逻辑代码重复。</p>
+<h2 id="AOP的实现"><a href="#AOP的实现" class="headerlink" title="AOP的实现"></a>AOP的实现</h2><p>接口有代理类的话走的是JDK的动态代理，没有的话走的是<code>cglib</code>字节码技术去创建代理类对象</p>
+<p>JDK动态代理底层主要使用的是Java反射中的两个类：<code>Proxy</code>、<code>InvocationHandler</code>，是通过bind的方式去绑定之前的代理与原来的实现类去做一个关系，并且是通过<code>Proxy</code>相关的来创建代理类对象的，通过<code>invoke</code>去执行那个方法</p>
+<h2 id="Spring的生命周期"><a href="#Spring的生命周期" class="headerlink" title="Spring的生命周期"></a>Spring的生命周期</h2><p>大致分为三个阶段</p>
+<ul>
+<li>bean的一次加工，将对象实例化，在实例化的前后有<code>BeanPostProcessor</code>在做前置和后置处理</li>
+<li>依赖注入的过程，在这个过程中，首先会设置一个属性值，然后Bean实现<code>BeanAware</code>的相关接口，比如说<code>DiposableBean</code>这接口的话就会给<code>bean</code>注入相对应的<code>aware</code>属性这里分为两步，这两步前后也会有<code>BeanPostProcessor</code>后处理的这个操作</li>
+<li>bean的二次加工，这前后可以采用像<code>ApplicationContext</code>配置一个后置处理的<code>bean</code>主要是调用了bean中写的<code>environment</code>的一个方法或bean实现了一个<code>InitializingBean</code>，会二次回调<code>afterPropertiesSet</code>方法</li>
+<li>在这之后<code>bean</code>就是已经建立了的，会根据<code>bean</code>的<code>scope</code>选择，默认是单例的就会继续走下去，如果是多实例的话也就是bean的scope是prototype多实例的会移交给你去管理后续的生命周期</li>
+<li>当是单实例<code>bean</code>的时候还是会交给<code>Spring</code>去管理生命周期，当Spring容器销毁的时候就会调用<code>destory</code>相对应的方法，如果说是实现的是一个<code>Disposable Bean</code>的话，接口中也会有自己销毁的那个逻辑存在的</li>
+</ul>
+<h2 id="如何解决Spring中的bean循环依赖"><a href="#如何解决Spring中的bean循环依赖" class="headerlink" title="如何解决Spring中的bean循环依赖"></a>如何解决Spring中的bean循环依赖</h2><p>正常的当一个bean调用构造函数进行实例化之后，也就是说属性这时候还没有填充进去，可以通过三级缓存向外暴露依赖的引用值，对于单例来说<code>Spring</code>整个生命周期就只有一个对象，所以这个对象会存在与<code>CaChe</code>中，所以在创建<code>bean</code>的时候会从这个<code>CaChe</code>中进行获取，这个缓存就是<code>singletonObject</code>，如果获取不到并且对象有正在创建的时候，就从二级缓存<code>earlySingletonObjects</code>中获取，如果这里还是获取不到并且允许<code>singletonFactories</code>的<code>geObject()</code>获取的话就从三级花奴才能中获取<code>singletonFactory.getObject()</code>(三级缓存)获取，如果获取到了则：从<code>singletonFactories</code>中移除，并放入<code>earlySingletonObjects</code>中。其实也就是从三级缓存移动到了二级缓存</p>
+<p>其实Spring解决循环依赖的就在于<code>singletonFactories</code>这个三级<code>Cache</code>，因为这个cache的类型就是<code>ObjectFactory</code>这里是解决循环依赖的关键点，发生在<code>createBeanInstance</code>之后，也就是单例对象这个时候是已经被创建出来了的，虽然是不完美，但是也是被看到的了，根据对象引用能定位到堆中的对象，这里是采用构造器创建的单例对象，但是一般来说最好是通过在字段上使用<code>@Autowired</code>注解进行解决，让Spring决定在合适的时候进行注入，另外就是使用介于setter方式进行依赖注入</p>
+<h1 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><h2 id="MyBatis的分页"><a href="#MyBatis的分页" class="headerlink" title="MyBatis的分页"></a>MyBatis的分页</h2><ul>
+<li>最原始的业务代码层面利用<code>List</code>的<code>suBList()</code>数据切片</li>
+<li>原生的SQL关键字<code>Limit</code>实现</li>
+<li><code>RowBounds</code>在Dao层定义好所要传输的所有分页信息，类型为<code>RowBounds</code>在server层进行pageInfo封装调用Dao层</li>
+<li><code>Interceptor实现</code>利用MyBatis中的拦截器进行分类</li>
+<li><code>PageHelper</code>项目分类，内部实现是自己封装拦截器</li>
+</ul>
+<h1 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h1><h2 id="服务暴露的过程"><a href="#服务暴露的过程" class="headerlink" title="服务暴露的过程"></a>服务暴露的过程</h2><p>假设现在的场景都是在使用dubbo协议（dubbo、rmi、thrift、hessian、http、webservice、thrift、memcached、redis、rest、grpc）</p>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="SQL调优的思路"><a href="#SQL调优的思路" class="headerlink" title="SQL调优的思路"></a>SQL调优的思路</h2><p>SQL调优最基本的，每个表都需要有主键，有主建的表MySQL会创建聚族索引，好处是主键和数据行是在一行的，在explain查的时候，这个的type级别是<code>const</code>，聚族索引是通向真实数据行的有利途径，另外一个就是查的数据可能是覆盖索引</p>
+<p><strong>索引：</strong></p>
+<ul>
+<li>当有主键的时候SQL慢可以查看是否建立了相对应的索引</li>
+<li>建立索引的时候尽量选择where条件后面的字段、group by、还有join连接的字段作为当前SQL的索引列</li>
+<li>并且索引列也需要排序，要符合最左匹配原则</li>
+<li>要根据索引选择器，非重复的数据行和重复的数据行中间的排列，大的放左边，小的放右边这样的形式，这种多列的索引列要去建立联合索引，而不要是建立单个索引</li>
+<li>SQL写的时候不能将索引列放到一个表达式中，也尽量少用反向判断，比如NotNull、不等于、Notln类似的关键词这些都会导致索引失效的这个问题</li>
+<li>查询频繁的话可以使用覆盖索引：可以直接在索引中查询到数据的 </li>
+</ul>
+<p><strong>索引失效</strong>可以去考虑SQL底层是不是出了什么问题，因为MySQL底层是会根据随机采样来计算索引的基数，如果出现错误，会认为虽然你的索引选择性比较大但MySQL会认为你的索引选择性比较小就不走自己定的索引，可以采用<code>force index</code>强制走该索引，还不行就需要刷新，要用<code>analyze TABLES</code>看看是否有重新排队</p>
+<p>普通索引：</p>
+<p>索引存放的是叶子节点和主键，还有索引列；查的时候是通过它的索引列查询到它的主键，再通过主键去回表查询，最后还是走的聚族索引查询的，因为有回表过程所以会慢一点</p>
+<p>如果对主键进行查询，索引中只要建立主键就好了，其余不同字段的话就需要创建一个非聚族索引来加快查询速度</p>
+<p><strong>唯一索引和普通索引的区别?</strong></p>
+<p>因为唯一索引，会去确保列的唯一的话会再做一次判断的过程，判断过程开销是很小的，开销大的点在<code>buffer</code>区</p>
+<h2 id="单个索引还是多个索引"><a href="#单个索引还是多个索引" class="headerlink" title="单个索引还是多个索引"></a>单个索引还是多个索引</h2><h2 id="MVCC和事务隔离级别的关系"><a href="#MVCC和事务隔离级别的关系" class="headerlink" title="MVCC和事务隔离级别的关系"></a>MVCC和事务隔离级别的关系</h2><p>InnoDB的特性就是支持事务，为了保证事务的并发度提供了一个隔离级别</p>
+<ul>
+<li><code>Read Uncommitted</code>（结果无法保证）</li>
+<li><code>Read committed</code>解决了事务的脏读</li>
+<li>MySQL默认的<code>Repeatable Read</code>解决了脏读和不可重复读，没有解决幻读</li>
+<li><code>Serizlizable</code>串行化的，所有的都是由串行来执行的没有事务的，是最高的安全级别</li>
+</ul>
+<p>要解决幻读的时候，当是索引范围查询的时候会在后面加个<code>for update</code>会锁住未出现的行，确保事务中不会读到其他事务中提交的数据行，采用的是行级锁</p>
+<p>丢失更新采用手动处理，采用乐观锁和悲观锁</p>
+<ul>
+<li>乐观锁：类似于CAS一样可以加个版本号，读完之后在改，改的时候再查一次看版本号是否相同，一致的话就安全写回</li>
+<li>悲观锁：可以等人查的时候加上一个for update加上行锁，并且提供了一个事务传播的行为</li>
+</ul>
+<h2 id="MySQL的事务"><a href="#MySQL的事务" class="headerlink" title="MySQL的事务"></a>MySQL的事务</h2><p>原则：</p>
+<ul>
+<li>原子性：就是在一个事务里面的所有操作，要么都完成，要么都不完成，如果事务发生错误，就会造成回滚</li>
+<li>一致性：事务的开始和结束之后，对于数据库的数据都是没有进行破坏的，表明写入的资料以及数据都是必须符合所有的预设规则的</li>
+<li>隔离性：</li>
+<li>持久性：</li>
+</ul>
+<p>用 BEGIN, ROLLBACK, COMMIT来实现</p>
+<ul>
+<li><strong>BEGIN</strong> 开始一个事务</li>
+<li><strong>ROLLBACK</strong> 事务回滚</li>
+<li><strong>COMMIT</strong> 事务确认</li>
+</ul>
+<p>直接用 SET 来改变 MySQL 的自动提交模式:</p>
+<ul>
+<li><strong>SET AUTOCOMMIT=0</strong> 禁止自动提交</li>
+<li><strong>SET AUTOCOMMIT=1</strong> 开启自动提交</li>
+</ul>
+<h2 id="用过什么连接查询"><a href="#用过什么连接查询" class="headerlink" title="用过什么连接查询"></a>用过什么连接查询</h2><p>内连接查询：inner join</p>
+<p>左连接查询：left join</p>
+<p>右连接查询：right join</p>
+<p>全连接查询：union</p>
+<h2 id="Order-By排序"><a href="#Order-By排序" class="headerlink" title="Order By排序"></a>Order By排序</h2><p>我們可以將<code>SELECT</code>取得的資料集依某欄位來作排序，而排序分別可以由小至大 (ascending; 預設)，或由大至小 (descending)</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> table_column1<span class="token punctuation">,</span> table_column2<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">FROM</span> table_name
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name1 <span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">,</span> column_name2 <span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<h2 id="用过的SQL优化"><a href="#用过的SQL优化" class="headerlink" title="用过的SQL优化"></a>用过的SQL优化</h2><h3 id="大表优化"><a href="#大表优化" class="headerlink" title="大表优化"></a>大表优化</h3><ul>
+<li>限定数据的范围</li>
+<li>读写分离</li>
+<li>垂直分表</li>
+<li>水平分表</li>
+</ul>
+<h3 id="数据库的优化"><a href="#数据库的优化" class="headerlink" title="数据库的优化"></a>数据库的优化</h3><ul>
+<li>SQL语句优化</li>
+<li>索引优化</li>
+<li>数据库表结构的优化、</li>
+<li>硬件升级</li>
+</ul>
+<h2 id="SQL的常用函数"><a href="#SQL的常用函数" class="headerlink" title="SQL的常用函数"></a>SQL的常用函数</h2><h3 id="聚合函數-SQL-Aggregate-Functions"><a href="#聚合函數-SQL-Aggregate-Functions" class="headerlink" title="聚合函數 (SQL Aggregate Functions)"></a>聚合函數 (SQL Aggregate Functions)</h3><ul>
+<li><a href="https://www.fooish.com/sql/avg-function.html" target="_blank" rel="noopener">AVG()</a></li>
+<li><a href="https://www.fooish.com/sql/count-function.html" target="_blank" rel="noopener">COUNT()</a></li>
+<li><a href="https://www.fooish.com/sql/max-function.html" target="_blank" rel="noopener">MAX()</a></li>
+<li><a href="https://www.fooish.com/sql/min-function.html" target="_blank" rel="noopener">MIN()</a></li>
+<li><a href="https://www.fooish.com/sql/sum-function.html" target="_blank" rel="noopener">SUM()</a></li>
+</ul>
+<h3 id="字串函數-SQL-String-Functions"><a href="#字串函數-SQL-String-Functions" class="headerlink" title="字串函數 (SQL String Functions)"></a>字串函數 (SQL String Functions)</h3><ul>
+<li><a href="https://www.fooish.com/sql/ascii-function.html" target="_blank" rel="noopener">ASCII()</a></li>
+<li><a href="https://www.fooish.com/sql/char-function.html" target="_blank" rel="noopener">CHAR()</a></li>
+<li><a href="https://www.fooish.com/sql/concat-function.html" target="_blank" rel="noopener">CONCAT()</a></li>
+<li><a href="https://www.fooish.com/sql/length-function.html" target="_blank" rel="noopener">LENGTH()</a></li>
+<li><a href="https://www.fooish.com/sql/replace-function.html" target="_blank" rel="noopener">REPLACE()</a></li>
+<li><a href="https://www.fooish.com/sql/ucase-function.html" target="_blank" rel="noopener">UCASE()</a></li>
+<li><a href="https://www.fooish.com/sql/lcase-function.html" target="_blank" rel="noopener">LCASE()</a></li>
+<li><a href="https://www.fooish.com/sql/mid-function.html" target="_blank" rel="noopener">MID()</a></li>
+</ul>
+<h3 id="數值函數-SQL-Mathematical-Functions"><a href="#數值函數-SQL-Mathematical-Functions" class="headerlink" title="數值函數 (SQL Mathematical Functions)"></a>數值函數 (SQL Mathematical Functions)</h3><ul>
+<li><a href="https://www.fooish.com/sql/abs-function.html" target="_blank" rel="noopener">ABS()</a></li>
+<li><a href="https://www.fooish.com/sql/ceil-function.html" target="_blank" rel="noopener">CEILING()</a></li>
+<li><a href="https://www.fooish.com/sql/floor-function.html" target="_blank" rel="noopener">FLOOR()</a></li>
+<li><a href="https://www.fooish.com/sql/power-function.html" target="_blank" rel="noopener">POWER()</a></li>
+<li><a href="https://www.fooish.com/sql/sqrt-function.html" target="_blank" rel="noopener">SQRT()</a></li>
+<li><a href="https://www.fooish.com/sql/log-function.html" target="_blank" rel="noopener">LOG()</a></li>
+<li><a href="https://www.fooish.com/sql/trigonometric-function.html" target="_blank" rel="noopener">三角函數</a></li>
+</ul>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="栈和队列的区别以及是什么，怎么实现"><a href="#栈和队列的区别以及是什么，怎么实现" class="headerlink" title="栈和队列的区别以及是什么，怎么实现"></a>栈和队列的区别以及是什么，怎么实现</h2><ul>
+<li>栈先进先出的特点，可以很好的控制访问控制，栈的数据访问是有很严格的，只能访问最后加入的数据，这对数据访问控制严格的应用很有好处。现实中，字符串倒序输出，使用栈的原理就可以很好的实现</li>
+<li>队列可以模拟很多现实的生产环境，例如排队，队列是先进先出，不允许有任何元素插队</li>
+</ul>
+<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><h2 id="VUE的表格实现或Layui的表格实现以及思路"><a href="#VUE的表格实现或Layui的表格实现以及思路" class="headerlink" title="VUE的表格实现或Layui的表格实现以及思路"></a>VUE的表格实现或Layui的表格实现以及思路</h2>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about"
+                       rel="external nofollow noreferrer">刘钦华</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.liuqinhua.com/2020/07/28/hou-duan/mian-shi-wen-ti/">http://www.liuqinhua.com/2020/07/28/hou-duan/mian-shi-wen-ti/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer"
+                       target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">刘钦华</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+        document.addEventListener("copy", function (e) {
+            let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+            M.toast({html: toastHTML})
+        });
+
+        function navToReprintStatement() {
+            $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+        }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+        <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin"
+             data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+        <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge left-badge text-color">
+                    <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <div class="card">
+                    <a href="/2020/07/30/shu-ju-ku/mysql-de-you-hua/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/8.jpg" class="responsive-img"
+                                     alt="MySQL的优化">
+                            
+                            <span class="card-title">MySQL的优化</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                SQL的优化问题
+                            
+                        </div>
+                        <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-30
+                        </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                                    
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                        <div class="card-action article-tags">
+                            
+                                <a href="/tags/SQL%E4%BC%98%E5%8C%96/">
+                                    <span class="chip bg-color">SQL优化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+            <div class="article col s12 m6" data-aos="fade-up">
+                <div class="article-badge right-badge text-color">
+                    下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="card">
+                    <a href="/2020/07/27/hou-duan/spring/spring/springmvc/">
+                        <div class="card-image">
+                            
+                                
+                                <img src="/medias/featureimages/17.jpg" class="responsive-img"
+                                     alt="SpringMVC">
+                            
+                            <span class="card-title">SpringMVC</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                简介什么是MVC？
+MVC也就是模型（Model）、视图（View）、控制器（Controller），即是一种设计规范
+作用主要是降低了View和业务逻辑的双向耦合性
+主要是讲业务逻辑、数据、显示分离开来的方法进行代码编写
+
+模型（Mode
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                        <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                                    
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                        <div class="card-action article-tags">
+                            
+                                <a href="/tags/SpringMVC/">
+                                    <span class="chip bg-color">SpringMVC</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('180')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: LQH<br />'
+                + '文章作者: 刘钦华<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+    </style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align"
+        style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">刘钦华</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">137.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "4";
+                    var startDate = "26";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+
+                setInterval(siteTime, 1000);
+            </script>
+            
+            |
+            
+            <span id="icp"><img src="/medias/icp.png"
+                    style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备20049015号</a>
+            </span>
+            
+            <!--            <a href="http://www.beian.miit.gov.cn/" style="color:wheat" target="_blank">粤ICP备20049015号</a>-->
+
+
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/RosePuff" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:LiuQinHua2020@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=775204521" class="tooltipped"
+       target="_blank" data-tooltip="QQ联系我: 775204521" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top"
+       data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+            zIndex="-1" src="/libs/background/ribbon-refresh.min.js"
+            async="async"></script>
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>
